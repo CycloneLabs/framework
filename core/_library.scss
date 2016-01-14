@@ -1,0 +1,281 @@
+// Functions
+
+
+// @dec-to-hex  Convert decimal number to hex by Pierpaolo Cira
+// $dec         Decimal number
+//
+// @return      Unquoted hex string
+
+@function dec-to-hex($dec) {
+  $hex: "0123456789ABCDEF";
+  $first: (($dec - $dec % 16) / 16) + 1;
+  $second: ($dec % 16)+1;
+  @return str-slice($hex, $first, $first) + str-slice($hex, $second, $second);
+}
+
+// @color-to-hex  Convert decimal number to hex
+// $dec           Decimal number
+//
+// @return        Unquoted hex color
+
+@function color-to-hex($color) {
+  @return #{unquote('#')}#{dec-to-hex(red($color))}#{dec-to-hex(green($color))}#{dec-to-hex(blue($color))};
+}
+
+// @str-replace   Replace `search` with `replace` in string by Hugo Giraudel
+// $string        Initial string
+// $search        Substring to replace
+// $replace       New value
+//
+// @return        Updated string
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+// @HTML-Encode   UrlEncode functions
+// $string        String which will change
+//
+// @return        String that will be changed
+
+@function html-encode($string) {
+  $encode-map:("%":"%25"," ":"%20","!":"%21","\"":"%22","#":"%23","$":"%24","&":"%26","\'":"%27","(":"%28",")":"%29","*":"%2A","+":"%2B",",":"%2C","-":"%2D",".":"%2E","/":"%2F",":":"%3A",";":"%3B","<":"%3C","=":"%3D",">":"%3E","?":"%3F","@":"%40","[":"%5B","\\":"%5C","]":"%5D","^":"%5E","_":"%5F","`":"%60","{":"%7B","|":"%7C","}":"%7D","~":"%7E","¢":"%A2","£":"%A3","¥":"%A5","§":"%A7","«":"%AB","¬":"%AC","¯":"%AD","º":"%B0","±":"%B1","ª":"%B2","µ":"%B5","»":"%BB","¼":"%BC","½":"%BD","¿":"%BF","À":"%C0","Á":"%C1","Â":"%C2","Ã":"%C3","Ä":"%C4","Å":"%C5","Æ":"%C6","Ç":"%C7","È":"%C8","É":"%C9","Ê":"%CA","Ë":"%CB","Ì":"%CC","Í":"%CD","Î":"%CE","Ï":"%CF","Ð":"%D0","Ñ":"%D1","Ò":"%D2","Ó":"%D3","Ô":"%D4","Õ":"%D5","Ö":"%D6","Ø":"%D8","Ù":"%D9","Ú":"%DA","Û":"%DB","Ü":"%DC","Ý":"%DD","Þ":"%DE","ß":"%DF","à":"%E0","á":"%E1","â":"%E2","ã":"%E3","ä":"%E4","å":"%E5","æ":"%E6","ç":"%E7","è":"%E8","é":"%E9","ê":"%EA","ë":"%EB","ì":"%EC","í":"%ED","î":"%EE","ï":"%EF","ð":"%F0","ñ":"%F1","ò":"%F2","ó":"%F3","ô":"%F4","õ":"%F5","ö":"%F6","÷":"%F7","ø":"%F8","ù":"%F9","ú":"%FA","û":"%FB","ü":"%FC","ý":"%FD","þ":"%FE","ÿ":"%FF");
+  @each $search, $replace in $encode-map {
+    $string: str-replace($string, $search, $replace);
+  }
+  @return $string;
+}
+
+// @size      Make a vertical rhythm for each component
+// $operand   Size of component property
+//
+// @return    Calculating value
+
+@function size($operand: 1) {
+  @if (type-of($operand) == number) {
+    @return $operand * $line-step;
+  }
+  @warn "Size: operand should be a number";
+}
+
+// @stroke-border   Make a border component
+// $params          List of sides and color
+//
+// @return          Map with box-shadow-value string and indent properties
+
+@function stroke-border($params) {
+  $color: $f-stroke-border-color;
+  $side: ();
+  @if (type-of($params) == list) {
+    @each $property in $params {
+      $property: unquote($property);
+      @if (type-of($property) == color) {
+        $color: $property;
+      }
+      @else {
+        $property: to-lower-case($property);
+        @if (not index($side, $property) and ($property == left or $property == right or $property == bottom or $property == top)) {
+          $side: append($side, $property);
+        }
+      }
+    }
+  }
+  @elseif (type-of($params) == color) {
+    $color: $params;
+  }
+  @elseif (type-of($params) == string) {
+    $params: to-lower-case($params);
+    @if ($params == left or $params == bottom or $params == right or $params == top) {
+      $side: append($side, $params);
+    }
+  }
+  @elseif (type-of($params) == map) {
+    @if (map-has-key($params, side)) {
+      $side: map-get($params, side);
+    }
+    @if (map-has-key($params, color)) {
+      $color: map-get($params, color);
+    }
+  }
+  $result: ();
+  $weight: 0;
+  $border-x: 0;
+  $border-y: 0;
+  @if (length($side) == 3) {
+    @if (index($side, top) == null) {
+      $border-y: -$thin;
+      $result: append($result, -$thin $border-y 0 0 $color inset, comma);
+      $border-x: $thin;
+    }
+    @elseif (index($side, left) == null) {
+      $border-x: -$thin;
+      $result: append($result, $border-x -$thin 0 0 $color inset, comma);
+      $border-y: $thin;
+    }
+    @elseif (index($side, bottom) == null) {
+      $border-y: $thin;
+      $result: append($result, $thin $border-y 0 0 $color inset, comma);
+      $border-x: -$thin;
+    }
+    @elseif (index($side, right) == null) {
+      $border-x: $thin;
+      $result: append($result, $border-x $thin 0 0 $color inset, comma);
+      $border-y: -$thin;
+    }
+  }
+  @elseif (length($side) == 2) {
+    @if(index($side, top) and index($side, bottom) or index($side, left) and index($side, right)) {
+      $border-x: if(index($side, left), $thin, if(index($side, right), -$thin, 0));
+      $border-y: if(index($side, bottom), -$thin, if(index($side, top), $thin, 0));
+      $result: append($result, $border-x $border-y 0 0 $color inset, comma);
+      $border-x: if(index($side, right), -$thin, if(index($side, left), $thin, 0));
+      $border-y: if(index($side, top), $thin, if(index($side, bottom), -$thin, 0));
+    }
+    @else {
+      $border-y: if(index($side, top), $thin, if(index($side, bottom), -$thin, 0));
+      $border-x: if(index($side, right), -$thin, if(index($side, left), $thin, 0));
+    }
+  }
+  @elseif (length($side) == 1) {
+    $border-y: if(index($side, top), $thin, if(index($side, bottom), -$thin, 0));
+    $border-x: if(index($side, right), -$thin, if(index($side, left), $thin, 0));
+  }
+  @else {
+    $weight: $thin;
+  }
+  @return (result: append($result, $border-x $border-y 0 $weight $color inset, comma), x: $border-x, y: $border-y);
+}
+
+// @stroke-blink   Make a component blink
+// $params         Component color
+// $border-x       Horizontal indent property
+// $border-y       Vertical indent property
+//
+// @return         Map with box-shadow string and indent properties
+
+@function stroke-blink($params, $border-x, $border-y) {
+  $color: $f-stroke-blink-color;
+  $weight: if(abs($border-x) + abs($border-y) > 0, 0, $thin);
+  $border-x: if($border-x == -$thin, -$thin * 2, -$thin - $weight);
+  $border-y: if($border-y == $thin, $thin * 2, $thin + $weight);
+  @if (type-of($params) == color) {
+    $color: $params;
+  }
+  @elseif (type-of($params) == map) {
+    $color: map-get($params, color);
+  }
+  @return (result: $border-x $border-y 0 0 $color inset, x: $border-x, y: $border-y);
+}
+
+// @stroke-underline  Make a component underline
+// $params            Underline color
+//
+// @return            Box-shadow string
+
+@function stroke-underline($params) {
+  $color: $f-stroke-underline-color;
+  @if (type-of($params) == color) {
+    $color: $params;
+  }
+  @return 0 (-$thin) 0 0 $color inset;
+}
+
+// Mixins
+
+// @shadow    Make a flat shadow by using pseudo-element `before`
+// $size      Size of shadow by grid units
+// $color     Color of shadow
+//
+// @return    Pseudo-element `before` witch makes flat shadow
+
+@mixin shadow($color: $color-default, $size: $m-shadow-size) {
+  margin: size(0.7); //Undone line-step rhythm
+
+  &::before {
+    background-color: $color;
+    bottom: size(-$size);
+    content: '';
+    left: size(-$size);
+    position: absolute;
+    right: size($size);
+    top: size($size);
+    z-index: -1;
+  }
+}
+
+// @radius   Make a border-radius simpler
+// $side     The side to which the effect will be applied
+// $radius   The strength with which the effect is applied
+//
+// @return   One or two border-radius properties
+
+@mixin radius($side, $radius: $m-radius-radius) {
+  $side: unquote($side);
+  $side: to-lower-case($side);
+
+  @if ($side == top-left or $side == top-right or $side == bottom-left or $side == bottom-right) {
+    border-#{$side}-radius: $radius;
+  }
+  @elseif ($side == left or $side == right) {
+    border-bottom-#{$side}-radius: $radius;
+    border-top-#{$side}-radius: $radius;
+  }
+  @elseif ($side == top or $side == bottom) {
+    border-#{$side}-left-radius: $radius;
+    border-#{$side}-right-radius: $radius;
+  }
+  @else {
+    border-radius: $radius;
+  }
+}
+
+// @stroke    Makes a border, blink and other graphical parts by box-shadow property
+// $border    List with sides and color
+// $blink     Blink color
+// $custom    Any `box-shadow` rules which apply with
+// $underline Underline color
+//
+// @return   Generated box-shadow property which makes border, blink and other rules;
+
+@mixin stroke($border: null, $blink: null, $custom: null, $underline: null) {
+  $result: ();
+  $border-x: -1;
+  $border-y: -1;
+  @if($border) {
+    $stroke-border: stroke-border($border);
+    $result: join($result, map-get($stroke-border, result), comma);
+    $border-x: map-get($stroke-border, x);
+    $border-y: map-get($stroke-border, y);
+  }
+  @if($blink) {
+    $stroke-blink: stroke-blink($blink);
+    $result: append($result, map-get($stroke-blink, result), comma);
+    $border-x: map-get($stroke-blink, x);
+    $border-y: map-get($stroke-blink, y);
+  }
+  @if($underline) {
+    $underline-blink: stroke-underline($underline);
+    $result: append($result, $underline-blink, comma);
+    //TODO Better way: text-decoration-color (unsupported), ::placeholder(too much variations)
+    border-bottom: $thin * 2 solid transparent;
+  } @else {
+    border-bottom: 0;
+  }
+  @if($custom) {
+    $result: append($result, $custom, comma);
+  }
+  box-shadow: $result;
+}
+
+// Patterns
+
+// %bug   the pattern to be embedded to wrong situations,
+%bug {
+  $magenta: #f0f !default;
+  background: linear-gradient(to top, $magenta, transparent);
+  outline: 2px dotted $magenta;
+}

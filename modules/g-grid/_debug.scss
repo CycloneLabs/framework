@@ -1,0 +1,8 @@
+:module(Grid) > :modifier(First):first-child + :modifier(Last):last-child {
+  /**/
+  /* Module :  Grid
+  /* Bug    :  Bad practice
+  /**/
+  @extend %bug;
+  content: "For this purpose, use grid modifier `between`";
+}

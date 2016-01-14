@@ -1,0 +1,30 @@
+/**/
+/* Oakwood
+/* https://github.com/Cyclonelabs/framework.git
+/*
+/* Released under MIT license
+/**/
+
+// Entry file
+// Imports all Oakwood files in their intended order for easy mass-inclusion
+// Set up your build using the `$modules` variable
+
+@if (not variable-exists(modules)) {
+  $modules: (core: true, basic: true);
+} $m: $modules;
+
+// Global requirements
+@if ( map-get($m, all) or map-get($m, variables)    or map-get($m, core)   ) { @import "core/variables"; }
+@if ( map-get($m, all) or map-get($m, library)      or map-get($m, core)   ) { @import "core/library"; }
+@if ( map-get($m, all) or map-get($m, animate)      or map-get($m, custom) ) { @import "node_modules/animate.css/animate"; }
+@if ( map-get($m, all) or map-get($m, normalize)    or map-get($m, core)   ) { @import "node_modules/normalize.css/normalize"; }
+
+// Modules
+@if ( map-get($m, all) or map-get($m, text)         or map-get($m, core)   ) { @import "modules/t-text/manifest"; }
+@if ( map-get($m, all) or map-get($m, icon)         or map-get($m, basic)  ) { @import "modules/i-icon/manifest"; }
+
+// Utilities
+@if ( map-get($m, all) or map-get($m, inner-rhythm) or map-get($m, core)  ) { @import "modules/ir-inner-rhythm/manifest"; }
+@if ( map-get($m, all) or map-get($m, x-rhythm)     or map-get($m, core)  ) { @import "modules/xr-x-rhythm/manifest"; }
+@if ( map-get($m, all) or map-get($m, y-rhythm)     or map-get($m, core)  ) { @import "modules/yr-y-rhythm/manifest"; }
+@if ( map-get($m, all) or map-get($m, grid)         or map-get($m, basic) ) { @import "modules/g-grid/manifest"; }

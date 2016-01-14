@@ -1,0 +1,79 @@
+:module(Grid) {
+  display: flex;
+  flex: initial;
+  flex-flow: row wrap;
+  margin-left: $gutter-compensation;
+  margin-right: $gutter-compensation;
+
+  &:modifier(reverse) {
+    flex-direction: row-reverse;
+  }
+
+  &:modifier(top) {
+    align-items: flex-start;
+  }
+
+  &:modifier(middle) {
+    align-items: center;
+  }
+
+  &:modifier(bottom) {
+    align-items: flex-end;
+  }
+
+  &:modifier(around) {
+    justify-content: space-around;
+  }
+
+  &:modifier(between) {
+    justify-content: space-between;
+  }
+
+  &:modifier(start) {
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  &:modifier(center) {
+    justify-content: center;
+    text-align: center;
+  }
+
+  &:modifier(end) {
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  > :component(col) {
+    flex: none;
+    max-width: 100%;
+    padding-left: $half-gutter-width;
+    padding-right: $half-gutter-width;
+  }
+
+  > :component(col-x) {
+    flex: 1 0 auto;
+    max-width: 100%;
+    padding-left: $half-gutter-width;
+    padding-right: $half-gutter-width;
+  }
+
+  > :modifier(reverse) { flex-direction: column-reverse; }
+  > :modifier(first) { order: -1; }
+  > :modifier(last) { order: 1; }
+
+  @for $i from 1 through $grid-cells {
+    > :component(col-#{$i}) {
+      flex: 0 0 $i * $grid-cell;
+      max-width: $i * $grid-cell;
+      padding-left: $half-gutter-width;
+      padding-right: $half-gutter-width;
+    }
+
+    > :modifier(offset-#{$i}) {
+      margin-left: $i * (100% / $grid-cells);
+    }
+  }
+}
+
+@if (map-get($m, debug)) { @import "debug"; }

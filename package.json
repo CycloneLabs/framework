@@ -1,0 +1,21 @@
+{
+  "name": "Oakwood",
+  "version": "0.1.0",
+  "description": "Oakwood CSS. It is a framework for styling your applications",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyclonelabs/framework.git"
+  },
+
+  "dependencies": {
+    "animate.css": "3.x",
+    "font-awesome": "4.x",
+    "normalize.css": "3.x",
+    "postcss": "5.x"
+  },
+
+  "main": "oakwood.scss",
+  "author": "Roman @xibor",
+  "license": "MIT"
+}

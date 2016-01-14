@@ -1,0 +1,41 @@
+$fa-font-path: "node_modules/font-awesome/fonts" !default;
+$fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/FortAwesome/Font-Awesome/pull/6020/files
+
+:module(Icon) {
+  display: inline-block;
+  font: normal normal normal $font-size-normal FontAwesome; // shortening font declaration
+  font-size: inherit; // can't have font-size inherit on line above, so need to override
+  text-align: center;
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  width: 1.4em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:modifier(2x) { font-size: 2 * $font-size-tiny; }
+
+  &:modifier(3x) { font-size: 3 * $font-size-tiny; }
+
+  &:modifier(4x) { font-size: 4 * $font-size-tiny; }
+
+  &:modifier(5x) { font-size: 5 * $font-size-tiny; }
+
+  &:modifier(spin) { animation: spin $animation-time * 8 infinite linear; }
+
+  &:modifier(pulse) { animation: spin $animation-time * 8 infinite steps(9); }
+
+  &:modifier(inverse) { filter: invert(100%); }
+
+  &:modifier(rotate-90) { transform: rotate(90deg); }
+
+  &:modifier(rotate-180) { transform: rotate(180deg); }
+
+  &:modifier(rotate-270) { transform: rotate(270deg); }
+
+  &:modifier(h-flip) { transform: scale(-1, 1); }
+
+  &:modifier(v-flip) { transform: scale(1, -1); }
+}
+
+@import "../../node_modules/font-awesome/scss/variables";
+@import "../../node_modules/font-awesome/scss/path";
+@import "../../node_modules/font-awesome/scss/icons";

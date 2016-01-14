@@ -1,0 +1,47 @@
+// Basic
+$thin                      : 1px !default;
+$line-step                 : 10px !default;
+$stable-screen             : $line-step * 120 !default;
+
+// Grid
+$grid-cells                : 16 !default;
+$grid-cell                 : 100% / $grid-cells !default;
+$gutter-flexible           : $grid-cell / 2.8 !default;
+$gutter-width              : $line-step !default;
+$gutter-compensation       : -$gutter-width / 2 !default;
+$half-gutter-width         : $gutter-width / 2 !default;
+
+// Animation
+$animation-time            : 250ms !default;
+$animation-type            : ease-out !default;
+$animate                   : $animation-type $animation-time !default;
+
+// Layer
+$z-local                   : 50 !default;
+$z-dropdown                : 500 !default;
+$z-overlay                 : 1000 !default;
+$z-popover                 : 2000 !default;
+$z-alerts                  : 3000 !default;
+
+// Font stack and sizes
+$font-family               : Helvetica, arial, sans-serif !default;
+$font-family-mono          : Menlo, Courier, monospace !default;
+$font-size-tiny            : $line-step * 1.1 !default;
+$font-size-small           : $line-step * 1.3 !default;
+$font-size-normal          : $line-step * 1.5 !default;
+
+// Basic colors
+$color-default             : #798081;
+$color-white               : lighten($color-default, 50);
+$color-black               : darken($color-default, 50);
+$color-red                 : #e05e49 !default;
+$color-green               : #53a065 !default;
+$color-blue                : #00abf0 !default;
+$color-diff                : 6 !default;
+
+// Functions and Mixins defaults
+$f-stroke-border-color     : $color-black !default;
+$f-stroke-blink-color      : $color-white !default;
+$f-stroke-underline-color  : $color-black !default;
+$m-shadow-size             : 0.4 !default;
+$m-radius-radius           : $line-step * 0.3 !default;
