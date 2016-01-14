@@ -1,0 +1,76 @@
+:module(Inner-Rhythm) {
+  :modifier(One-x):modifier(Two-x),
+  :modifier(Four-x):modifier(Five-x),
+  :modifier(Seven-x):modifier(Eight-x),
+  :modifier(Ten-x):modifier(Eleven-x),
+  :modifier(One):modifier(Two),
+  :modifier(Four):modifier(Five),
+  :modifier(Seven):modifier(Eight),
+  :modifier(Ten):modifier(Eleven) {
+    /**/
+    /* Bug    :  Modifiers do the same thing
+    /**/
+    @extend %bug;
+    content: "Modifiers do the same thing";
+  }
+
+  :modifier(Twelve-x):modifier(Three-x),
+  :modifier(Three-x):modifier(Six-x),
+  :modifier(Six-x):modifier(Nine-x),
+  :modifier(Nine-x):modifier(Twelve-x),
+  :modifier(Twelve):modifier(Three),
+  :modifier(Three):modifier(Six),
+  :modifier(Six):modifier(Nine),
+  :modifier(Nine):modifier(Twelve) {
+    /**/
+    /* Bug    :  Please use the intermediate values, it is shorter
+    /**/
+    @extend %bug;
+    content: "Please use the intermediate values";
+  }
+
+  :modifier(Twelve-x):modifier(Six-x),
+  :modifier(Twelve):modifier(Six) {
+    /**/
+    /* Bug    :  Please write less code, use the modifier `vertical`
+    /**/
+    @extend %bug;
+    content: "Please use the `vertical` modifier";
+  }
+
+  :modifier(Three-x):modifier(Nine-x),
+  :modifier(Three):modifier(Nine) {
+    /**/
+    /* Bug    :  Please write less code, use the modifier `horizontal`
+    /**/
+    @extend %bug;
+    content: "Please use the `horizontal` modifier";
+  }
+
+  :modifier(Twelve-x):modifier(Three-x):modifier(Six-x):modifier(Nine-x),
+  :modifier(Twelve):modifier(Three):modifier(Six):modifier(Nine),
+  :modifier(Vertical-x):modifier(Horizontal-x),
+  :modifier(Vertical):modifier(Horizontal),
+  :modifier(One-x):modifier(Seven-x),
+  :modifier(One):modifier(Seven),
+  :modifier(One-x):modifier(Eight-x),
+  :modifier(One):modifier(Eight),
+  :modifier(Two-x):modifier(Seven-x),
+  :modifier(Two):modifier(Seven),
+  :modifier(Two-x):modifier(Eight-x),
+  :modifier(Two):modifier(Eight),
+  :modifier(Three-x):modifier(Ten-x),
+  :modifier(Three):modifier(Ten),
+  :modifier(Three-x):modifier(Eleven-x),
+  :modifier(Three):modifier(Eleven),
+  :modifier(Four-x):modifier(Ten-x),
+  :modifier(Four):modifier(Ten),
+  :modifier(Four-x):modifier(Eleven-x),
+  :modifier(Four):modifier(Eleven) {
+    /**/
+    /* Bug    :  Please write less code, use the modifier `on`
+    /**/
+    @extend %bug;
+    content: "Please use the `on` modifier";
+  }
+}

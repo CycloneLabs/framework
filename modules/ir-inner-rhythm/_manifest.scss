@@ -1,0 +1,84 @@
+:module(Inner-Rhythm) {
+
+  :modifier(On),
+  :modifier(Vertical),
+  :modifier(Twelve),
+  :modifier(One),
+  :modifier(Two),
+  :modifier(Ten),
+  :modifier(Eleven) {
+    padding-top: size();
+  }
+
+  :modifier(On-x),
+  :modifier(Vertical-x),
+  :modifier(Twelve-x),
+  :modifier(One-x),
+  :modifier(Two-x),
+  :modifier(Ten-x),
+  :modifier(Eleven-x) {
+    padding-top: size(2);
+  }
+
+  :modifier(On),
+  :modifier(Horizontal),
+  :modifier(Three),
+  :modifier(One),
+  :modifier(Two),
+  :modifier(Four),
+  :modifier(Five) {
+    padding-right: size();
+  }
+
+  :modifier(On-x),
+  :modifier(Horizontal-x),
+  :modifier(Three-x),
+  :modifier(One-x),
+  :modifier(Two-x),
+  :modifier(Four-x),
+  :modifier(Five-x) {
+    padding-right: size(2);
+  }
+
+  :modifier(On),
+  :modifier(Vertical),
+  :modifier(Six),
+  :modifier(Four),
+  :modifier(Five),
+  :modifier(Seven),
+  :modifier(Eight) {
+    padding-bottom: size();
+  }
+
+  :modifier(On-x),
+  :modifier(Vertical-x),
+  :modifier(Six-x),
+  :modifier(Four-x),
+  :modifier(Five-x),
+  :modifier(Seven-x),
+  :modifier(Eight-x) {
+    padding-bottom: size(2);
+  }
+
+  :modifier(On),
+  :modifier(Horizontal),
+  :modifier(Nine),
+  :modifier(Seven),
+  :modifier(Eight),
+  :modifier(Ten),
+  :modifier(Eleven) {
+    padding-left: size();
+  }
+
+  :modifier(On-x),
+  :modifier(Horizontal-x),
+  :modifier(Nine-x),
+  :modifier(Seven-x),
+  :modifier(Eight-x),
+  :modifier(Ten-x),
+  :modifier(Eleven-x) {
+    padding-left: size(2);
+  }
+}
+
+@if (map-get($m, debug)) { @import "debug"; }

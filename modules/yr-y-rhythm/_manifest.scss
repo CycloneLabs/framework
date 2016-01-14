@@ -1,0 +1,22 @@
+:module(Y-Rhythm) {
+
+  :component(Item) {
+    display: block;
+    height: size();
+  }
+
+  :component(Item-x) {
+    display: block;
+    height: size(2);
+  }
+
+  :modifier(Gap) {
+    margin-top: size();
+  }
+
+  :modifier(Gap-x) {
+    margin-top: size(2);
+  }
+}
+
+@if (map-get($m, debug)) { @import "debug"; }

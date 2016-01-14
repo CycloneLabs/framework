@@ -1,0 +1,48 @@
+:module(X-Rhythm) {
+
+  :component(LtR) {
+    display: flex;
+
+    //TODO Check "Negative margins" solution (1)
+    margin-left: size(-1);
+  }
+
+  :component(Unit) {
+    margin-left: size();
+  }
+
+  :component(Unit-x) {
+    margin-left: size(2);
+  }
+
+  :component(RtL) {
+    display: flex;
+    justify-content: flex-end;
+
+    //TODO Check "Negative margins" solution (2)
+    margin-right: size(-1);
+
+    :component(Unit) {
+      margin-right: size();
+    }
+
+    :component(Unit-x) {
+      margin-right: size(2);
+    }
+  }
+
+  :component(Unit),
+  :component(Unit-x) {
+    display: inline-block;
+    vertical-align: middle;
+
+    //TODO Check "Negative margins" solution (3)
+    //&:first-child {
+    //  margin-left: 0;
+    //}
+    //
+    //&:last-child {
+    //  margin-right: 0;
+    //}
+  }
+}
