@@ -56,10 +56,7 @@
 // @return    Calculating value
 
 @function size($operand: 1) {
-  @if (type-of($operand) == number) {
-    @return $operand * $line-step;
-  }
-  @warn "Size: operand should be a number";
+  @return $operand * $line-step;
 }
 
 // @stroke-border   Make a border component
@@ -177,35 +174,22 @@
 // @return            Box-shadow string
 
 @function stroke-underline($params) {
-  $color: $f-stroke-underline-color;
-  @if (type-of($params) == color) {
-    $color: $params;
-  }
+  $color: $params;
   @return 0 (-$thin) 0 0 $color inset;
+}
+
+// @stroke-shadow     Make shadow for component
+// $params            Shadow color
+//
+// @return            Box-shadow string
+
+@function stroke-shadow($params) {
+  $color: rgba($params, $f-stroke-shadow-opacity);
+  @return -$f-stroke-shadow-size $f-stroke-shadow-size 0 0 $color;
 }
 
 // Mixins
 
-// @shadow    Make a flat shadow by using pseudo-element `before`
-// $size      Size of shadow by grid units
-// $color     Color of shadow
-//
-// @return    Pseudo-element `before` witch makes flat shadow
-
-@mixin shadow($color: $color-default, $size: $m-shadow-size) {
-  margin: size(0.7); //Undone line-step rhythm
-
-  &::before {
-    background-color: $color;
-    bottom: size(-$size);
-    content: '';
-    left: size(-$size);
-    position: absolute;
-    right: size($size);
-    top: size($size);
-    z-index: -1;
-  }
-}
 
 // @radius   Make a border-radius simpler
 // $side     The side to which the effect will be applied
@@ -213,8 +197,8 @@
 //
 // @return   One or two border-radius properties
 
-@mixin radius($side, $radius: $m-radius-radius) {
-  $side: unquote($side);
+@mixin radius($side: false, $radius: $m-radius-radius) {
+  $side: unquote($side + '');
   $side: to-lower-case($side);
 
   @if ($side == top-left or $side == top-right or $side == bottom-left or $side == bottom-right) {
@@ -241,7 +225,7 @@
 //
 // @return   Generated box-shadow property which makes border, blink and other rules;
 
-@mixin stroke($border: null, $blink: null, $custom: null, $underline: null) {
+@mixin stroke($border: null, $blink: null, $underline: null, $shadow: null, $custom: null) {
   $result: ();
   $border-x: -1;
   $border-y: -1;
@@ -256,6 +240,10 @@
     $result: append($result, map-get($stroke-blink, result), comma);
     $border-x: map-get($stroke-blink, x);
     $border-y: map-get($stroke-blink, y);
+  }
+  @if($shadow) {
+    $stroke-shadow: stroke-shadow($shadow);
+    $result: append($result, $stroke-shadow, comma);
   }
   @if($underline) {
     $underline-blink: stroke-underline($underline);
@@ -272,6 +260,7 @@
 }
 
 // Patterns
+
 
 // %bug   the pattern to be embedded to wrong situations,
 %bug {

@@ -11,8 +11,7 @@
   "dependencies": {
     "animate.css": "3.x",
     "font-awesome": "4.x",
-    "normalize.css": "3.x",
-    "postcss": "5.x"
+    "normalize.css": "3.x"
   },
 
   "main": "oakwood.scss",

@@ -22,6 +22,7 @@
 // Modules
 @if ( map-get($m, all) or map-get($m, text)         or map-get($m, core)   ) { @import "modules/t-text/manifest"; }
 @if ( map-get($m, all) or map-get($m, icon)         or map-get($m, basic)  ) { @import "modules/i-icon/manifest"; }
+@if ( map-get($m, all) or map-get($m, icon)         or map-get($m, basic)  ) { @import "modules/c-card/manifest"; }
 
 // Utilities
 @if ( map-get($m, all) or map-get($m, inner-rhythm) or map-get($m, core)  ) { @import "modules/ir-inner-rhythm/manifest"; }

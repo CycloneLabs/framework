@@ -1,0 +1,45 @@
+$card-background-color: $color-white !default;
+$card-border-color: $color-default !default;
+$card-border-active-color: $color-black !default;
+$card-shadow-color: $color-black !default;
+
+:module(Card) {
+  background-color: $card-background-color;
+  position: relative;
+  @include stroke($card-border-color);
+
+  &:modifier(Header) {
+    @include radius(top);
+  }
+
+  &:modifier(Footer) {
+    top: -$thin;
+    @include radius(bottom);
+  }
+
+  &:not(:modifier(Header)):not(:modifier(Footer)) {
+    @include radius;
+  }
+
+  &:modifier(Shadow) {
+    @include stroke($card-border-color, $shadow: $card-shadow-color);
+  }
+}
+
+:module(Card) {
+
+  &:modifier(Hover) {
+    transition: box-shadow $animated;
+
+    &:hover {
+      @include stroke($card-border-active-color);
+    }
+
+    &:modifier(Shadow) {
+
+      &:hover {
+        @include stroke($card-border-active-color, $shadow: $card-shadow-color);
+      }
+    }
+  }
+}
