@@ -1,0 +1,29 @@
+$group-separator-color: $color-default !default;
+
+:module(gRouP) {
+  display: flex;
+
+  :component(Chunk) {
+    height: size(3);
+    line-height: size(3);
+
+    &:not(:last-child) > [class] {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child) > [class] {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    & + :component(Chunk) {
+      box-shadow: $thin 0 0 0 $group-separator-color inset;
+      padding-left: $thin;
+    }
+
+    &:modifier(Spacer) {
+      flex-grow: 1;
+    }
+  }
+}
