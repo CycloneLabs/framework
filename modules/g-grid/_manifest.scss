@@ -1,3 +1,10 @@
+$grid-cells                : 16 !default;
+$grid-cell                 : 100% / $grid-cells !default;
+$gutter-flexible           : $grid-cell / 2.8 !default;
+$gutter-width              : $line-step !default;
+$gutter-compensation       : -$gutter-width / 2 !default;
+$half-gutter-width         : $gutter-width / 2 !default;
+
 :module(Grid) {
   display: flex;
   flex: initial;
