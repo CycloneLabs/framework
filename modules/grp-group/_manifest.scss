@@ -18,8 +18,8 @@ $group-separator-color: $color-default !default;
     }
 
     & + :component(Chunk) {
-      box-shadow: $thin 0 0 0 $group-separator-color inset;
       padding-left: $thin;
+      @include stroke(left $group-separator-color);
     }
 
     &:modifier(Spacer) {

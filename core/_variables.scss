@@ -1,15 +1,6 @@
 // Basic
 $thin                      : 1px !default;
 $line-step                 : 10px !default;
-$stable-screen             : $line-step * 120 !default;
-
-// Grid
-$grid-cells                : 16 !default;
-$grid-cell                 : 100% / $grid-cells !default;
-$gutter-flexible           : $grid-cell / 2.8 !default;
-$gutter-width              : $line-step !default;
-$gutter-compensation       : -$gutter-width / 2 !default;
-$half-gutter-width         : $gutter-width / 2 !default;
 
 // Animation
 $animation-time            : 250ms !default;
@@ -24,7 +15,7 @@ $z-overlay                 : 1000 !default;
 $z-popover                 : 2000 !default;
 $z-alerts                  : 3000 !default;
 
-// Font stack and sizes
+// Fonts list
 $font-family               : Helvetica, arial, sans-serif !default;
 $font-family-mono          : Menlo, Courier, monospace !default;
 $font-size-tiny            : $line-step * 1.1 !default;
