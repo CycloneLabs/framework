@@ -27,6 +27,7 @@
 @if ( map-get($m, all) or map-get($m, card)         or map-get($m, basic)  ) { @import "modules/c-card/manifest"; }
 @if ( map-get($m, all) or map-get($m, layout)       or map-get($m, basic)  ) { @import "modules/l-layout/manifest"; }
 @if ( map-get($m, all) or map-get($m, group)        or map-get($m, custom) ) { @import "modules/grp-group/manifest"; }
+@if ( map-get($m, all) or map-get($m, button)       or map-get($m, form)   ) { @import "modules/b-button/manifest"; }
 
 // Utilities
 @if ( map-get($m, all) or map-get($m, inner-rhythm) or map-get($m, core)  ) { @import "modules/ir-inner-rhythm/manifest"; }

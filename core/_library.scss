@@ -69,7 +69,7 @@
   $side: ();
   @if (type-of($params) == list) {
     @each $property in $params {
-      $property: unquote($property);
+      $property: $property;
       @if (type-of($property) == color) {
         $color: $property;
       }
@@ -257,6 +257,18 @@
     $result: append($result, $custom, comma);
   }
   box-shadow: $result;
+}
+
+// @state     Makes original and artificial selector by class and pseudo-class
+// $state     State name
+//
+// @return    Properties in new selector
+
+@mixin state($state) {
+  &:#{to-lower-case($state)},
+  &:modifier(#{$state}) {
+    @content;
+  }
 }
 
 // Patterns
