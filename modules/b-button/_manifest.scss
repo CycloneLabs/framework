@@ -1,8 +1,8 @@
-$button-text-color: $color-black;
-$button-focus-color: $color-black;
-$button-hover-color: $color-black;
-$button-active-color: $color-black;
-$button-disable-color: $color-black;
+$button-text-color: $text-default;
+$button-focus-color: $text-focused;
+$button-hover-color: $text-hovered;
+$button-active-color: $text-activated;
+$button-disabled-color: $text-disabled;
 
 :module(Button) { //TODO Safari 9.0 reset fallback
   background-color: initial;
@@ -45,6 +45,6 @@ $button-disable-color: $color-black;
 
   @include state(Disabled) {
     padding-top: unset;
-    color: $button-disable-color;
+    color: $button-disabled-color;
   }
 }

@@ -14,8 +14,8 @@
 } $m: $modules;
 
 // Global requirements
-@if ( map-get($m, all) or map-get($m, variables)    or map-get($m, core)   ) { @import "core/variables"; }
 @if ( map-get($m, all) or map-get($m, library)      or map-get($m, core)   ) { @import "core/library"; }
+@if ( map-get($m, all) or map-get($m, variables)    or map-get($m, core)   ) { @import "core/variables"; }
 @if ( map-get($m, all) or map-get($m, global)       or map-get($m, core)   ) { @import "core/global"; }
 
 @if ( map-get($m, all) or map-get($m, animate)      or map-get($m, custom) ) { @import "node_modules/animate.css/animate"; }

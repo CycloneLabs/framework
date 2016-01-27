@@ -1,5 +1,29 @@
+
 // Functions
 
+
+// @map-collect Merges maps together into a new map
+// $maps        Maps to merge
+//
+// @return      New map
+
+@function map-collect($maps...) {
+  $collection: ();
+  @each $map in $maps {
+    $collection: map-merge($collection, $map);
+  }
+  @return $collection;
+}
+
+// @color       Get color from color gamma
+// $name        Color name
+// $tone        Color tone
+//
+// @return      Unquoted hex string
+
+@function color($name, $tone: 0) {
+  @return map-get(map-get($gamma, $name), $tone);
+}
 
 // @dec-to-hex  Convert decimal number to hex by Pierpaolo Cira
 // $dec         Decimal number
@@ -65,7 +89,7 @@
 // @return          Map with box-shadow-value string and indent properties
 
 @function stroke-border($params) {
-  $color: $f-stroke-border-color;
+  $color: $border-default;
   $side: ();
   @if (type-of($params) == list) {
     @each $property in $params {
@@ -155,7 +179,7 @@
 // @return         Map with box-shadow string and indent properties
 
 @function stroke-blink($params, $border-x, $border-y) {
-  $color: $f-stroke-blink-color;
+  $color: $blink-default;
   $weight: if(abs($border-x) + abs($border-y) > 0, 0, $thin);
   $border-x: if($border-x == -$thin, -$thin * 2, -$thin - $weight);
   $border-y: if($border-y == $thin, $thin * 2, $thin + $weight);
@@ -173,8 +197,7 @@
 //
 // @return            Box-shadow string
 
-@function stroke-underline($params) {
-  $color: $params;
+@function stroke-underline($color: $underline-default) {
   @return 0 (-$thin) 0 0 $color inset;
 }
 
@@ -183,8 +206,7 @@
 //
 // @return            Box-shadow string
 
-@function stroke-shadow($params) {
-  $color: rgba($params, $f-stroke-shadow-opacity);
+@function stroke-shadow($color: $shadow-default) {
   @return -$f-stroke-shadow-size $f-stroke-shadow-size 0 0 $color;
 }
 
@@ -276,7 +298,6 @@
 
 // %bug   the pattern to be embedded to wrong situations,
 %bug {
-  $magenta: #f0f !default;
-  background: linear-gradient(to top, $magenta, transparent);
-  outline: 2px dotted $magenta;
+  background: linear-gradient(to top, color(pink), transparent);
+  outline: 2px dotted color(pink);
 }

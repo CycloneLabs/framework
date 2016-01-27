@@ -1,7 +1,5 @@
-$text-default-color: $color-black !default;
-
 :module(Text) {
-  color: $text-default-color;
+  color: $text-article;
   font-family: $font-family;
   font-size: $font-size-normal;
   line-height: size(2);
@@ -38,23 +36,23 @@ $text-default-color: $color-black !default;
     white-space: nowrap;
   }
 
-  :modifier(Right) { text-align: right; }
+  :modifier(Right) {
+    text-align: right;
+  }
 
-  :modifier(Left) { text-align: left; }
+  :modifier(Left) {
+    text-align: left;
+  }
 
-  :modifier(Center) { text-align: center; }
+  :modifier(Center) {
+    text-align: center;
+  }
 
-  :modifier(Bold) { font-weight: bold; }
+  :modifier(Bold) {
+    font-weight: bold;
+  }
 
-  :modifier(Italic) { font-style: italic; }
-
-  :modifier(black) { color: $color-black; }
-
-  :modifier(white) { color: $color-white; }
-
-  :modifier(red) { color: $color-red; }
-
-  :modifier(green) { color: $color-green; }
-
-  :modifier(blue) { color: $color-blue; }
+  :modifier(Italic) {
+    font-style: italic;
+  }
 }
