@@ -1,0 +1,92 @@
+$gamma: (
+  black:  (0: #000000),
+  white:  (0: #ffffff),
+  slate:  (4: #f2f9ff, 3: #d1e0f0, 2: #a7bdd6, 1: #7d96b3, 0: #556980, -1: #404f61, -2: #2b3540, -3: #0f1317),
+  green:  (4: #edfff1, 3: #b1e6b2, 2: #6dc770, 1: #4bae50, 0: #269941, -1: #165926, -2: #0a2610, -3: #061a0b),
+  orange: (4: #fff9f2, 3: #ffd0b2, 2: #ffa166, 1: #ff914d, 0: #fc8032, -1: #994f22, -2: #4d2000, -3: #261400),
+  yellow: (4: #fcfbeb, 3: #ffebb2, 2: #ffd257, 1: #ffc21a, 0: #e4a600, -1: #8c5600, -2: #402700, -3: #211500),
+  purple: (4: #f7f9ff, 3: #ddccff, 2: #bca6ff, 1: #8b4dff, 0: #7e00ff, -1: #471f99, -2: #330066, -3: #1a0033),
+  blue:   (4: #edfcff, 3: #ccefff, 2: #8cc9ff, 1: #52a5ff, 0: #008aff, -1: #00549e, -2: #003059, -3: #001426),
+  pink:   (4: #fff5ff, 3: #ffccfc, 2: #fd99ff, 1: #fc66ff, 0: #fc23ff, -1: #971599, -2: #4b0b4d, -3: #230524),
+  red:    (4: #fff7f9, 3: #ffc8bf, 2: #ff9080, 1: #ff7a66, 0: #ff583d, -1: #ab3a29, -2: #57241c, -3: #2b120e),
+) !default;
+
+$text-riched:      color(slate, -1) !default;
+$text-article:     color(slate) !default;
+$text-default:     color(slate, 1) !default;
+$text-muted:       color(slate, 2) !default;
+$text-disabled:    color(slate, 2) !default;
+$text-selected:    color(blue) !default;
+$text-hovered:     color(blue) !default;
+$text-info:        color(blue) !default;
+$text-activated:   color(blue, 1) !default;
+$text-success:     color(green) !default;
+$text-invalid:     color(red) !default;
+$text-error:       color(red) !default;
+$text-focused:     color(yellow) !default;
+$text-warning:     color(yellow) !default;
+$bg-riched:        color(blue) !default;
+$bg-default:       color(white) !default;
+$bg-muted:         color(slate, 4) !default;
+$bg-disabled:      color(slate, 4) !default;
+$bg-selected:      color(white) !default;
+$bg-hovered:       color(slate, 3) !default;
+$bg-activated:     color(white) !default;
+$bg-info:          color(blue) !default;
+$bg-warning:       color(yellow) !default;
+$bg-success:       color(green) !default;
+$bg-error:         color(red) !default;
+$bg-invalid:       color(red, 4) !default;
+$bg-focused:       color(yellow, 4) !default;
+$border-riched:    color(blue, -1) !default;
+$border-default:   color(slate, 2) !default;
+$border-muted:     color(slate, 3) !default;
+$border-disabled:  color(slate, 3) !default;
+$border-selected:  color(slate) !default;
+$border-hovered:   color(slate) !default;
+$border-activated: color(slate) !default;
+$border-info:      color(blue) !default;
+$border-warning:   color(yellow) !default;
+$border-success:   color(green) !default;
+$border-error:     color(red) !default;
+$border-invalid:   color(red) !default;
+$border-focused:   color(yellow) !default;
+$shadow-riched:    color(slate, 2) !default;
+$shadow-default:   color(slate, 3) !default;
+$shadow-muted:     color(slate, 4) !default;
+$shadow-disabled:  color(slate, 4) !default;
+$shadow-selected:  color(slate, 2) !default;
+$shadow-hovered:   color(slate, 3) !default;
+$shadow-activated: color(slate, 2) !default;
+$shadow-info:      color(blue, 3) !default;
+$shadow-warning:   color(yellow, 3) !default;
+$shadow-success:   color(green, 3) !default;
+$shadow-error:     color(red, 3) !default;
+$shadow-invalid:   color(red, 3) !default;
+$shadow-focused:   color(yellow, 3) !default;
+$blink-riched:     color(slate, 2) !default;
+$blink-default:    color(slate, 3) !default;
+$blink-muted:      color(slate, 4) !default;
+$blink-disabled:   color(slate, 4) !default;
+$blink-selected:   color(slate, 2) !default;
+$blink-hovered:    color(slate, 3) !default;
+$blink-activated:  color(slate, 2) !default;
+$blink-info:       color(blue, 3) !default;
+$blink-warning:    color(yellow, 3) !default;
+$blink-success:    color(green, 3) !default;
+$blink-error:      color(red, 3) !default;
+$blink-invalid:    color(red, 3) !default;
+$blink-focused:    color(yellow, 3) !default;
+$underline-riched:    color(blue, -1) !default;
+$underline-default:   color(slate, 2) !default;
+$underline-muted:     color(slate, 3) !default;
+$underline-disabled:  color(slate, 3) !default;
+$underline-selected:  color(slate) !default;
+$underline-hovered:   color(slate) !default;
+$underline-activated: color(slate) !default;
+$underline-info:      color(blue) !default;
+$underline-warning:   color(yellow) !default;
+$underline-success:   color(green) !default;
+$underline-error:     color(red) !default;
+$underline-invalid:   color(red) !default;
+$underline-focused:   color(yellow) !default;

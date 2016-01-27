@@ -1,10 +1,8 @@
-$card-background-color: $color-white !default;
-$card-border-color: $color-default !default;
-$card-border-active-color: $color-black !default;
-$card-shadow-color: $color-black !default;
+$card-border-color: $border-default !default;
+$card-border-active-color: $border-hovered !default;
+$card-shadow-color: $shadow-default !default;
 
 :module(Card) {
-  background-color: $card-background-color;
   position: relative;
   @include stroke($card-border-color);
 
