@@ -22,7 +22,24 @@
 // @return      Unquoted hex string
 
 @function color($name, $tone: 0) {
-  @return map-get(map-get($gamma, $name), $tone);
+  @if (global-variable-exists(gamma)) {
+    @return map-get(map-get($gamma, $name), $tone);
+  }
+  @warn Gamma is missing;
+  @return #000000;
+}
+
+//@text-color   Sets color of text on the strength of background color
+//$color     Text color state
+//$bg-color     Block background color
+
+@function text-color($color, $bg-color: color(white)) {
+  $dark: red($bg-color) * 0.213 + green($bg-color) * 0.715 + blue($bg-color) * 0.072 < 255 / 2;
+  $text-color: nth($color, 2);
+  @if ($dark) {
+    $text-color: nth($color, 1);
+  }
+  @return $text-color;
 }
 
 // @dec-to-hex  Convert decimal number to hex by Pierpaolo Cira
@@ -298,6 +315,6 @@
 
 // %bug   the pattern to be embedded to wrong situations,
 %bug {
-  background: linear-gradient(to top, color(pink), transparent);
-  outline: 2px dotted color(pink);
+  background: linear-gradient(to top, magenta, transparent);
+  outline: 2px dotted magenta;
 }
