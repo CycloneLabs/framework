@@ -3,7 +3,7 @@ $thin                      : 1px !default;
 $line-step                 : 10px !default;
 
 // Animation
-$animation-time            : 250ms !default;
+$animation-time            : 150ms !default;
 $animation-type            : ease-out !default;
 $no-animated               : $animation-time step-end !default;
 $animated                  : $animation-time $animation-type !default;

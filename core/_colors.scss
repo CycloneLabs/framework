@@ -1,30 +1,30 @@
 $gamma: (
-  black:  (0: #000000),
   white:  (0: #ffffff),
-  slate:  (4: #f2f9ff, 3: #d1e0f0, 2: #a7bdd6, 1: #7d96b3, 0: #556980, -1: #404f61, -2: #2b3540, -3: #0f1317),
-  green:  (4: #edfff1, 3: #b1e6b2, 2: #6dc770, 1: #4bae50, 0: #269941, -1: #165926, -2: #0a2610, -3: #061a0b),
-  orange: (4: #fff9f2, 3: #ffd0b2, 2: #ffa166, 1: #ff914d, 0: #fc8032, -1: #994f22, -2: #4d2000, -3: #261400),
-  yellow: (4: #fcfbeb, 3: #ffebb2, 2: #ffd257, 1: #ffc21a, 0: #e4a600, -1: #8c5600, -2: #402700, -3: #211500),
-  purple: (4: #f7f9ff, 3: #ddccff, 2: #bca6ff, 1: #8b4dff, 0: #7e00ff, -1: #471f99, -2: #330066, -3: #1a0033),
-  blue:   (4: #edfcff, 3: #ccefff, 2: #8cc9ff, 1: #52a5ff, 0: #008aff, -1: #00549e, -2: #003059, -3: #001426),
-  pink:   (4: #fff5ff, 3: #ffccfc, 2: #fd99ff, 1: #fc66ff, 0: #fc23ff, -1: #971599, -2: #4b0b4d, -3: #230524),
-  red:    (4: #fff7f9, 3: #ffc8bf, 2: #ff9080, 1: #ff7a66, 0: #ff583d, -1: #ab3a29, -2: #57241c, -3: #2b120e),
+  slate:  (4: #f2f9ff, 3: #d1e0f0, 2: #8fa6bf, 1: #7d96b3, 0: #556980, -1: #404f61, -2: #333f4d, -3: #2b3540),
+  black:  (0: #000000),
+  red:    (4: #fff7f9, 3: #ffc8bf, 2: #ff9080, 1: #ff7a66, 0: #e6543e, -1: #ab3a29, -2: #732f25, -3: #57241c),
+  orange: (4: #fff9f2, 3: #ffd0b2, 2: #ffa166, 1: #ff914d, 0: #fc8032, -1: #994f22, -2: #662b00, -3: #4d2000),
+  yellow: (4: #fcfbeb, 3: #ffebb2, 2: #ffd257, 1: #ffc21a, 0: #e4a600, -1: #8c5600, -2: #593700, -3: #402700),
+  green:  (4: #edfff1, 3: #b1e6b2, 2: #6dc770, 1: #4bae50, 0: #269941, -1: #165926, -2: #10401b, -3: #0a2610),
+  blue:   (4: #edfcff, 3: #ccefff, 2: #8cc9ff, 1: #4ea6ed, 0: #177ed5, -1: #115c99, -2: #003d73, -3: #00294d),
+  purple: (4: #f7f9ff, 3: #ddccff, 2: #bca6ff, 1: #8b4dff, 0: #7e00ff, -1: #471f99, -2: #400080, -3: #330066),
+  pink:   (4: #fff5ff, 3: #ffccfc, 2: #fd99ff, 1: #fc66ff, 0: #fc23ff, -1: #971599, -2: #650e66, -3: #4b0b4d),
 ) !default;
 
-$text-riched:      color(slate, -1) !default;
-$text-article:     color(slate) !default;
-$text-default:     color(slate, 1) !default;
-$text-muted:       color(slate, 2) !default;
-$text-disabled:    color(slate, 2) !default;
-$text-selected:    color(blue) !default;
-$text-hovered:     color(blue) !default;
-$text-info:        color(blue) !default;
-$text-activated:   color(blue, 1) !default;
-$text-success:     color(green) !default;
-$text-invalid:     color(red) !default;
-$text-error:       color(red) !default;
-$text-focused:     color(yellow) !default;
-$text-warning:     color(yellow) !default;
+$text-article:     color(white) color(slate) !default;
+$text-riched:      color(white) color(slate, -1) !default;
+$text-default:     color(white) color(slate, 1) !default;
+$text-muted:       color(slate, 3) color(slate, 2) !default;
+$text-disabled:    color(slate, 3) color(slate, 2) !default;
+$text-selected:    color(blue, 2) color(blue) !default;
+$text-hovered:     color(blue, 2) color(blue) !default;
+$text-activated:   color(blue, 1) color(blue, 1) !default;
+$text-info:        color(white) color(blue) !default;
+$text-warning:     color(white) color(yellow) !default;
+$text-success:     color(white) color(green) !default;
+$text-error:       color(white) color(red) !default;
+$text-invalid:     color(red, 3) color(red) !default;
+$text-focused:     color(yellow, 3) color(yellow)  !default;
 $bg-riched:        color(blue) !default;
 $bg-default:       color(white) !default;
 $bg-muted:         color(slate, 4) !default;
@@ -33,7 +33,7 @@ $bg-selected:      color(white) !default;
 $bg-hovered:       color(slate, 3) !default;
 $bg-activated:     color(white) !default;
 $bg-info:          color(blue) !default;
-$bg-warning:       color(yellow) !default;
+$bg-warning:       color(yellow, 2) !default;
 $bg-success:       color(green) !default;
 $bg-error:         color(red) !default;
 $bg-invalid:       color(red, 4) !default;

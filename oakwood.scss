@@ -8,6 +8,7 @@
 // Entry file
 // Imports all Oakwood files in their intended order for easy mass-inclusion
 // Set up your build using the `$modules` variable
+// Example how to enable all modules and features: $modules: (all: true, debug: true);
 
 @if (not variable-exists(modules)) {
   $modules: (core: true, basic: true);

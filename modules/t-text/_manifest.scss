@@ -1,5 +1,5 @@
 :module(Text) {
-  color: $text-article;
+  color: text-color($text-article);
   font-family: $font-family;
   font-size: $font-size-normal;
   line-height: size(2);
@@ -11,17 +11,14 @@
 
   :modifier(Small) {
     font-size: $font-size-tiny;
-    line-height: size(2);
   }
 
   :modifier(Medium) {
     font-size: $font-size-small;
-    line-height: size(2);
   }
 
   :modifier(Large) {
     font-size: $font-size-normal;
-    line-height: size(2);
   }
 
   :modifier(Plain) {
