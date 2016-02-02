@@ -3,7 +3,6 @@ $card-border-active-color: $border-hovered !default;
 $card-shadow-color: $shadow-default !default;
 
 :module(Card) {
-  position: relative;
   @include stroke($card-border-color);
 
   &:modifier(Header) {
@@ -11,6 +10,7 @@ $card-shadow-color: $shadow-default !default;
   }
 
   &:modifier(Footer) {
+    position: relative;
     top: -$thin;
     @include radius(bottom);
   }

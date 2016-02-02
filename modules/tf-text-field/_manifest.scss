@@ -1,0 +1,54 @@
+$text-field-text-color: text-color($text-default) !default;
+$text-field-focus-color: text-color($text-focused) !default;
+$text-field-hover-color: text-color($text-hovered) !default;
+$text-field-active-color: text-color($text-activated) !default;
+$text-field-invalid-color: text-color($text-invalid) !default;
+$text-field-disabled-color: text-color($text-disabled) !default;
+$text-field-placeholder-opacity: 0.8 !default;
+
+:module(Text-field) {
+  background-color: initial;
+  border: initial;
+  box-shadow: initial;
+  font-family: inherit;
+  margin: initial;
+  outline: initial;
+  padding: initial;
+  text-decoration: initial;
+  user-select: initial;
+}
+
+:module(Text-field) {
+  appearance: textfield;
+  color: $text-field-text-color;
+  cursor: text;
+  display: block;
+  font-size: $font-size-small;
+  height: size(3);
+  line-height: size(3);
+  overflow: hidden;
+  text-rendering: optimizelegibility;
+  vertical-align: middle;
+
+  @include placeholder {
+    color: currentColor;
+    opacity: $text-field-placeholder-opacity;
+  }
+
+  @include state(Hover) {
+    color: $text-field-hover-color;
+  }
+
+  @include state(Focus) {
+    color: $text-field-focus-color;
+  }
+
+  @include state(Invalid) {
+    color: $text-field-invalid-color;
+  }
+
+  @include state(Disabled) {
+    padding-top: unset;
+    color: $text-field-disabled-color;
+  }
+}
