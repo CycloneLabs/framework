@@ -310,6 +310,16 @@
   }
 }
 
+// @placeholder Cross browser placeholder relation
+//
+// @return browser specify selectors with @content
+
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content }
+  &::-moz-placeholder { @content }
+  &:-ms-input-placeholder { @content }
+}
+
 // Patterns
 
 

@@ -5,3 +5,29 @@
 [tabindex] {
   outline: 0;
 }
+
+// TODO:
+//  Wide {
+//    width: 100%;
+//    display: inline-block;
+//  }
+//  Scroll {
+//    height: size(7);
+//    max-height: size(80);
+//    min-height: size(3);
+//    resize: vertical;
+//
+//    &:hover:focus {
+//      overflow-y: scroll;
+//    }
+//  }
+//  Header {
+//    @include radius(bottom, 0);
+//    @include radius(top);
+//  }
+//  Footer {
+//    position: relative;
+//    top: -$thin;
+//    @include radius(bottom);
+//    @include radius(top, 0);
+//  }
