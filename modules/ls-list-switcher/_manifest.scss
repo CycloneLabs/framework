@@ -17,13 +17,11 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
 }
 
 :module(List-switcher) { //TODO Edge 13 reset fallback
-  -moz-appearance: unset;
-  -webkit-appearance: unset;
+  appearance: unset;
   font-family: unset;
 }
 
 :module(List-switcher) {
-  -moz-user-focus: normal;
   background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
   viewBox='0 0 6 3'><path fill='#{html-encode(color-to-hex($list-switcher-text-color))}'
   d='M0 0 3 3 l3-3z'/></svg>");
@@ -77,7 +75,6 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
     viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-color))}'
     d='M0 0 6 6 l-3-3 l-3 3 l6-6'/></svg>");
     pointer-events: none;
-    -moz-user-focus: ignore;
     @include ff-select-bugfix($list-switcher-disabled-color);
 
     :component(option) {

@@ -1,0 +1,121 @@
+$switcher-label-hover-color: text-color($text-hovered) !default;
+$switcher-label-focus-color: text-color($text-focused) !default;
+$switcher-label-invalid-color: text-color($text-invalid) !default;
+$switcher-label-active-color: text-color($text-activated) !default;
+$switcher-label-disabled-color: text-color($text-disabled) !default;
+$switcher-pin-color: $border-default !default;
+$switcher-pin-hover-color: $border-hovered !default;
+$switcher-pin-focus-color: $border-focused !default;
+$switcher-pin-invalid-color: $border-invalid !default;
+$switcher-pin-active-color: $border-activated !default;
+$switcher-pin-disabled-color: $border-disabled !default;
+
+
+:module(Switcher) {
+  pointer-events: none;
+
+  &:modifier(Stable) {
+
+    :component(Label)::before {
+      font-size: initial;
+      position: relative;
+      top: -$thin;
+      vertical-align: middle;
+    }
+  }
+
+  :component(Checkbox) {
+
+    + :component(Label)::before {
+      content: "\F096";
+    }
+
+    &:checked + :component(label)::before {
+      content: "\F046";
+    }
+
+    &:indeterminate + :component(label)::before {
+      content: "";
+    }
+  }
+
+  :component(Radio) {
+
+    + :component(Label)::before {
+      content: "";
+    }
+
+    &:checked + :component(Label)::before {
+      content: "";
+    }
+  }
+
+  :component(Radio),
+  :component(Checkbox) {
+    opacity: 0; //Hide element
+    position: absolute; //Remove element from current context
+
+    @include  state(Focus, "+", ":component(Label)") {
+      color: $switcher-pin-focus-color;
+    }
+
+    @include state(Focus, "+", ":component(Label)::before") {
+      color: $switcher-label-focus-color;
+    }
+
+    @include  state(Hover, "+", ":component(Label)") {
+      color: $switcher-label-hover-color;
+    }
+
+    @include state(Hover, "+", ":component(Label)::before") {
+      color: $switcher-pin-hover-color;
+    }
+    //
+    //@include  state(Active, "+", ":component(Label)") {
+    //  color: $switcher-label-active-color;
+    //}
+    //
+    //@include state(Active, "+", ":component(Label)::before") {
+    //  color: $switcher-pin-active-color;
+    //}
+
+    @include  state(Invalid, "+", ":component(Label)") {
+      color: $switcher-label-invalid-color;
+    }
+
+    @include state(Invalid, "+", ":component(Label)::before") {
+      color: $switcher-pin-invalid-color;
+    }
+
+    @include  state(Disabled, "+", ":component(Label)") {
+      pointer-events: none;
+      color: $switcher-label-disabled-color;
+    }
+
+    @include state(Disabled, "+", ":component(Label)::before") {
+      color: $switcher-pin-disabled-color;
+    }
+  }
+
+  :component(Label) {
+    display: initial;
+    pointer-events: auto; //Restore clickability
+    transition: color $animated;
+
+    &::before {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      color: $switcher-pin-color;
+      display: inline-block;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-rendering: auto; //Optimizelegibility throws things off #1094
+      transform: translate(0, 0); //Ensures no half-pixel rendering in firefox
+      transition: color $animated;
+      width: 1.1em;
+    }
+  }
+}
+
+@if (map-get($m, debug)) { @import "debug"; }

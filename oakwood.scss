@@ -21,6 +21,8 @@
 
 @if ( map-get($m, all) or map-get($m, animate)       or map-get($m, custom) ) { @import "node_modules/animate.css/animate"; }
 @if ( map-get($m, all) or map-get($m, normalize)     or map-get($m, core)   ) { @import "node_modules/normalize.css/normalize"; }
+//$fa-font-path: "/node_modules/font-awesome/fonts";
+//@if ( map-get($m, all) or map-get($m, font-awesome)     or map-get($m, core)   ) { @import "node_modules/font-awesome/scss/font-awesome"; }
 
 // Modules
 @if ( map-get($m, all) or map-get($m, text)          or map-get($m, core)   ) { @import "modules/t-text/manifest"; }
@@ -29,6 +31,7 @@
 @if ( map-get($m, all) or map-get($m, layout)        or map-get($m, basic)  ) { @import "modules/l-layout/manifest"; }
 @if ( map-get($m, all) or map-get($m, group)         or map-get($m, custom) ) { @import "modules/grp-group/manifest"; }
 @if ( map-get($m, all) or map-get($m, button)        or map-get($m, form)   ) { @import "modules/b-button/manifest"; }
+@if ( map-get($m, all) or map-get($m, list-switcher) or map-get($m, form)   ) { @import "modules/s-switcher/manifest"; }
 @if ( map-get($m, all) or map-get($m, text-field)    or map-get($m, form)   ) { @import "modules/tf-text-field/manifest"; }
 @if ( map-get($m, all) or map-get($m, list-switcher) or map-get($m, form)   ) { @import "modules/ls-list-switcher/manifest"; }
 
