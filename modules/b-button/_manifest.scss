@@ -8,6 +8,7 @@ $button-disabled-color: text-color($text-disabled) !default;
   background-color: initial;
   border: initial;
   box-shadow: initial;
+  margin: initial;
   outline: initial;
   padding: initial;
   text-decoration: initial;
@@ -29,12 +30,12 @@ $button-disabled-color: text-color($text-disabled) !default;
   transition: color $animated;
   vertical-align: middle;
 
-  @include state(Hover) {
-    color: $button-hover-color;
-  }
-
   @include state(Focus) {
     color: $button-focus-color;
+  }
+
+  @include state(Hover) {
+    color: $button-hover-color;
   }
 
   @include state(Active) {
@@ -44,6 +45,9 @@ $button-disabled-color: text-color($text-disabled) !default;
 
   @include state(Disabled) {
     padding-top: unset;
+    pointer-events: none;
     color: $button-disabled-color;
   }
 }
+
+@if (map-get($m, debug)) { @import "debug"; }

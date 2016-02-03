@@ -320,11 +320,21 @@
   &:-ms-input-placeholder { @content }
 }
 
-// Patterns
+// @ff-select-bugfix  Fix Firefox outline bug on select tag
+// $color             Color which would be applied to text
+//
+// @return            Fixed color style
 
+@mixin ff-select-bugfix($color) {
+  color: $color;
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $color;
+  }
+}
 
-// %bug   the pattern to be embedded to wrong situations,
-%bug {
+// @bug   the pattern to be embedded to wrong situations,
+@mixin bug {
   background: linear-gradient(to top, magenta, transparent);
   outline: 2px dotted magenta;
 }

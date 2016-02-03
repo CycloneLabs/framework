@@ -1,0 +1,21 @@
+input:module(Text-field) {
+
+  &:modifier(Disabled):not([disabled]):not([tabindex]) {
+    /**/
+    /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
+    /**/
+    @include bug;
+    content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+  }
+}
+
+:not(input):module(Text-field) {
+
+  &:not(:modifier(Disabled)):not([disabled]):not([tabindex]) {
+    /**/
+    /* Bug :  module should have attribute `tabindex` like `0` to receive focus
+    /**/
+    @include bug;
+    content: "module should have attribute `tabindex` like `0` to receive focus";
+  }
+}

@@ -6,16 +6,19 @@ $text-field-invalid-color: text-color($text-invalid) !default;
 $text-field-disabled-color: text-color($text-disabled) !default;
 $text-field-placeholder-opacity: 0.8 !default;
 
-:module(Text-field) {
+:module(Text-field) { //TODO Safari 9.0 reset fallback
   background-color: initial;
   border: initial;
   box-shadow: initial;
-  font-family: inherit;
   margin: initial;
   outline: initial;
   padding: initial;
   text-decoration: initial;
   user-select: initial;
+}
+
+:module(Text-field) { //TODO Edge 13 reset fallback
+  font-family: unset;
 }
 
 :module(Text-field) {
@@ -26,6 +29,7 @@ $text-field-placeholder-opacity: 0.8 !default;
   font-size: $font-size-small;
   height: size(3);
   line-height: size(3);
+  transition: color $animated;
   overflow: hidden;
   text-rendering: optimizelegibility;
   vertical-align: middle;
@@ -35,12 +39,12 @@ $text-field-placeholder-opacity: 0.8 !default;
     opacity: $text-field-placeholder-opacity;
   }
 
-  @include state(Hover) {
-    color: $text-field-hover-color;
-  }
-
   @include state(Focus) {
     color: $text-field-focus-color;
+  }
+
+  @include state(Hover) {
+    color: $text-field-hover-color;
   }
 
   @include state(Invalid) {
@@ -48,7 +52,9 @@ $text-field-placeholder-opacity: 0.8 !default;
   }
 
   @include state(Disabled) {
-    padding-top: unset;
+    pointer-events: none;
     color: $text-field-disabled-color;
   }
 }
+
+@if (map-get($m, debug)) { @import "debug"; }

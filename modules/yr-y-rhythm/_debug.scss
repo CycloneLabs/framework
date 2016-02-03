@@ -19,7 +19,7 @@
     /**/
     /* Bug    :  Item should be empty
     /**/
-    @extend %bug;
+    @include bug;
     content: "Item should be empty";
   }
 
@@ -30,7 +30,7 @@
     /**/
     /* Bug    :  Items does not stack
     /**/
-    @extend %bug;
+    @include bug;
     content: "Items does not stack";
   }
 }

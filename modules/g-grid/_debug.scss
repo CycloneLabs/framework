@@ -3,6 +3,6 @@
   /* Module :  Grid
   /* Bug    :  Bad practice
   /**/
-  @extend %bug;
+  @include bug;
   content: "For this purpose, use grid modifier `between`";
 }

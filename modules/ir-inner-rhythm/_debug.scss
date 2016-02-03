@@ -10,7 +10,7 @@
     /**/
     /* Bug    :  Modifiers do the same thing
     /**/
-    @extend %bug;
+    @include bug;
     content: "Modifiers do the same thing";
   }
 
@@ -25,7 +25,7 @@
     /**/
     /* Bug    :  Please use the intermediate values, it is shorter
     /**/
-    @extend %bug;
+    @include bug;
     content: "Please use the intermediate values";
   }
 
@@ -34,7 +34,7 @@
     /**/
     /* Bug    :  Please write less code, use the modifier `vertical`
     /**/
-    @extend %bug;
+    @include bug;
     content: "Please use the `vertical` modifier";
   }
 
@@ -43,7 +43,7 @@
     /**/
     /* Bug    :  Please write less code, use the modifier `horizontal`
     /**/
-    @extend %bug;
+    @include bug;
     content: "Please use the `horizontal` modifier";
   }
 
@@ -70,7 +70,7 @@
     /**/
     /* Bug    :  Please write less code, use the modifier `on`
     /**/
-    @extend %bug;
+    @include bug;
     content: "Please use the `on` modifier";
   }
 }
