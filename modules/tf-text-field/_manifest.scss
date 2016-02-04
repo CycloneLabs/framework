@@ -39,21 +39,32 @@ $text-field-placeholder-opacity: 0.8 !default;
     opacity: $text-field-placeholder-opacity;
   }
 
-  @include state(Focus) {
-    color: $text-field-focus-color;
-  }
 
-  @include state(Hover) {
-    color: $text-field-hover-color;
-  }
-
-  @include state(Invalid) {
-    color: $text-field-invalid-color;
-  }
-
-  @include state(Disabled) {
-    pointer-events: none;
-    color: $text-field-disabled-color;
+  @each $state in $states-order {
+    @if $state == Focus {
+      @include state($state) {
+        color: $text-field-focus-color;
+      }
+    }
+    @elseif $state == Hover {
+      @include state($state) {
+        color: $text-field-hover-color;
+      }
+    }
+    @elseif $state == Active {
+      @include state($state) {}
+    }
+    @elseif $state == Invalid {
+      @include state($state) {
+        color: $text-field-invalid-color;
+      }
+    }
+    @elseif $state == Disabled {
+      @include state($state) {
+        pointer-events: none;
+        color: $text-field-disabled-color;
+      }
+    }
   }
 }
 

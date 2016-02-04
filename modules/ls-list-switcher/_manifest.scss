@@ -37,48 +37,58 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
   padding-right: size();
   @include ff-select-bugfix($list-switcher-text-color);
 
-  @include state(Focus) {
-    background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 6 3'><path fill='#{html-encode(color-to-hex($list-switcher-focus-color))}'
-    d='M0 0 3 3 l3-3z'/></svg>");
-    @include ff-select-bugfix($list-switcher-focus-color);
+  @each $state in $states-order {
+    @if $state == Focus {
+      @include state($state) {
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 6 3'><path fill='#{html-encode(color-to-hex($list-switcher-focus-color))}'
+        d='M0 0 3 3 l3-3z'/></svg>");
+        @include ff-select-bugfix($list-switcher-focus-color);
 
-    :component(option) {
-      color: $list-switcher-focus-color;
+        :component(option) {
+          color: $list-switcher-focus-color;
+        }
+      }
     }
-  }
+    @elseif $state == Hover {
+      @include state($state) {
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 6 3'><path fill='#{html-encode(color-to-hex($list-switcher-hover-color))}'
+        d='M0 0 3 3 l3-3z'/></svg>");
+        @include ff-select-bugfix($list-switcher-hover-color);
 
-  @include state(Hover) {
-    background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 6 3'><path fill='#{html-encode(color-to-hex($list-switcher-hover-color))}'
-    d='M0 0 3 3 l3-3z'/></svg>");
-    @include ff-select-bugfix($list-switcher-hover-color);
-
-    :component(option) {
-      color: $list-switcher-hover-color;
+        :component(option) {
+          color: $list-switcher-hover-color;
+        }
+      }
     }
-  }
-
-  @include state(Invalid) {
-    background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 6 3'><path fill='#{html-encode(color-to-hex($list-switcher-invalid-color))}'
-    d='M0 0 3 3 l3-3z'/></svg>");
-    @include ff-select-bugfix($list-switcher-invalid-color);
-
-    :component(option) {
-      color: $list-switcher-invalid-color;
+    @elseif $state == Active {
+      @include state($state) {}
     }
-  }
+    @elseif $state == Invalid {
+      @include state($state) {
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 6 3'><path fill='#{html-encode(color-to-hex($list-switcher-invalid-color))}'
+        d='M0 0 3 3 l3-3z'/></svg>");
+        @include ff-select-bugfix($list-switcher-invalid-color);
 
-  @include state(Disabled) {
-    background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-color))}'
-    d='M0 0 6 6 l-3-3 l-3 3 l6-6'/></svg>");
-    pointer-events: none;
-    @include ff-select-bugfix($list-switcher-disabled-color);
+        :component(option) {
+          color: $list-switcher-invalid-color;
+        }
+      }
+    }
+    @elseif $state == Disabled {
+      @include state($state) {
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-color))}'
+        d='M0 0 6 6 l-3-3 l-3 3 l6-6'/></svg>");
+        pointer-events: none;
+        @include ff-select-bugfix($list-switcher-disabled-color);
 
-    :component(option) {
-      color: $list-switcher-disabled-color;
+        :component(option) {
+          color: $list-switcher-disabled-color;
+        }
+      }
     }
   }
 

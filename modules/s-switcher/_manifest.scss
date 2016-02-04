@@ -55,45 +55,43 @@ $switcher-pin-disabled-color: $border-disabled !default;
     opacity: 0; //Hide element
     position: absolute; //Remove element from current context
 
-    @include  state(Focus, "+", ":component(Label)") {
-      color: $switcher-pin-focus-color;
-    }
-
-    @include state(Focus, "+", ":component(Label)::before") {
-      color: $switcher-label-focus-color;
-    }
-
-    @include  state(Hover, "+", ":component(Label)") {
-      color: $switcher-label-hover-color;
-    }
-
-    @include state(Hover, "+", ":component(Label)::before") {
-      color: $switcher-pin-hover-color;
-    }
-    //
-    //@include  state(Active, "+", ":component(Label)") {
-    //  color: $switcher-label-active-color;
-    //}
-    //
-    //@include state(Active, "+", ":component(Label)::before") {
-    //  color: $switcher-pin-active-color;
-    //}
-
-    @include  state(Invalid, "+", ":component(Label)") {
-      color: $switcher-label-invalid-color;
-    }
-
-    @include state(Invalid, "+", ":component(Label)::before") {
-      color: $switcher-pin-invalid-color;
-    }
-
-    @include  state(Disabled, "+", ":component(Label)") {
-      pointer-events: none;
-      color: $switcher-label-disabled-color;
-    }
-
-    @include state(Disabled, "+", ":component(Label)::before") {
-      color: $switcher-pin-disabled-color;
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state, "+", ":component(Label)") {
+          color: $switcher-pin-focus-color;
+        }
+        @include state($state, "+", ":component(Label)::before") {
+          color: $switcher-label-focus-color;
+        }
+      }
+      @elseif $state == Hover {
+        @include state($state, "+", ":component(Label)") {
+          color: $switcher-label-hover-color;
+        }
+        @include state($state, "+", ":component(Label)::before") {
+          color: $switcher-pin-hover-color;
+        }
+      }
+      @elseif $state == Active {
+        @include state($state) {}
+      }
+      @elseif $state == Invalid {
+        @include state($state, "+", ":component(Label)") {
+          color: $switcher-label-invalid-color;
+        }
+        @include state($state, "+", ":component(Label)::before") {
+          color: $switcher-pin-invalid-color;
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state, "+", ":component(Label)") {
+          pointer-events: none;
+          color: $switcher-label-disabled-color;
+        }
+        @include state($state, "+", ":component(Label)::before") {
+          color: $switcher-pin-disabled-color;
+        }
+      }
     }
   }
 

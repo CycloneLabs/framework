@@ -1,4 +1,4 @@
-button:module(Button) {
+button:module(ButToN) {
 
   &:modifier(Disabled):not([disabled]):not([tabindex]) {
     /**/
@@ -9,7 +9,7 @@ button:module(Button) {
   }
 }
 
-:not(button):module(Button) {
+:not(button):module(ButToN) {
 
   &:not(:modifier(Disabled)):not([disabled]):not([tabindex]) {
     /**/
