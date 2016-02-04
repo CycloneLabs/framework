@@ -10,30 +10,33 @@
 // Set up your build using the `$modules` variable
 // Example how to enable all modules and features: $modules: (all: true, debug: true);
 
-@if (not variable-exists(modules)) {
+@if not variable-exists(modules) {
   $modules: (core: true, basic: true);
 } $m: $modules;
 
 // Global requirements
-@if ( map-get($m, all) or map-get($m, library)       or map-get($m, core)   ) { @import "core/library"; }
-@if ( map-get($m, all) or map-get($m, variables)     or map-get($m, core)   ) { @import "core/variables"; }
-@if ( map-get($m, all) or map-get($m, global)        or map-get($m, core)   ) { @import "core/global"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, library) { @import "core/library"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, variables) { @import "core/variables"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, global) { @import "core/global"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, normalize) { @import "node_modules/normalize.css/normalize"; }
+@if map-get($m, all) or map-get($m, custom) or map-get($m, animate) { @import "node_modules/animate.css/animate"; }
 
-@if ( map-get($m, all) or map-get($m, animate)       or map-get($m, custom) ) { @import "node_modules/animate.css/animate"; }
-@if ( map-get($m, all) or map-get($m, normalize)     or map-get($m, core)   ) { @import "node_modules/normalize.css/normalize"; }
+// FontAwesome dependency
+@if map-get($m, all) or map-get($m, basic) or map-get($m, form) or map-get($m, icon) or map-get($m, switcher) { @import "node_modules/font-awesome/scss/path"; }
 
 // Modules
-@if ( map-get($m, all) or map-get($m, text)          or map-get($m, core)   ) { @import "modules/t-text/manifest"; }
-@if ( map-get($m, all) or map-get($m, icon)          or map-get($m, basic)  ) { @import "modules/i-icon/manifest"; }
-@if ( map-get($m, all) or map-get($m, card)          or map-get($m, basic)  ) { @import "modules/c-card/manifest"; }
-@if ( map-get($m, all) or map-get($m, layout)        or map-get($m, basic)  ) { @import "modules/l-layout/manifest"; }
-@if ( map-get($m, all) or map-get($m, group)         or map-get($m, custom) ) { @import "modules/grp-group/manifest"; }
-@if ( map-get($m, all) or map-get($m, button)        or map-get($m, form)   ) { @import "modules/b-button/manifest"; }
-@if ( map-get($m, all) or map-get($m, text-field)    or map-get($m, form)   ) { @import "modules/tf-text-field/manifest"; }
-@if ( map-get($m, all) or map-get($m, list-switcher) or map-get($m, form)   ) { @import "modules/ls-list-switcher/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, text) { @import "modules/t-text/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, icon) { @import "modules/i-icon/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, card) { @import "modules/c-card/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, layout) { @import "modules/l-layout/manifest"; }
+@if map-get($m, all) or map-get($m, custom) or map-get($m, group) { @import "modules/grp-group/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, button) { @import "modules/btn-button/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, switcher) { @import "modules/s-switcher/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, text-field) { @import "modules/tf-text-field/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "modules/ls-list-switcher/manifest"; }
 
 // Utilities
-@if ( map-get($m, all) or map-get($m, inner-rhythm)  or map-get($m, core)  ) { @import "modules/ir-inner-rhythm/manifest"; }
-@if ( map-get($m, all) or map-get($m, x-rhythm)      or map-get($m, core)  ) { @import "modules/xr-x-rhythm/manifest"; }
-@if ( map-get($m, all) or map-get($m, y-rhythm)      or map-get($m, core)  ) { @import "modules/yr-y-rhythm/manifest"; }
-@if ( map-get($m, all) or map-get($m, grid)          or map-get($m, basic) ) { @import "modules/g-grid/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, inner-rhythm) { @import "modules/ir-inner-rhythm/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, x-rhythm) { @import "modules/xr-x-rhythm/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, y-rhythm) { @import "modules/yr-y-rhythm/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, grid) { @import "modules/g-grid/manifest"; }

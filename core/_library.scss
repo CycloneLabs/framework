@@ -298,14 +298,16 @@
   box-shadow: $result;
 }
 
-// @state     Makes original and artificial selector by class and pseudo-class
-// $state     State name
+// @state               Makes original and artificial selector by class and pseudo-class
+// $state               State name
+// $suffix-combinator   Selector's combinator to apply other part of selector
+// $suffix              End placed part of selector
 //
 // @return    Properties in new selector
 
-@mixin state($state) {
-  &:#{to-lower-case($state)},
-  &:modifier(#{$state}) {
+@mixin state($state, $suffix-combinator: "", $suffix: "") {
+  &:#{to-lower-case($state) unquote($suffix-combinator) unquote($suffix)},
+  &:modifier(#{$state}) #{unquote($suffix-combinator) unquote($suffix)} {
     @content;
   }
 }

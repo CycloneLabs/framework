@@ -4,7 +4,7 @@ $button-hover-color: text-color($text-hovered) !default;
 $button-active-color: text-color($text-activated) !default;
 $button-disabled-color: text-color($text-disabled) !default;
 
-:module(Button) { //TODO Safari 9.0 reset fallback
+:module(ButToN) { //TODO Safari 9.0 reset fallback
   background-color: initial;
   border: initial;
   box-shadow: initial;
@@ -15,12 +15,12 @@ $button-disabled-color: text-color($text-disabled) !default;
   user-select: initial;
 }
 
-:module(Button) { //TODO Edge 13 reset fallback
+:module(ButToN) { //TODO Edge 13 reset fallback
   appearance: unset;
   font-family: unset;
 }
 
-:module(Button) {
+:module(ButToN) {
   color: $button-text-color;
   cursor: pointer;
   display: inline-block;
@@ -30,23 +30,33 @@ $button-disabled-color: text-color($text-disabled) !default;
   transition: color $animated;
   vertical-align: middle;
 
-  @include state(Focus) {
-    color: $button-focus-color;
-  }
-
-  @include state(Hover) {
-    color: $button-hover-color;
-  }
-
-  @include state(Active) {
-    padding-top: $thin;
-    color: $button-active-color;
-  }
-
-  @include state(Disabled) {
-    padding-top: unset;
-    pointer-events: none;
-    color: $button-disabled-color;
+  @each $state in $states-order {
+    @if $state == Focus {
+      @include state($state) {
+        color: $button-focus-color;
+      }
+    }
+    @elseif $state == Hover {
+      @include state($state) {
+        color: $button-hover-color;
+      }
+    }
+    @elseif $state == Active {
+      @include state($state) {
+        padding-top: $thin;
+        color: $button-active-color;
+      }
+    }
+    @elseif $state == Invalid {
+      @include state($state) {}
+    }
+    @elseif $state == Disabled {
+      @include state($state) {
+        padding-top: unset;
+        pointer-events: none;
+        color: $button-disabled-color;
+      }
+    }
   }
 }
 

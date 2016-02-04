@@ -1,0 +1,13 @@
+:module(Switcher) {
+
+  input:modifier(Disabled):not([disabled]):not([tabindex]) {
+
+    + :component(Label) {
+      /**/
+      /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
+      /**/
+      @include bug;
+      content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+    }
+  }
+}
