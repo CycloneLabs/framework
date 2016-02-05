@@ -22,9 +22,9 @@
   }
 
   :modifier(Plain) {
-    white-space: pre;
     font-family: $font-family-mono;
     overflow: auto;
+    white-space: pre;
   }
 
   :modifier(Crop) {

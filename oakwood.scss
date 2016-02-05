@@ -21,9 +21,6 @@
 @if map-get($m, all) or map-get($m, core) or map-get($m, normalize) { @import "node_modules/normalize.css/normalize"; }
 @if map-get($m, all) or map-get($m, custom) or map-get($m, animate) { @import "node_modules/animate.css/animate"; }
 
-// FontAwesome dependency
-@if map-get($m, all) or map-get($m, basic) or map-get($m, form) or map-get($m, icon) or map-get($m, switcher) { @import "node_modules/font-awesome/scss/path"; }
-
 // Modules
 @if map-get($m, all) or map-get($m, core) or map-get($m, text) { @import "modules/t-text/manifest"; }
 @if map-get($m, all) or map-get($m, basic) or map-get($m, icon) { @import "modules/i-icon/manifest"; }
@@ -40,3 +37,6 @@
 @if map-get($m, all) or map-get($m, core) or map-get($m, x-rhythm) { @import "modules/xr-x-rhythm/manifest"; }
 @if map-get($m, all) or map-get($m, core) or map-get($m, y-rhythm) { @import "modules/yr-y-rhythm/manifest"; }
 @if map-get($m, all) or map-get($m, basic) or map-get($m, grid) { @import "modules/g-grid/manifest"; }
+
+// FontAwesome dependency
+@if map-get($m, all) or map-get($m, basic) or map-get($m, form) or map-get($m, icon) or map-get($m, switcher) { @import "node_modules/font-awesome/scss/path"; }

@@ -4,20 +4,17 @@ $button-hover-color: text-color($text-hovered) !default;
 $button-active-color: text-color($text-activated) !default;
 $button-disabled-color: text-color($text-disabled) !default;
 
-:module(ButToN) { //TODO Safari 9.0 reset fallback
+:module(ButToN) {
+  appearance: initial;
   background-color: initial;
   border: initial;
   box-shadow: initial;
+  font-family: inherit;
   margin: initial;
   outline: initial;
   padding: initial;
   text-decoration: initial;
   user-select: initial;
-}
-
-:module(ButToN) { //TODO Edge 13 reset fallback
-  appearance: unset;
-  font-family: unset;
 }
 
 :module(ButToN) {
@@ -43,8 +40,8 @@ $button-disabled-color: text-color($text-disabled) !default;
     }
     @elseif $state == Active {
       @include state($state) {
-        padding-top: $thin;
         color: $button-active-color;
+        padding-top: $thin;
       }
     }
     @elseif $state == Invalid {
@@ -52,9 +49,8 @@ $button-disabled-color: text-color($text-disabled) !default;
     }
     @elseif $state == Disabled {
       @include state($state) {
-        padding-top: unset;
-        pointer-events: none;
         color: $button-disabled-color;
+        pointer-events: none;
       }
     }
   }

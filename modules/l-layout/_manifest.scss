@@ -18,8 +18,8 @@ $layout-container-side-margin       : size(3) !default;
     padding-right: $layout-container-side-margin;
 
     &:modifier(Painted) {
-      background-color: $layout-container-background-color;
       @include stroke(bottom $layout-container-border-color);
+      background-color: $layout-container-background-color;
     }
 
     &:not(:modifier(Painted)) + :modifier(Painted),

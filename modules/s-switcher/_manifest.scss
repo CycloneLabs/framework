@@ -1,26 +1,19 @@
-$switcher-label-hover-color: text-color($text-hovered) !default;
-$switcher-label-focus-color: text-color($text-focused) !default;
-$switcher-label-invalid-color: text-color($text-invalid) !default;
-$switcher-label-active-color: text-color($text-activated) !default;
-$switcher-label-disabled-color: text-color($text-disabled) !default;
-$switcher-pin-color: $border-default !default;
-$switcher-pin-hover-color: $border-hovered !default;
-$switcher-pin-focus-color: $border-focused !default;
-$switcher-pin-invalid-color: $border-invalid !default;
-$switcher-pin-active-color: $border-activated !default;
-$switcher-pin-disabled-color: $border-disabled !default;
-
+$switcher-color: text-color($text-default) !default;
+$switcher-hover-color: text-color($text-hovered) !default;
+$switcher-focus-color: text-color($text-focused) !default;
+$switcher-invalid-color: text-color($text-invalid) !default;
+$switcher-disabled-color: text-color($text-disabled) !default;
+$switcher-selected-color: text-color($text-selected) !default;
 
 :module(Switcher) {
+  cursor: pointer;
+  display: inline-block;
   pointer-events: none;
 
   &:modifier(Stable) {
 
     :component(Label)::before {
       font-size: initial;
-      position: relative;
-      top: -$thin;
-      vertical-align: middle;
     }
   }
 
@@ -31,6 +24,7 @@ $switcher-pin-disabled-color: $border-disabled !default;
     }
 
     &:checked + :component(label)::before {
+      color: $switcher-selected-color;
       content: "\F046";
     }
 
@@ -46,6 +40,7 @@ $switcher-pin-disabled-color: $border-disabled !default;
     }
 
     &:checked + :component(Label)::before {
+      color: $switcher-selected-color;
       content: "";
     }
   }
@@ -58,18 +53,20 @@ $switcher-pin-disabled-color: $border-disabled !default;
     @each $state in $states-order {
       @if $state == Focus {
         @include state($state, "+", ":component(Label)") {
-          color: $switcher-pin-focus-color;
+          color: $switcher-focus-color;
         }
+
         @include state($state, "+", ":component(Label)::before") {
-          color: $switcher-label-focus-color;
+          color: $switcher-focus-color;
         }
       }
       @elseif $state == Hover {
         @include state($state, "+", ":component(Label)") {
-          color: $switcher-label-hover-color;
+          color: $switcher-hover-color;
         }
+
         @include state($state, "+", ":component(Label)::before") {
-          color: $switcher-pin-hover-color;
+          color: $switcher-hover-color;
         }
       }
       @elseif $state == Active {
@@ -77,41 +74,44 @@ $switcher-pin-disabled-color: $border-disabled !default;
       }
       @elseif $state == Invalid {
         @include state($state, "+", ":component(Label)") {
-          color: $switcher-label-invalid-color;
+          color: $switcher-invalid-color;
         }
+
         @include state($state, "+", ":component(Label)::before") {
-          color: $switcher-pin-invalid-color;
+          color: $switcher-invalid-color;
         }
       }
       @elseif $state == Disabled {
         @include state($state, "+", ":component(Label)") {
+          color: $switcher-disabled-color;
           pointer-events: none;
-          color: $switcher-label-disabled-color;
         }
+
         @include state($state, "+", ":component(Label)::before") {
-          color: $switcher-pin-disabled-color;
+          color: $switcher-disabled-color;
         }
       }
     }
   }
 
   :component(Label) {
-    display: initial;
+    align-items: center;
+    display: flex;
     pointer-events: auto; //Restore clickability
     transition: color $animated;
 
     &::before {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
-      color: $switcher-pin-color;
-      display: inline-block;
+      color: $switcher-color;
       font-family: FontAwesome;
       font-style: normal;
       font-weight: normal;
+      padding-right: 0.55em;
       text-rendering: auto; //Optimizelegibility throws things off #1094
       transform: translate(0, 0); //Ensures no half-pixel rendering in firefox
       transition: color $animated;
-      width: 1.1em;
+      width: 0.55em;
     }
   }
 }

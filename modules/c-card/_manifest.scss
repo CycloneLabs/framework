@@ -10,9 +10,9 @@ $card-shadow-color: $shadow-default !default;
   }
 
   &:modifier(Footer) {
+    @include radius(bottom);
     position: relative;
     top: -$thin;
-    @include radius(bottom);
   }
 
   &:not(:modifier(Header)):not(:modifier(Footer)) {
@@ -33,11 +33,8 @@ $card-shadow-color: $shadow-default !default;
       @include stroke($card-border-active-color);
     }
 
-    &:modifier(Shadow) {
-
-      &:hover {
-        @include stroke($card-border-active-color, $shadow: $card-shadow-color);
-      }
+    &:modifier(Shadow):hover {
+      @include stroke($card-border-active-color, $shadow: $card-shadow-color);
     }
   }
 }
