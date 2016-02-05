@@ -1,7 +1,9 @@
-.gitignore
 .idea
 node_modules
+compiled
 *.css
 *.js
 *.html
 *.log
+!bundler/*.js
+!gulpfile.js
