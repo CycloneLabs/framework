@@ -2,19 +2,38 @@
   "name": "Oakwood",
   "version": "0.3.0",
   "description": "Oakwood CSS. It is a framework for styling your applications",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/cyclonelabs/framework.git"
   },
-
+  "main": "oakwood.scss",
+  "author": "Roman @xibor",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Vitaly Mineev @justvitalius",
+      "email": "justvitalius@gmail.com",
+      "url": "github.com/justvitalius"
+    }
+  ],
+  "scripts": {
+    "compile": "./node_modules/.bin/gulp compile",
+    "builder": "./node_modules/.bin/gulp builder"
+  },
   "dependencies": {
     "animate.css": "3.x",
     "font-awesome": "4.x",
     "normalize.css": "3.x"
   },
-
-  "main": "oakwood.scss",
-  "author": "Roman @xibor",
-  "license": "MIT"
+  "devDependencies": {
+    "autoprefixer": "6.x",
+    "gulp": "3.x",
+    "gulp-csso": "1.x",
+    "gulp-debug": "2.x",
+    "gulp-load-plugins": "1.x",
+    "gulp-postcss": "6.x",
+    "gulp-rename": "1.x",
+    "gulp-sass": "2.x",
+    "gulp-size": "2.x"
+  }
 }
