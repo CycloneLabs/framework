@@ -6,18 +6,19 @@ $group-separator-color: $border-default !default;
   :component(Chunk) {
     height: size(3);
     line-height: size(3);
+    overflow: hidden;
 
     &:not(:last-child) > [class] {
-      border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
     }
 
     &:not(:first-child) > [class] {
-      border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
     }
 
-    & + :component(Chunk) {
+    + :component(Chunk) {
       border-left: thin solid $group-separator-color;
     }
 

@@ -6,10 +6,12 @@ $text-field-invalid-color: text-color($text-invalid) !default;
 $text-field-disabled-color: text-color($text-disabled) !default;
 $text-field-placeholder-opacity: 0.8 !default;
 
-:module(Text-field) { //TODO Safari 9.0 reset fallback
+:module(Text-field) {
+  appearance: initial;
   background-color: initial;
   border: initial;
   box-shadow: initial;
+  font-family: inherit;
   margin: initial;
   outline: initial;
   padding: initial;
@@ -17,21 +19,17 @@ $text-field-placeholder-opacity: 0.8 !default;
   user-select: initial;
 }
 
-:module(Text-field) { //TODO Edge 13 reset fallback
-  font-family: unset;
-}
-
 :module(Text-field) {
-  appearance: textfield;
+  -webkit-text-fill-color: currentColor;
   color: $text-field-text-color;
   cursor: text;
   display: block;
   font-size: $font-size-small;
   height: size(3);
   line-height: size(3);
-  transition: color $animated;
   overflow: hidden;
   text-rendering: optimizelegibility;
+  transition: color $animated;
   vertical-align: middle;
 
   @include placeholder {
@@ -61,8 +59,8 @@ $text-field-placeholder-opacity: 0.8 !default;
     }
     @elseif $state == Disabled {
       @include state($state) {
-        pointer-events: none;
         color: $text-field-disabled-color;
+        pointer-events: none;
       }
     }
   }
