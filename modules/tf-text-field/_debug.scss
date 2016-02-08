@@ -1,6 +1,6 @@
-input:module(Text-field) {
+input:model(Text-field) {
 
-  &:modifier(Disabled):not([disabled]):not([tabindex]) {
+  &:which(Disabled):not([disabled]):not([tabindex]) {
     /**/
     /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
     /**/
@@ -9,13 +9,13 @@ input:module(Text-field) {
   }
 }
 
-:not(input):module(Text-field) {
+:not(input):model(Text-field) {
 
-  &:not(:modifier(Disabled)):not([disabled]):not([tabindex]) {
+  &:not(:which(Disabled)):not([disabled]):not([tabindex]) {
     /**/
-    /* Bug :  module should have attribute `tabindex` like `0` to receive focus
+    /* Bug :  model should have attribute `tabindex` like `0` to receive focus
     /**/
     @include bug;
-    content: "module should have attribute `tabindex` like `0` to receive focus";
+    content: "model should have attribute `tabindex` like `0` to receive focus";
   }
 }

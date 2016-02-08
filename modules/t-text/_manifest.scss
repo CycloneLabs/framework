@@ -1,55 +1,55 @@
-:module(Text) {
+:model(Text) {
   color: text-color($text-article);
   font-family: $font-family;
   font-size: $font-size-normal;
   line-height: size(2);
 
-  :component(Header) {
+  :has(Header) {
     font-size: 2 * $font-size-tiny;
     line-height: size(3);
   }
 
-  :modifier(Small) {
+  :which(Small) {
     font-size: $font-size-tiny;
   }
 
-  :modifier(Medium) {
+  :which(Medium) {
     font-size: $font-size-small;
   }
 
-  :modifier(Large) {
+  :which(Large) {
     font-size: $font-size-normal;
   }
 
-  :modifier(Plain) {
+  :which(Plain) {
     font-family: $font-family-mono;
     overflow: auto;
     white-space: pre;
   }
 
-  :modifier(Crop) {
+  :which(Crop) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  :modifier(Right) {
+  :which(Right) {
     text-align: right;
   }
 
-  :modifier(Left) {
+  :which(Left) {
     text-align: left;
   }
 
-  :modifier(Center) {
+  :which(Center) {
     text-align: center;
   }
 
-  :modifier(Bold) {
+  :which(Bold) {
     font-weight: bold;
   }
 
-  :modifier(Italic) {
+  :which(Italic) {
     font-style: italic;
   }
 }

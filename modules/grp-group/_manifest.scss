@@ -1,9 +1,9 @@
 $group-separator-color: $border-default !default;
 
-:module(gRouP) {
+:model(gRouP) {
   display: flex;
 
-  :component(Chunk) {
+  :has(Chunk) {
     height: size(3);
     line-height: size(3);
     overflow: hidden;
@@ -18,11 +18,11 @@ $group-separator-color: $border-default !default;
       border-top-left-radius: 0;
     }
 
-    + :component(Chunk) {
+    + :has(Chunk) {
       border-left: thin solid $group-separator-color;
     }
 
-    &:modifier(Spacer) {
+    &:which(Spacer) {
       flex-grow: 1;
     }
   }
