@@ -1,6 +1,5 @@
 :model(Grid) > :which(First):first-child + :which(Last):last-child {
   /**/
-  /* model :  Grid
   /* Bug    :  Bad practice
   /**/
   @include bug;
