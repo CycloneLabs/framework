@@ -1,4 +1,4 @@
-:module(X-Rhythm) {
+:module(InLine) {
 
   :component(LtR) {
     display: flex;
@@ -8,11 +8,11 @@
     margin-left: size(-1);
   }
 
-  :component(Unit) {
+  :component(Indent) {
     margin-left: size();
   }
 
-  :component(Unit-x) {
+  :component(Indent-x) {
     margin-left: size(2);
   }
 
@@ -24,17 +24,17 @@
     //TODO Check "Negative margins" solution (2)
     margin-right: size(-1);
 
-    :component(Unit) {
+    :component(Indent) {
       margin-right: size();
     }
 
-    :component(Unit-x) {
+    :component(Indent-x) {
       margin-right: size(2);
     }
   }
 
-  :component(Unit),
-  :component(Unit-x) {
+  :component(Indent),
+  :component(Indent-x) {
     display: inline-block;
     vertical-align: middle;
 

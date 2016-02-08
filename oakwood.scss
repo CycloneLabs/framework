@@ -9,7 +9,6 @@
 // Imports all Oakwood files in their intended order for easy mass-inclusion
 // Set up your build using the `$modules` variable
 // Example how to enable all modules and features: $modules: (all: true, debug: true);
-$modules: (all: true, debug: true);
 
 @if not variable-exists(modules) {
   $modules: (core: true, basic: true);
@@ -34,9 +33,9 @@ $modules: (all: true, debug: true);
 @if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "modules/ls-list-switcher/manifest"; }
 
 // Utilities
-@if map-get($m, all) or map-get($m, core) or map-get($m, inner-rhythm) { @import "modules/ir-inner-rhythm/manifest"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, x-rhythm) { @import "modules/xr-x-rhythm/manifest"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, y-rhythm) { @import "modules/yr-y-rhythm/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, inner-rhythm) { @import "modules/m-margins/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, inline) { @import "modules/il-inline/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, block) { @import "modules/b-block/manifest"; }
 @if map-get($m, all) or map-get($m, basic) or map-get($m, grid) { @import "modules/g-grid/manifest"; }
 
 // FontAwesome dependency

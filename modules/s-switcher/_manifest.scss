@@ -95,8 +95,6 @@ $switcher-selected-color: text-color($text-selected) !default;
   }
 
   :component(Label) {
-    align-items: center;
-    display: flex;
     pointer-events: auto; //Restore clickability
     transition: color $animated;
 
@@ -107,6 +105,7 @@ $switcher-selected-color: text-color($text-selected) !default;
       font-family: FontAwesome;
       font-style: normal;
       font-weight: normal;
+      line-height: 0.55em;
       padding-right: 0.55em;
       text-rendering: auto; //Optimizelegibility throws things off #1094
       transform: translate(0, 0); //Ensures no half-pixel rendering in firefox
