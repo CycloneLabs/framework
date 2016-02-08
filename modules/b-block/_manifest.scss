@@ -47,4 +47,12 @@
   }
 }
 
+[class] {
+  box-sizing: border-box;
+}
+
+[tabindex] {
+  outline: initial;
+}
+
 @if (map-get($m, debug)) { @import "debug"; }
