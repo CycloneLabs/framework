@@ -1,82 +1,82 @@
-:module(Margins) {
+:model(Margins) {
 
-  :modifier(On),
-  :modifier(Vertical),
-  :modifier(Twelve),
-  :modifier(One),
-  :modifier(Two),
-  :modifier(Ten),
-  :modifier(Eleven) {
+  :which(On),
+  :which(Vertical),
+  :which(Twelve),
+  :which(One),
+  :which(Two),
+  :which(Ten),
+  :which(Eleven) {
     padding-top: size();
   }
 
-  :modifier(On-x),
-  :modifier(Vertical-x),
-  :modifier(Twelve-x),
-  :modifier(One-x),
-  :modifier(Two-x),
-  :modifier(Ten-x),
-  :modifier(Eleven-x) {
+  :which(On-x),
+  :which(Vertical-x),
+  :which(Twelve-x),
+  :which(One-x),
+  :which(Two-x),
+  :which(Ten-x),
+  :which(Eleven-x) {
     padding-top: size(2);
   }
 
-  :modifier(On),
-  :modifier(Horizontal),
-  :modifier(Three),
-  :modifier(One),
-  :modifier(Two),
-  :modifier(Four),
-  :modifier(Five) {
+  :which(On),
+  :which(Horizontal),
+  :which(Three),
+  :which(One),
+  :which(Two),
+  :which(Four),
+  :which(Five) {
     padding-right: size();
   }
 
-  :modifier(On-x),
-  :modifier(Horizontal-x),
-  :modifier(Three-x),
-  :modifier(One-x),
-  :modifier(Two-x),
-  :modifier(Four-x),
-  :modifier(Five-x) {
+  :which(On-x),
+  :which(Horizontal-x),
+  :which(Three-x),
+  :which(One-x),
+  :which(Two-x),
+  :which(Four-x),
+  :which(Five-x) {
     padding-right: size(2);
   }
 
-  :modifier(On),
-  :modifier(Vertical),
-  :modifier(Six),
-  :modifier(Four),
-  :modifier(Five),
-  :modifier(Seven),
-  :modifier(Eight) {
+  :which(On),
+  :which(Vertical),
+  :which(Six),
+  :which(Four),
+  :which(Five),
+  :which(Seven),
+  :which(Eight) {
     padding-bottom: size();
   }
 
-  :modifier(On-x),
-  :modifier(Vertical-x),
-  :modifier(Six-x),
-  :modifier(Four-x),
-  :modifier(Five-x),
-  :modifier(Seven-x),
-  :modifier(Eight-x) {
+  :which(On-x),
+  :which(Vertical-x),
+  :which(Six-x),
+  :which(Four-x),
+  :which(Five-x),
+  :which(Seven-x),
+  :which(Eight-x) {
     padding-bottom: size(2);
   }
 
-  :modifier(On),
-  :modifier(Horizontal),
-  :modifier(Nine),
-  :modifier(Seven),
-  :modifier(Eight),
-  :modifier(Ten),
-  :modifier(Eleven) {
+  :which(On),
+  :which(Horizontal),
+  :which(Nine),
+  :which(Seven),
+  :which(Eight),
+  :which(Ten),
+  :which(Eleven) {
     padding-left: size();
   }
 
-  :modifier(On-x),
-  :modifier(Horizontal-x),
-  :modifier(Nine-x),
-  :modifier(Seven-x),
-  :modifier(Eight-x),
-  :modifier(Ten-x),
-  :modifier(Eleven-x) {
+  :which(On-x),
+  :which(Horizontal-x),
+  :which(Nine-x),
+  :which(Seven-x),
+  :which(Eight-x),
+  :which(Ten-x),
+  :which(Eleven-x) {
     padding-left: size(2);
   }
 }

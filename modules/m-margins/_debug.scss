@@ -1,12 +1,12 @@
-:module(Margins) {
-  :modifier(One-x):modifier(Two-x),
-  :modifier(Four-x):modifier(Five-x),
-  :modifier(Seven-x):modifier(Eight-x),
-  :modifier(Ten-x):modifier(Eleven-x),
-  :modifier(One):modifier(Two),
-  :modifier(Four):modifier(Five),
-  :modifier(Seven):modifier(Eight),
-  :modifier(Ten):modifier(Eleven) {
+:model(Margins) {
+  :which(One-x):which(Two-x),
+  :which(Four-x):which(Five-x),
+  :which(Seven-x):which(Eight-x),
+  :which(Ten-x):which(Eleven-x),
+  :which(One):which(Two),
+  :which(Four):which(Five),
+  :which(Seven):which(Eight),
+  :which(Ten):which(Eleven) {
     /**/
     /* Bug    :  Modifiers do the same thing
     /**/
@@ -14,14 +14,14 @@
     content: "Modifiers do the same thing";
   }
 
-  :modifier(Twelve-x):modifier(Three-x),
-  :modifier(Three-x):modifier(Six-x),
-  :modifier(Six-x):modifier(Nine-x),
-  :modifier(Nine-x):modifier(Twelve-x),
-  :modifier(Twelve):modifier(Three),
-  :modifier(Three):modifier(Six),
-  :modifier(Six):modifier(Nine),
-  :modifier(Nine):modifier(Twelve) {
+  :which(Twelve-x):which(Three-x),
+  :which(Three-x):which(Six-x),
+  :which(Six-x):which(Nine-x),
+  :which(Nine-x):which(Twelve-x),
+  :which(Twelve):which(Three),
+  :which(Three):which(Six),
+  :which(Six):which(Nine),
+  :which(Nine):which(Twelve) {
     /**/
     /* Bug    :  Please use the intermediate values, it is shorter
     /**/
@@ -29,8 +29,8 @@
     content: "Please use the intermediate values";
   }
 
-  :modifier(Twelve-x):modifier(Six-x),
-  :modifier(Twelve):modifier(Six) {
+  :which(Twelve-x):which(Six-x),
+  :which(Twelve):which(Six) {
     /**/
     /* Bug    :  Please write less code, use the modifier `vertical`
     /**/
@@ -38,8 +38,8 @@
     content: "Please use the `vertical` modifier";
   }
 
-  :modifier(Three-x):modifier(Nine-x),
-  :modifier(Three):modifier(Nine) {
+  :which(Three-x):which(Nine-x),
+  :which(Three):which(Nine) {
     /**/
     /* Bug    :  Please write less code, use the modifier `horizontal`
     /**/
@@ -47,26 +47,26 @@
     content: "Please use the `horizontal` modifier";
   }
 
-  :modifier(Twelve-x):modifier(Three-x):modifier(Six-x):modifier(Nine-x),
-  :modifier(Twelve):modifier(Three):modifier(Six):modifier(Nine),
-  :modifier(Vertical-x):modifier(Horizontal-x),
-  :modifier(Vertical):modifier(Horizontal),
-  :modifier(One-x):modifier(Seven-x),
-  :modifier(One):modifier(Seven),
-  :modifier(One-x):modifier(Eight-x),
-  :modifier(One):modifier(Eight),
-  :modifier(Two-x):modifier(Seven-x),
-  :modifier(Two):modifier(Seven),
-  :modifier(Two-x):modifier(Eight-x),
-  :modifier(Two):modifier(Eight),
-  :modifier(Three-x):modifier(Ten-x),
-  :modifier(Three):modifier(Ten),
-  :modifier(Three-x):modifier(Eleven-x),
-  :modifier(Three):modifier(Eleven),
-  :modifier(Four-x):modifier(Ten-x),
-  :modifier(Four):modifier(Ten),
-  :modifier(Four-x):modifier(Eleven-x),
-  :modifier(Four):modifier(Eleven) {
+  :which(Twelve-x):which(Three-x):which(Six-x):which(Nine-x),
+  :which(Twelve):which(Three):which(Six):which(Nine),
+  :which(Vertical-x):which(Horizontal-x),
+  :which(Vertical):which(Horizontal),
+  :which(One-x):which(Seven-x),
+  :which(One):which(Seven),
+  :which(One-x):which(Eight-x),
+  :which(One):which(Eight),
+  :which(Two-x):which(Seven-x),
+  :which(Two):which(Seven),
+  :which(Two-x):which(Eight-x),
+  :which(Two):which(Eight),
+  :which(Three-x):which(Ten-x),
+  :which(Three):which(Ten),
+  :which(Three-x):which(Eleven-x),
+  :which(Three):which(Eleven),
+  :which(Four-x):which(Ten-x),
+  :which(Four):which(Ten),
+  :which(Four-x):which(Eleven-x),
+  :which(Four):which(Eleven) {
     /**/
     /* Bug    :  Please write less code, use the modifier `on`
     /**/

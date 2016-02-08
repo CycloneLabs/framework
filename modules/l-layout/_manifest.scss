@@ -7,33 +7,33 @@ $layout-container-border-color      : "" !default;
 $layout-container-edge-margin       : size(3) !default;
 $layout-container-side-margin       : size(3) !default;
 
-:module(Layout) {
+:model(Layout) {
   background-color: $layout-background-color;
   height: 100%;
   min-width: $layout-min-size;
 
-  :component(Container) {
+  :has(Container) {
     display: block;
     padding-left: $layout-container-side-margin;
     padding-right: $layout-container-side-margin;
 
-    &:modifier(Painted) {
+    &:which(Painted) {
       @include stroke(bottom $layout-container-border-color);
       background-color: $layout-container-background-color;
     }
 
-    &:not(:modifier(Painted)) + :modifier(Painted),
-    &:not(:modifier(Painted)) + * :modifier(Painted) {
+    &:not(:which(Painted)) + :which(Painted),
+    &:not(:which(Painted)) + * :which(Painted) {
       @include stroke(bottom top $layout-container-border-color);
     }
 
-    &:modifier(Margined) {
+    &:which(Margined) {
       padding-bottom: $layout-container-edge-margin;
       padding-top: $layout-container-edge-margin;
     }
   }
 
-  :component(Overlay) {
+  :has(Overlay) {
     background-color: rgba($layout-overlay-color, $layout-overlay-transparency);
     bottom: 0;
     left: 0;

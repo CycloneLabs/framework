@@ -1,6 +1,6 @@
-select:module(List-switcher) {
+select:model(List-switcher) {
 
-  &:modifier(Disabled):not([disabled]):not([tabindex]) {
+  &:which(Disabled):not([disabled]):not([tabindex]) {
     /**/
     /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
     /**/
@@ -9,13 +9,13 @@ select:module(List-switcher) {
   }
 }
 
-:not(select):module(List-switcher) {
+:not(select):model(List-switcher) {
 
-  &:not(:modifier(Disabled)):not([disabled]):not([tabindex]) {
+  &:not(:which(Disabled)):not([disabled]):not([tabindex]) {
     /**/
-    /* Bug :  module should have attribute `tabindex` like `0` to receive focus
+    /* Bug :  model should have attribute `tabindex` like `0` to receive focus
     /**/
     @include bug;
-    content: "module should have attribute `tabindex` like `0` to receive focus";
+    content: "model should have attribute `tabindex` like `0` to receive focus";
   }
 }

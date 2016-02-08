@@ -1,6 +1,6 @@
-:module(Block) {
+:model(Block) {
 
-  :component(Rhythm):before {
+  :has(Rhythm):before {
     $shadow: ();
     @for $i from 0 to 100 {
       $shadow: append($shadow, "0 #{$line-step * 2 * $i - 10} 0 0 rgba(122, 93, 197, 0.2)", comma);
@@ -16,7 +16,7 @@
     z-index: $z-alerts;
   }
 
-  :component(Indent):not(:empty) {
+  :has(Indent):not(:empty) {
     /**/
     /* Bug    :  Item should be empty
     /**/
@@ -24,10 +24,10 @@
     content: "Block-indent should be empty";
   }
 
-  :component(Indent) + :component(Indent),
-  :component(Indent) + :component(Indent-x),
-  :component(Indent-x) + :component(Indent),
-  :component(Indent-x) + :component(Indent-x) {
+  :has(Indent) + :has(Indent),
+  :has(Indent) + :has(Indent-x),
+  :has(Indent-x) + :has(Indent),
+  :has(Indent-x) + :has(Indent-x) {
     /**/
     /* Bug    :  Items does not stack
     /**/
@@ -35,8 +35,8 @@
     content: "Block-indent does not stack";
   }
 
-  :component(Footer):modifier(Indented),
-  :component(Footer):modifier(Indented-x) {
+  :has(Footer):which(Indented),
+  :has(Footer):which(Indented-x) {
     /**/
     /* Bug    :  Footer should be pressed to the previous block
     /**/

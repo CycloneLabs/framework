@@ -5,7 +5,7 @@ $list-switcher-focus-color: text-color($text-focused) !default;
 $list-switcher-invalid-color: text-color($text-invalid) !default;
 $list-switcher-disabled-color: text-color($text-disabled) !default;
 
-:module(List-switcher) {
+:model(List-switcher) {
   appearance: initial;
   background-color: initial;
   border: initial;
@@ -18,7 +18,7 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
   user-select: initial;
 }
 
-:module(List-switcher) {
+:model(List-switcher) {
   @include ff-select-bugfix($list-switcher-text-color);
   background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-text-color))}' d='M0 2 3 5 l3-3z'/></svg>");
   background-position: right 45%;
@@ -39,7 +39,7 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
         @include ff-select-bugfix($list-switcher-focus-color);
         background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-focus-color))}' d='M0 2 3 5 l3-3z'/></svg>");
 
-        :component(option) {
+        :has(option) {
           color: $list-switcher-focus-color;
         }
       }
@@ -49,7 +49,7 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
         @include ff-select-bugfix($list-switcher-hover-color);
         background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-hover-color))}' d='M0 2 3 5 l3-3z'/></svg>");
 
-        :component(option) {
+        :has(option) {
           color: $list-switcher-hover-color;
         }
       }
@@ -62,7 +62,7 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
         @include ff-select-bugfix($list-switcher-invalid-color);
         background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-invalid-color))}' d='M0 2 3 5 l3-3z'/></svg>");
 
-        :component(option) {
+        :has(option) {
           color: $list-switcher-invalid-color;
         }
       }
@@ -73,14 +73,14 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
         background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-color))}' d='M0 0 6 6 l-3-3 l-3 3 l6-6'/></svg>");
         pointer-events: none;
 
-        :component(option) {
+        :has(option) {
           color: $list-switcher-disabled-color;
         }
       }
     }
   }
 
-  :component(option) {
+  :has(option) {
     color: $list-switcher-text-color;
     font-size: inherit !important; //It must be same
     padding: calc((#{size(2.97)} - 1em) / 2) size(); //Magic to vertical align

@@ -6,7 +6,7 @@ $text-field-invalid-color: text-color($text-invalid) !default;
 $text-field-disabled-color: text-color($text-disabled) !default;
 $text-field-placeholder-opacity: 0.8 !default;
 
-:module(Text-field) {
+:model(Text-field) {
   appearance: initial;
   background-color: initial;
   border: initial;
@@ -19,7 +19,7 @@ $text-field-placeholder-opacity: 0.8 !default;
   user-select: initial;
 }
 
-:module(Text-field) {
+:model(Text-field) {
   -webkit-text-fill-color: currentColor;
   color: $text-field-text-color;
   cursor: text;

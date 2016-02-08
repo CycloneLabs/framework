@@ -2,38 +2,38 @@ $card-border-color: $border-default !default;
 $card-border-active-color: $border-hovered !default;
 $card-shadow-color: $shadow-default !default;
 
-:module(Card) {
+:model(Card) {
   @include stroke($card-border-color);
 
-  &:modifier(Header) {
+  &:which(Header) {
     @include radius(top);
   }
 
-  &:modifier(Footer) {
+  &:which(Footer) {
     @include radius(bottom);
     position: relative;
     top: -$thin;
   }
 
-  &:not(:modifier(Header)):not(:modifier(Footer)) {
+  &:not(:which(Header)):not(:which(Footer)) {
     @include radius;
   }
 
-  &:modifier(Shadow) {
+  &:which(Shadow) {
     @include stroke($card-border-color, $shadow: $card-shadow-color);
   }
 }
 
-:module(Card) {
+:model(Card) {
 
-  &:modifier(Hover) {
+  &:which(Hover) {
     transition: box-shadow $animated;
 
     &:hover {
       @include stroke($card-border-active-color);
     }
 
-    &:modifier(Shadow):hover {
+    &:which(Shadow):hover {
       @include stroke($card-border-active-color, $shadow: $card-shadow-color);
     }
   }

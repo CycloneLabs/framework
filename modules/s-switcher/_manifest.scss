@@ -5,67 +5,67 @@ $switcher-invalid-color: text-color($text-invalid) !default;
 $switcher-disabled-color: text-color($text-disabled) !default;
 $switcher-selected-color: text-color($text-selected) !default;
 
-:module(Switcher) {
+:model(Switcher) {
   cursor: pointer;
   display: inline-block;
   pointer-events: none;
 
-  &:modifier(Stable) {
+  &:which(Stable) {
 
-    :component(Label)::before {
+    :has(Label)::before {
       font-size: initial;
     }
   }
 
-  :component(Checkbox) {
+  :has(Checkbox) {
 
-    + :component(Label)::before {
+    + :has(Label)::before {
       content: "\F096";
     }
 
-    &:checked + :component(label)::before {
+    &:checked + :has(label)::before {
       color: $switcher-selected-color;
       content: "\F046";
     }
 
-    &:indeterminate + :component(label)::before {
+    &:indeterminate + :has(label)::before {
       content: "";
     }
   }
 
-  :component(Radio) {
+  :has(Radio) {
 
-    + :component(Label)::before {
+    + :has(Label)::before {
       content: "";
     }
 
-    &:checked + :component(Label)::before {
+    &:checked + :has(Label)::before {
       color: $switcher-selected-color;
       content: "";
     }
   }
 
-  :component(Radio),
-  :component(Checkbox) {
+  :has(Radio),
+  :has(Checkbox) {
     opacity: 0; //Hide element
     position: absolute; //Remove element from current context
 
     @each $state in $states-order {
       @if $state == Focus {
-        @include state($state, "+", ":component(Label)") {
+        @include state($state, "+", ":has(Label)") {
           color: $switcher-focus-color;
         }
 
-        @include state($state, "+", ":component(Label)::before") {
+        @include state($state, "+", ":has(Label)::before") {
           color: $switcher-focus-color;
         }
       }
       @elseif $state == Hover {
-        @include state($state, "+", ":component(Label)") {
+        @include state($state, "+", ":has(Label)") {
           color: $switcher-hover-color;
         }
 
-        @include state($state, "+", ":component(Label)::before") {
+        @include state($state, "+", ":has(Label)::before") {
           color: $switcher-hover-color;
         }
       }
@@ -73,28 +73,28 @@ $switcher-selected-color: text-color($text-selected) !default;
         @include state($state) {}
       }
       @elseif $state == Invalid {
-        @include state($state, "+", ":component(Label)") {
+        @include state($state, "+", ":has(Label)") {
           color: $switcher-invalid-color;
         }
 
-        @include state($state, "+", ":component(Label)::before") {
+        @include state($state, "+", ":has(Label)::before") {
           color: $switcher-invalid-color;
         }
       }
       @elseif $state == Disabled {
-        @include state($state, "+", ":component(Label)") {
+        @include state($state, "+", ":has(Label)") {
           color: $switcher-disabled-color;
           pointer-events: none;
         }
 
-        @include state($state, "+", ":component(Label)::before") {
+        @include state($state, "+", ":has(Label)::before") {
           color: $switcher-disabled-color;
         }
       }
     }
   }
 
-  :component(Label) {
+  :has(Label) {
     pointer-events: auto; //Restore clickability
     transition: color $animated;
 

@@ -35,22 +35,22 @@ module.exports = postcss.plugin('postcss-nsbuilder', function (opts) {
   }
 
   return function (css, result) {
-    css.walkRules(/:module|:component|:modifier/, function (rule) {
-      var matches = rule.selector.match(/:module\(.+?\)|:component\(.+?\)|:modifier\(.+?\)/igm);
-      var currentModule = matches.filter(function(item) { return !!~item.indexOf(':module') })[0];
+    css.walkRules(/:model|:has|:which/, function (rule) {
+      var matches = rule.selector.match(/:model\(.+?\)|:has\(.+?\)|:which\(.+?\)/igm);
+      var currentModule = matches.filter(function(item) { return !!~item.indexOf(':model') })[0];
       var updatedSelector = rule.selector, name;
-      var prefix = abbr( get('module', currentModule) );
+      var prefix = abbr( get('model', currentModule) );
 
       for(matchesCounter = matches.length; matchesCounter--;) {
         switch (true) {
-          case !!~matches[matchesCounter].indexOf(':module'):
-            name = '.' + get('module', matches[matchesCounter])
+          case !!~matches[matchesCounter].indexOf(':model'):
+            name = '.' + get('model', matches[matchesCounter])
             break
-          case !!~matches[matchesCounter].indexOf(':component'):
-            name = '.' + prefix + '-' + get('component', matches[matchesCounter]);
+          case !!~matches[matchesCounter].indexOf(':has'):
+            name = '.' + prefix + '-' + get('has', matches[matchesCounter]);
             break
-          case !!~matches[matchesCounter].indexOf(':modifier'):
-            name = '.' + prefix + '_' + get('modifier', matches[matchesCounter])
+          case !!~matches[matchesCounter].indexOf(':which'):
+            name = '.' + prefix + '_' + get('which', matches[matchesCounter])
             break
         }
         updatedSelector = updatedSelector.replace(matches[matchesCounter], name.toLowerCase());

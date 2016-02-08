@@ -1,6 +1,6 @@
-:module(Grid) > :modifier(First):first-child + :modifier(Last):last-child {
+:model(Grid) > :which(First):first-child + :which(Last):last-child {
   /**/
-  /* Module :  Grid
+  /* model :  Grid
   /* Bug    :  Bad practice
   /**/
   @include bug;

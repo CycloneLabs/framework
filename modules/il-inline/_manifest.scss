@@ -1,6 +1,6 @@
-:module(InLine) {
+:model(InLine) {
 
-  :component(LtR) {
+  :has(LtR) {
     display: flex;
     flex-wrap: wrap;
 
@@ -8,15 +8,15 @@
     margin-left: size(-1);
   }
 
-  :component(Indent) {
+  :has(Indent) {
     margin-left: size();
   }
 
-  :component(Indent-x) {
+  :has(Indent-x) {
     margin-left: size(2);
   }
 
-  :component(RtL) {
+  :has(RtL) {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -24,17 +24,17 @@
     //TODO Check "Negative margins" solution (2)
     margin-right: size(-1);
 
-    :component(Indent) {
+    :has(Indent) {
       margin-right: size();
     }
 
-    :component(Indent-x) {
+    :has(Indent-x) {
       margin-right: size(2);
     }
   }
 
-  :component(Indent),
-  :component(Indent-x) {
+  :has(Indent),
+  :has(Indent-x) {
     display: inline-block;
     vertical-align: middle;
 

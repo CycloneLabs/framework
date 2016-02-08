@@ -307,7 +307,7 @@
 
 @mixin state($state, $suffix-combinator: "", $suffix: "") {
   &:#{to-lower-case($state) unquote($suffix-combinator) unquote($suffix)},
-  &:modifier(#{$state}) #{unquote($suffix-combinator) unquote($suffix)} {
+  &:which(#{$state}) #{unquote($suffix-combinator) unquote($suffix)} {
     @content;
   }
 }
