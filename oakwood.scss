@@ -33,7 +33,7 @@
 @if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "modules/ls-list-switcher/manifest"; }
 
 // Utilities
-@if map-get($m, all) or map-get($m, core) or map-get($m, inner-rhythm) { @import "modules/m-margins/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, margins) { @import "modules/m-margins/manifest"; }
 @if map-get($m, all) or map-get($m, core) or map-get($m, inline) { @import "modules/il-inline/manifest"; }
 @if map-get($m, all) or map-get($m, core) or map-get($m, block) { @import "modules/b-block/manifest"; }
 @if map-get($m, all) or map-get($m, basic) or map-get($m, grid) { @import "modules/g-grid/manifest"; }
