@@ -46,5 +46,5 @@ gulp.task('compile', function () {
 });
 
 gulp.task('builder', ['compile'], function () {
-  gulp.watch(coreFilepath, ['compile']);
+  gulp.watch("./**/*.scss", ['compile']);
 });
