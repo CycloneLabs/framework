@@ -1,10 +1,10 @@
 {
-  "name": "Oakwood",
+  "name": "oakwood",
   "version": "1.0.0-0",
   "description": "Oakwood CSS. It is a framework for styling your applications",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyclonelabs/framework.git"
+    "url": "https://github.com/Cyclonelabs/framework.git"
   },
   "main": "oakwood.scss",
   "author": "Roman @xibor",
