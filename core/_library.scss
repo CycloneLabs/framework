@@ -195,7 +195,7 @@
 //
 // @return         Map with box-shadow string and indent properties
 
-@function stroke-blink($params, $border-x, $border-y) {
+@function stroke-blink($params, $border-x: 0, $border-y: 0) {
   $color: $blink-default;
   $weight: if(abs($border-x) + abs($border-y) > 0, 0, $thin);
   $border-x: if($border-x == -$thin, -$thin * 2, -$thin - $weight);

@@ -1,4 +1,3 @@
-$button-text-color: text-color($text-default) !default;
 $button-focus-color: text-color($text-focused) !default;
 $button-hover-color: text-color($text-hovered) !default;
 $button-active-color: text-color($text-activated) !default;
@@ -18,7 +17,6 @@ $button-disabled-color: text-color($text-disabled) !default;
 }
 
 :model(ButToN) {
-  color: $button-text-color;
   cursor: pointer;
   display: inline-block;
   font-size: $font-size-small;
