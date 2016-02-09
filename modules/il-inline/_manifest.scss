@@ -8,11 +8,11 @@
     margin-left: size(-1);
   }
 
-  :whitch(Indented) {
+  :which(Indented) {
     margin-left: size();
   }
 
-  :whitch(Indented-x) {
+  :which(Indented-x) {
     margin-left: size(2);
   }
 
@@ -24,17 +24,17 @@
     //TODO Check "Negative margins" solution (2)
     margin-right: size(-1);
 
-    :whitch(Indented) {
+    :which(Indented) {
       margin-right: size();
     }
 
-    :whitch(Indented-x) {
+    :which(Indented-x) {
       margin-right: size(2);
     }
   }
 
-  :whitch(Indented),
-  :whitch(Indented-x) {
+  :which(Indented),
+  :which(Indented-x) {
     display: inline-block;
     vertical-align: middle;
 
