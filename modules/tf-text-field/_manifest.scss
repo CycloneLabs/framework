@@ -16,14 +16,12 @@ $text-field-placeholder-opacity: 0.8 !default;
   outline: initial;
   padding: initial;
   text-decoration: initial;
-  user-select: initial;
 }
 
 :model(Text-field) {
   -webkit-text-fill-color: currentColor;
   color: $text-field-text-color;
   cursor: text;
-  display: block;
   font-size: $font-size-small;
   height: size(3);
   line-height: size(3);
@@ -37,30 +35,15 @@ $text-field-placeholder-opacity: 0.8 !default;
     opacity: $text-field-placeholder-opacity;
   }
 
-
   @each $state in $states-order {
-    @if $state == Focus {
-      @include state($state) {
-        color: $text-field-focus-color;
-      }
-    }
-    @elseif $state == Hover {
-      @include state($state) {
-        color: $text-field-hover-color;
-      }
-    }
-    @elseif $state == Active {
-      @include state($state) {}
-    }
-    @elseif $state == Invalid {
-      @include state($state) {
-        color: $text-field-invalid-color;
-      }
-    }
-    @elseif $state == Disabled {
+    @if $state == Disabled {
       @include state($state) {
         color: $text-field-disabled-color;
         pointer-events: none;
+
+        @include placeholder {
+          color: transparent;
+        }
       }
     }
   }

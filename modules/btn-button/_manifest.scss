@@ -13,7 +13,7 @@ $button-disabled-color: text-color($text-disabled) !default;
   outline: initial;
   padding: initial;
   text-decoration: initial;
-  user-select: initial;
+  user-select: none;
 }
 
 :model(ButToN) {

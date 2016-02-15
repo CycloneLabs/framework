@@ -1,0 +1,131 @@
+$form-field-background: color(white) !default;
+$form-field-text-color: text-color($text-default) !default;
+$form-field-disabled-color: text-color($text-disabled) !default;
+$form-field-default-border: $border-default !default;
+$form-field-hover-border: $border-hovered !default;
+$form-field-disabled-border: $border-disabled !default;
+$form-field-focus-underline: $underline-focused !default;
+$form-field-invalid-underline: $underline-invalid !default;
+
+:model(Form-field) {
+  align-items: center;
+  background-color: $form-field-background;
+  display: flex;
+  line-height: size(3);
+
+  :has(Field) {
+    @include stroke($form-field-default-border);
+    @include radius;
+    background-color: inherit;
+    flex-grow: 1;
+    padding-left: size();
+    padding-right: size();
+    transition: color $animated, box-shadow $animated;
+
+    ~ :has(Icon) {
+      @include stroke(top bottom left $form-field-default-border);
+      @include radius(left);
+      background-color: inherit;
+      color: $form-field-text-color;
+      margin-right: size(-0.9);
+      order: -1;
+      position: relative;
+      transition: color $animated, box-shadow $animated;
+      width: size(3);
+      z-index: $z-local;
+    }
+
+    ~ :has(Button) {
+      @include stroke(top right bottom $form-field-default-border);
+      @include radius(right);
+      background-color: inherit;
+      margin-left: size(-0.9);
+      order: 1;
+      position: relative;
+      transition: color $animated, box-shadow $animated;
+      width: size(3);
+      z-index: $z-local;
+    }
+
+
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state) {
+          @include stroke($form-field-default-border, $underline: $form-field-focus-underline);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $form-field-default-border, $underline: $form-field-focus-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $form-field-default-border, $underline: $form-field-focus-underline);
+          }
+
+          @include state(Hover) {
+            @include stroke($form-field-hover-border, $underline: $form-field-focus-underline);
+
+            ~ :has(Icon) {
+              @include stroke(top bottom left $form-field-hover-border, $underline: $form-field-focus-underline);
+            }
+
+            ~ :has(Button) {
+              @include stroke(top right bottom $form-field-hover-border, $underline: $form-field-focus-underline);
+            }
+          }
+        }
+      }
+      @elseif $state == Hover {
+        @include state($state) {
+          @include stroke($form-field-hover-border);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $form-field-hover-border);
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $form-field-hover-border);
+          }
+        }
+      }
+      @elseif $state == Invalid {
+        @include state($state) {
+          @include stroke($form-field-default-border, $underline: $form-field-invalid-underline);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $form-field-default-border, $underline: $form-field-invalid-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $form-field-default-border, $underline: $form-field-invalid-underline);
+          }
+
+          @include state(Hover) {
+            @include stroke($form-field-hover-border, $underline: $form-field-invalid-underline);
+
+            ~ :has(Icon) {
+              @include stroke(top bottom left $form-field-hover-border, $underline: $form-field-invalid-underline);
+            }
+
+            ~ :has(Button) {
+              @include stroke(top right bottom $form-field-hover-border, $underline: $form-field-invalid-underline);
+            }
+          }
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state) {
+          @include stroke($form-field-disabled-border);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $form-field-disabled-border);
+            color: $form-field-disabled-color;
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $form-field-disabled-border);
+          }
+        }
+      }
+    }
+  }
+}
