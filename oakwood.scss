@@ -30,6 +30,7 @@
 @if map-get($m, all) or map-get($m, form) or map-get($m, switcher) { @import "modules/s-switcher/manifest"; }
 @if map-get($m, all) or map-get($m, form) or map-get($m, text-field) { @import "modules/tf-text-field/manifest"; }
 @if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "modules/ls-list-switcher/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, form-field) { @import "modules/ff-form-field/manifest"; }
 
 // Utilities
 @if map-get($m, all) or map-get($m, core) or map-get($m, margins) { @import "modules/m-margins/manifest"; }

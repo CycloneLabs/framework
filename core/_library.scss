@@ -151,7 +151,7 @@
     }
     @elseif (index($side, left) == null) {
       $border-x: -$thin;
-      $result: append($result, $border-x -$thin 0 0 $color inset, comma);
+      $result: append($result, $border-x (-$thin) 0 0 $color inset, comma);
       $border-y: $thin;
     }
     @elseif (index($side, bottom) == null) {
@@ -215,7 +215,7 @@
 // @return            Box-shadow string
 
 @function stroke-underline($color: $underline-default) {
-  @return 0 (-$thin) 0 0 $color inset;
+  @return 0 2 * -$thin 0 0 $color inset;
 }
 
 // @stroke-shadow     Make shadow for component
@@ -287,10 +287,6 @@
   @if($underline) {
     $underline-blink: stroke-underline($underline);
     $result: append($result, $underline-blink, comma);
-    //TODO Better way: text-decoration-color (unsupported), ::placeholder(too much variations)
-    border-bottom: $thin * 2 solid transparent;
-  } @else {
-    border-bottom: 0;
   }
   @if($custom) {
     $result: append($result, $custom, comma);
@@ -328,11 +324,8 @@
 // @return            Fixed color style
 
 @mixin ff-select-bugfix($color) {
-  color: $color;
-  &:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 $color;
-  }
+  color: transparent;
+  text-shadow: 0 0 0 $color;
 }
 
 // @bug   the pattern to be embedded to wrong situations,
