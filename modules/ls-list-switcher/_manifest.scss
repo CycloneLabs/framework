@@ -21,47 +21,29 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
 :model(List-switcher) {
   @include ff-select-bugfix($list-switcher-text-color);
   background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-text-color))}' d='M0 2 3 5 l3-3z'/></svg>");
-  background-position: right 45%;
+  background-position: calc(100% - 10px) 45%;
   background-repeat: no-repeat;
   background-size: size();
   cursor: pointer;
   font-size: $font-size-small;
   height: size(3);
-  line-height: size(2);
+  line-height: size(3);
   overflow: hidden;
-  padding-right: size(1.5);
-  -moz-padding-end: 0; //Firefox makes magic indent
   transition: color $animated, text-shadow $animated;
 
+  :has(Option) {
+    color: $list-switcher-text-color;
+    font-size: inherit; //Should be same
+    text-shadow: initial;
+  }
+
   @each $state in $states-order {
-    @if $state == Focus {
+    @if $state == Disabled {
       @include state($state) {
-        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-focus-color))}' d='M0 2 3 5 l3-3z'/></svg>");
-      }
-    }
-    @elseif $state == Hover {
-      @include state($state) {
-        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-hover-color))}' d='M0 2 3 5 l3-3z'/></svg>");
-      }
-    }
-    @elseif $state == Invalid {
-      @include state($state) {
-        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-invalid-color))}' d='M0 2 3 5 l3-3z'/></svg>");
-      }
-    }
-    @elseif $state == Disabled {
-      @include state($state) {
-        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-color))}' d='M0 0 6 6 l-3-3 l-3 3 l6-6'/></svg>");
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-color))}' d='M1 1 5 5 l-2-2 l-2 2 l4-4'/></svg>");
         pointer-events: none;
       }
     }
-  }
-
-  :has(option) {
-    color: $list-switcher-text-color;
-    font-size: inherit !important; //It must be same
-    padding: calc((#{size(2.97)} - 1em) / 2) size(); //Magic to vertical align
-    text-shadow: initial;
   }
 }
 

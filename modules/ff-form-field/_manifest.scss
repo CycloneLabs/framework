@@ -1,4 +1,4 @@
-$form-field-background: color(white) !default;
+$form-field-background: $bg-default !default;
 $form-field-text-color: text-color($text-default) !default;
 $form-field-disabled-color: text-color($text-disabled) !default;
 $form-field-default-border: $border-default !default;
@@ -8,7 +8,8 @@ $form-field-focus-underline: $underline-focused !default;
 $form-field-invalid-underline: $underline-invalid !default;
 
 :model(Form-field) {
-  align-items: center;
+  @include radius;
+  align-items: flex-start;
   background-color: $form-field-background;
   display: flex;
   line-height: size(3);
@@ -27,11 +28,12 @@ $form-field-invalid-underline: $underline-invalid !default;
       @include radius(left);
       background-color: inherit;
       color: $form-field-text-color;
-      margin-right: size(-0.9);
+      margin-right: size(-0.8);
+      min-width: size(3);
       order: -1;
       position: relative;
       transition: color $animated, box-shadow $animated;
-      width: size(3);
+      user-select: none;
       z-index: $z-local;
     }
 
@@ -39,11 +41,11 @@ $form-field-invalid-underline: $underline-invalid !default;
       @include stroke(top right bottom $form-field-default-border);
       @include radius(right);
       background-color: inherit;
-      margin-left: size(-0.9);
+      margin-left: size(-0.8);
+      min-width: size(3);
       order: 1;
       position: relative;
       transition: color $animated, box-shadow $animated;
-      width: size(3);
       z-index: $z-local;
     }
 

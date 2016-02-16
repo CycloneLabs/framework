@@ -9,7 +9,7 @@ input:model(Text-field) {
   }
 }
 
-:not(input):model(Text-field) {
+:not(input):not(textarea):model(Text-field) {
 
   &:not(:which(Disabled)):not([disabled]):not([tabindex]) {
     /**/

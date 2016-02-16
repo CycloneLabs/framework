@@ -25,7 +25,6 @@ $text-field-placeholder-opacity: 0.8 !default;
   font-size: $font-size-small;
   height: size(3);
   line-height: size(3);
-  overflow: hidden;
   text-rendering: optimizelegibility;
   transition: color $animated;
   vertical-align: middle;
@@ -33,6 +32,11 @@ $text-field-placeholder-opacity: 0.8 !default;
   @include placeholder {
     color: currentColor;
     opacity: $text-field-placeholder-opacity;
+  }
+
+  &:which(Multiline) {
+    padding-top: size(0.5);
+    line-height: size(2);
   }
 
   @each $state in $states-order {

@@ -9,7 +9,7 @@ button:model(ButToN) {
   }
 }
 
-:not(button):model(ButToN) {
+:not(button):not(a):model(ButToN) {
 
   &:not(:which(Disabled)):not([disabled]):not([tabindex]) {
     /**/

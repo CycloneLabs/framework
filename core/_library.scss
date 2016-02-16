@@ -215,7 +215,7 @@
 // @return            Box-shadow string
 
 @function stroke-underline($color: $underline-default) {
-  @return 0 2 * -$thin 0 0 $color inset;
+  @return 0 4 * -$thin 0 0 $color inset;
 }
 
 // @stroke-shadow     Make shadow for component
@@ -302,7 +302,11 @@
 // @return    Properties in new selector
 
 @mixin state($state, $suffix-combinator: "", $suffix: "") {
-  &:#{to-lower-case($state) unquote($suffix-combinator) unquote($suffix)},
+  $stateAlias: $state;
+  @if($state == Selected) {
+    $stateAlias: checked;
+  }
+  &:#{to-lower-case($stateAlias) unquote($suffix-combinator) unquote($suffix)},
   &:which(#{$state}) #{unquote($suffix-combinator) unquote($suffix)} {
     @content;
   }
