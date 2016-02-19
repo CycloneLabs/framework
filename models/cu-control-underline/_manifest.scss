@@ -1,0 +1,109 @@
+$control-underline-text-color: text-color($text-default) !default;
+$control-underline-disabled-color: text-color($text-disabled) !default;
+$control-underline-disabled-underline: transparent !default;
+$control-underline-default-underline: $underline-default !default;
+$control-underline-hover-underline: $underline-hovered !default;
+$control-underline-focus-underline: $underline-focused !default;
+$control-underline-invalid-underline: $underline-invalid !default;
+
+:model(Control-Underline) {
+  @include radius;
+  align-items: flex-start;
+  display: flex;
+  line-height: size(3);
+
+  :has(Field) {
+    @include stroke($underline: $control-underline-default-underline);
+    flex-grow: 1;
+    padding-left: size();
+    padding-right: size();
+    transition: color $animated, box-shadow $animated;
+
+    ~ :has(Icon) {
+      @include stroke($underline: $control-underline-default-underline);
+      color: $control-underline-text-color;
+      margin-right: size(-0.8);
+      min-width: size(3);
+      order: -1;
+      position: relative;
+      transition: color $animated, box-shadow $animated;
+      user-select: none;
+      z-index: $z-local;
+    }
+
+    ~ :has(Button) {
+      @include stroke($underline: $control-underline-default-underline);
+      margin-left: size(-0.8);
+      min-width: size(3);
+      order: 1;
+      position: relative;
+      transition: color $animated, box-shadow $animated;
+      z-index: $z-local;
+    }
+
+
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state) {
+          @include stroke($underline: $control-underline-focus-underline);
+
+          ~ :has(Icon) {
+            @include stroke($underline: $control-underline-focus-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke($underline: $control-underline-focus-underline);
+          }
+        }
+      }
+      @elseif $state == Hover {
+        @include state($state) {
+          @include stroke($underline: $control-underline-hover-underline);
+
+          ~ :has(Icon) {
+            @include stroke($underline: $control-underline-hover-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke($underline: $control-underline-hover-underline);
+          }
+        }
+      }
+      @elseif $state == Invalid {
+        @include state($state) {
+          @include stroke($underline: $control-underline-invalid-underline);
+
+          ~ :has(Icon) {
+            @include stroke($underline: $control-underline-invalid-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke($underline: $control-underline-invalid-underline);
+          }
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state) {
+          @include stroke($underline: $control-underline-disabled-underline);
+
+          ~ :has(Icon) {
+            @include stroke($underline: $control-underline-disabled-underline);
+            color: $control-underline-disabled-color;
+          }
+
+          ~ :has(Button) {
+            @include stroke($underline: $control-underline-disabled-underline);
+
+            @include state($state) {
+              display: none;
+            }
+          }
+
+          @include placeholder {
+            color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

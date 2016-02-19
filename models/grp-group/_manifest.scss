@@ -2,11 +2,11 @@ $group-separator-color: $border-default !default;
 
 :model(gRouP) {
   display: flex;
+  overflow: hidden;
 
   :has(Chunk) {
     height: size(3);
     line-height: size(3);
-    overflow: hidden;
 
     &:not(:last-child) > [class] {
       border-bottom-right-radius: 0;
@@ -19,7 +19,8 @@ $group-separator-color: $border-default !default;
     }
 
     + :has(Chunk) {
-      border-left: thin solid $group-separator-color;
+      border-left: thin solid;
+      border-color: inherit;
     }
 
     &:which(Spacer) {

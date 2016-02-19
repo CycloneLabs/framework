@@ -1,0 +1,79 @@
+:model(Block) {
+
+  :which(slate) { background-color: color(slate); }
+  :which(red) { background-color: color(red); }
+  :which(orange) { background-color: color(orange); }
+  :which(yellow) { background-color: color(yellow); }
+  :which(green) { background-color: color(green); }
+  :which(blue) { background-color: color(blue); }
+  :which(purple) { background-color: color(purple); }
+  :which(pink) { background-color: color(pink); }
+  :which(riched) { background-color: $bg-riched; }
+  :which(muted) { background-color: $bg-muted; }
+  :which(selected) { background-color: $bg-selected; }
+  :which(hovered) { background-color: $bg-hovered; }
+  :which(info) { background-color: $bg-info; }
+  :which(warning) { background-color: $bg-warning; }
+  :which(success) { background-color: $bg-success; }
+  :which(error) { background-color: $bg-error; }
+  :which(focused) { background-color: $bg-focused; }
+
+  :which(Wide) {
+    width: 100%;
+    display: inline-block;
+  }
+
+  :which(Overflow) {
+    height: size(7);
+    max-height: size(80);
+    min-height: size(3); //TODO https://code.google.com/p/chromium/issues/detail?id=94583
+    overflow: hidden;
+    resize: vertical;
+
+    &:hover:focus {
+      overflow-y: auto;
+    }
+  }
+
+  :which(Header) {
+    position: relative;
+    z-index: $z-local;
+    @include radius(bottom, 0);
+    @include radius(top);
+  }
+
+  :which(Footer) {
+    position: relative;
+    top: -$thin;
+    @include radius(bottom);
+    @include radius(top, 0);
+  }
+
+  :which(Indented) {
+    margin-top: size();
+  }
+
+  :which(Indented-x) {
+    margin-top: size(2);
+  }
+
+  :has(Indent) {
+    display: block;
+    height: size();
+  }
+
+  :has(Indent-x) {
+    display: block;
+    height: size(2);
+  }
+}
+
+[class] {
+  box-sizing: border-box;
+}
+
+[tabindex] {
+  outline: initial;
+}
+
+@if (map-get($m, debug)) { @import "debug"; }

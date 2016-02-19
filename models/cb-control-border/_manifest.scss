@@ -1,0 +1,117 @@
+$control-border-background: $bg-default !default;
+$control-border-text-color: text-color($text-default) !default;
+$control-border-disabled-color: text-color($text-disabled) !default;
+$control-border-default-border: $border-default !default;
+$control-border-disabled-border: $border-disabled !default;
+$control-border-default-underline: $underline-default !default;
+$control-border-focus-underline: $underline-focused !default;
+$control-border-hover-underline: $underline-hovered !default;
+$control-border-invalid-underline: $underline-invalid !default;
+
+:model(Control-Border) {
+  @include radius;
+  align-items: flex-start;
+  background-color: $control-border-background;
+  display: flex;
+  line-height: size(3);
+
+  :has(Control) {
+    @include stroke($control-border-default-border, $underline: $control-border-default-underline);
+    @include radius;
+    background-color: inherit;
+    flex-grow: 1;
+    padding-left: size();
+    padding-right: size();
+    transition: color $animated, box-shadow $animated;
+
+    ~ :has(Icon) {
+      @include stroke(top bottom left $control-border-default-border, $underline: $control-border-default-underline);
+      @include radius(left);
+      background-color: inherit;
+      color: $control-border-text-color;
+      margin-right: size(-0.8);
+      min-width: size(3);
+      order: -1;
+      position: relative;
+      transition: color $animated, box-shadow $animated;
+      user-select: none;
+      z-index: $z-local;
+    }
+
+    ~ :has(Button) {
+      @include stroke(top right bottom $control-border-default-border, $underline: $control-border-default-underline);
+      @include radius(right);
+      background-color: inherit;
+      margin-left: size(-0.8);
+      min-width: size(3);
+      order: 1;
+      position: relative;
+      transition: color $animated, box-shadow $animated;
+      z-index: $z-local;
+    }
+
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state) {
+          @include stroke($control-border-default-border, $underline: $control-border-focus-underline);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $control-border-default-border, $underline: $control-border-focus-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $control-border-default-border, $underline: $control-border-focus-underline);
+          }
+        }
+      }
+      @elseif $state == Hover {
+        @include state($state) {
+          @include stroke($control-border-default-border, $underline: $control-border-hover-underline);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $control-border-default-border, $underline: $control-border-hover-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $control-border-default-border, $underline: $control-border-hover-underline);
+          }
+        }
+      }
+      @elseif $state == Invalid {
+        @include state($state) {
+          @include stroke($control-border-default-border, $underline: $control-border-invalid-underline);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $control-border-default-border, $underline: $control-border-invalid-underline);
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $control-border-default-border, $underline: $control-border-invalid-underline);
+          }
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state) {
+          @include stroke($control-border-disabled-border);
+
+          ~ :has(Icon) {
+            @include stroke(top bottom left $control-border-disabled-border);
+            color: $control-border-disabled-color;
+          }
+
+          ~ :has(Button) {
+            @include stroke(top right bottom $control-border-disabled-border);
+
+            @include state($state) {
+              display: none;
+            }
+          }
+
+          @include placeholder {
+            color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

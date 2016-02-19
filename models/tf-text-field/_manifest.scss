@@ -44,10 +44,6 @@ $text-field-placeholder-opacity: 0.8 !default;
       @include state($state) {
         color: $text-field-disabled-color;
         pointer-events: none;
-
-        @include placeholder {
-          color: transparent;
-        }
       }
     }
   }
