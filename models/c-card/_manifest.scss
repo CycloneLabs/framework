@@ -8,6 +8,14 @@ $card-shadow-color: $shadow-default !default;
   @include stroke($card-border-color);
   @include radius;
   background-color: $card-background;
+  border-color: $card-border-color;
+
+  :has(Body) {
+    margin: $thin;
+    border-top: $thin solid;
+    border-color: inherit;
+    transition: border $animated;
+  }
 
   &:which(Shadow) {
     @include stroke($card-border-color, $shadow: $card-shadow-color);
@@ -15,10 +23,12 @@ $card-shadow-color: $shadow-default !default;
 
   &:which(Hover) {
     @include stroke($card-border-muted-color);
+    border-color: $card-border-muted-color;
     transition: box-shadow $animated;
 
     &:hover {
       @include stroke($card-border-active-color);
+      border-color: $card-border-active-color;
     }
 
     &:which(Shadow) {

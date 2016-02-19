@@ -105,7 +105,7 @@
 //
 // @return          Map with box-shadow-value string and indent properties
 
-@function stroke-border($params) {
+@function stroke-border($params, $stroke) {
   $color: $border-default;
   $side: ();
   @if (type-of($params) == list) {
@@ -139,53 +139,28 @@
       $color: map-get($params, color);
     }
   }
+
+  @if (index($side, top)) {
+    $stroke: set-nth($stroke, 1, $thin);
+  }
+  @if (index($side, right)) {
+    $stroke: set-nth($stroke, 2, -$thin);
+  }
+  @if (index($side, bottom)) {
+    $stroke: set-nth($stroke, 3, -$thin);
+  }
+  @if (index($side, left)) {
+    $stroke: set-nth($stroke, 4, $thin);
+  }
+  @if ($side == ()) {
+    $stroke: $thin, -$thin, -$thin, $thin;
+  }
+
   $result: ();
-  $weight: 0;
-  $border-x: 0;
-  $border-y: 0;
-  @if (length($side) == 3) {
-    @if (index($side, top) == null) {
-      $border-y: -$thin;
-      $result: append($result, -$thin $border-y 0 0 $color inset, comma);
-      $border-x: $thin;
-    }
-    @elseif (index($side, left) == null) {
-      $border-x: -$thin;
-      $result: append($result, $border-x (-$thin) 0 0 $color inset, comma);
-      $border-y: $thin;
-    }
-    @elseif (index($side, bottom) == null) {
-      $border-y: $thin;
-      $result: append($result, $thin $border-y 0 0 $color inset, comma);
-      $border-x: -$thin;
-    }
-    @elseif (index($side, right) == null) {
-      $border-x: $thin;
-      $result: append($result, $border-x $thin 0 0 $color inset, comma);
-      $border-y: -$thin;
-    }
-  }
-  @elseif (length($side) == 2) {
-    @if(index($side, top) and index($side, bottom) or index($side, left) and index($side, right)) {
-      $border-x: if(index($side, left), $thin, if(index($side, right), -$thin, 0));
-      $border-y: if(index($side, bottom), -$thin, if(index($side, top), $thin, 0));
-      $result: append($result, $border-x $border-y 0 0 $color inset, comma);
-      $border-x: if(index($side, right), -$thin, if(index($side, left), $thin, 0));
-      $border-y: if(index($side, top), $thin, if(index($side, bottom), -$thin, 0));
-    }
-    @else {
-      $border-y: if(index($side, top), $thin, if(index($side, bottom), -$thin, 0));
-      $border-x: if(index($side, right), -$thin, if(index($side, left), $thin, 0));
-    }
-  }
-  @elseif (length($side) == 1) {
-    $border-y: if(index($side, top), $thin, if(index($side, bottom), -$thin, 0));
-    $border-x: if(index($side, right), -$thin, if(index($side, left), $thin, 0));
-  }
-  @else {
-    $weight: $thin;
-  }
-  @return (result: append($result, $border-x $border-y 0 $weight $color inset, comma), x: $border-x, y: $border-y);
+  $result: append($result, nth($stroke, 2) nth($stroke, 3) 0 0 $color inset, comma);
+  $result: append($result, nth($stroke, 4) nth($stroke, 1) 0 0 $color inset, comma);
+
+  @return (result: $result, stroke: $stroke);
 }
 
 // @stroke-blink   Make a component blink
@@ -195,18 +170,23 @@
 //
 // @return         Map with box-shadow string and indent properties
 
-@function stroke-blink($params, $border-x: 0, $border-y: 0) {
+@function stroke-blink($params, $stroke) {
   $color: $blink-default;
-  $weight: if(abs($border-x) + abs($border-y) > 0, 0, $thin);
-  $border-x: if($border-x == -$thin, -$thin * 2, -$thin - $weight);
-  $border-y: if($border-y == $thin, $thin * 2, $thin + $weight);
+
   @if (type-of($params) == color) {
     $color: $params;
   }
   @elseif (type-of($params) == map) {
     $color: map-get($params, color);
   }
-  @return (result: $border-x $border-y 0 0 $color inset, x: $border-x, y: $border-y);
+
+  $stroke: set-nth($stroke, 1, nth($stroke, 1) + $thin);
+  $stroke: set-nth($stroke, 2, nth($stroke, 2) - $thin);
+
+  $result: ();
+  $result: append($result, nth($stroke, 2) nth($stroke, 1) 0 0 $color inset, comma);
+
+  @return (result: $result, stroke: $stroke);
 }
 
 // @stroke-underline  Make a component underline
@@ -214,8 +194,21 @@
 //
 // @return            Box-shadow string
 
-@function stroke-underline($color: $underline-default) {
-  @return 0 4 * -$thin 0 0 $color inset;
+@function stroke-underline($params, $stroke) {
+  $color: $underline-default;
+
+  @if (type-of($params) == color) {
+    $color: $params;
+  }
+  @elseif (type-of($params) == map) {
+    $color: map-get($params, color);
+  }
+  $stroke: set-nth($stroke, 3, nth($stroke, 3) - $thin * 2);
+
+  $result: ();
+  $result: append($result, 0 nth($stroke, 3) 0 0 $color inset, comma);
+
+  @return (result: $result, stroke: $stroke);
 }
 
 // @stroke-shadow     Make shadow for component
@@ -266,27 +259,26 @@
 
 @mixin stroke($border: null, $blink: null, $underline: null, $shadow: null, $custom: null) {
   $result: ();
-  $border-x: -1;
-  $border-y: -1;
+  $stroke: 0, 0, 0, 0;
+
   @if($border) {
-    $stroke-border: stroke-border($border);
+    $stroke-border: stroke-border($border, $stroke);
     $result: join($result, map-get($stroke-border, result), comma);
-    $border-x: map-get($stroke-border, x);
-    $border-y: map-get($stroke-border, y);
+    $stroke: map-get($stroke-border, stroke);
   }
   @if($blink) {
-    $stroke-blink: stroke-blink($blink);
-    $result: append($result, map-get($stroke-blink, result), comma);
-    $border-x: map-get($stroke-blink, x);
-    $border-y: map-get($stroke-blink, y);
+    $stroke-blink: stroke-blink($blink, $stroke);
+    $result: join($result, map-get($stroke-blink, result), comma);
+    $stroke: map-get($stroke-blink, stroke);
   }
   @if($shadow) {
     $stroke-shadow: stroke-shadow($shadow);
-    $result: append($result, $stroke-shadow, comma);
+    $result: append($result, $stroke-shadow, comma); //TODO change to join
   }
   @if($underline) {
-    $underline-blink: stroke-underline($underline);
-    $result: append($result, $underline-blink, comma);
+    $stroke-underline: stroke-underline($underline, $stroke);
+    $result: join($result, map-get($stroke-underline, result), comma);
+    $stroke: map-get($stroke-underline, stroke);
   }
   @if($custom) {
     $result: append($result, $custom, comma);

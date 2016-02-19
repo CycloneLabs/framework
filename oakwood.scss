@@ -10,9 +10,9 @@
 // Set up your build using the `$modules` variable
 // Example how to enable all modules and features: $modules: (all: true, debug: true);
 
-@if not variable-exists(modules) {
-  $modules: (core: true, basic: true);
-} $m: $modules;
+@if not variable-exists(models) {
+  $models: (core: true, basic: true);
+} $m: $models;
 
 // Global requirements
 @if map-get($m, all) or map-get($m, core) or map-get($m, library) { @import "core/library"; }
@@ -20,23 +20,24 @@
 @if map-get($m, all) or map-get($m, core) or map-get($m, normalize) { @import "node_modules/normalize.css/normalize"; }
 @if map-get($m, all) or map-get($m, custom) or map-get($m, animate) { @import "node_modules/animate.css/animate"; }
 
-// Modules
-@if map-get($m, all) or map-get($m, core) or map-get($m, text) { @import "modules/t-text/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, icon) { @import "modules/i-icon/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, card) { @import "modules/c-card/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, layout) { @import "modules/l-layout/manifest"; }
-@if map-get($m, all) or map-get($m, custom) or map-get($m, group) { @import "modules/grp-group/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, button) { @import "modules/btn-button/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, switcher) { @import "modules/s-switcher/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, text-field) { @import "modules/tf-text-field/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "modules/ls-list-switcher/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, form-field) { @import "modules/ff-form-field/manifest"; }
+// Models
+@if map-get($m, all) or map-get($m, core) or map-get($m, text) { @import "models/t-text/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, icon) { @import "models/i-icon/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, card) { @import "models/c-card/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, layout) { @import "models/l-layout/manifest"; }
+@if map-get($m, all) or map-get($m, custom) or map-get($m, group) { @import "models/grp-group/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, button) { @import "models/btn-button/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, switcher) { @import "models/s-switcher/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, text-field) { @import "models/tf-text-field/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "models/ls-list-switcher/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, control-border) { @import "models/cb-control-border/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, control-underline) { @import "models/cu-control-underline/manifest"; }
 
 // Utilities
-@if map-get($m, all) or map-get($m, core) or map-get($m, margins) { @import "modules/m-margins/manifest"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, inline) { @import "modules/il-inline/manifest"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, block) { @import "modules/b-block/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, grid) { @import "modules/g-grid/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, padding) { @import "models/p-padding/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, inline) { @import "models/il-inline/manifest"; }
+@if map-get($m, all) or map-get($m, core) or map-get($m, block) { @import "models/b-block/manifest"; }
+@if map-get($m, all) or map-get($m, basic) or map-get($m, grid) { @import "models/g-grid/manifest"; }
 
 // FontAwesome dependency
 @if map-get($m, all) or map-get($m, basic) or map-get($m, form) or map-get($m, icon) or map-get($m, switcher) { @import "node_modules/font-awesome/scss/path"; }
