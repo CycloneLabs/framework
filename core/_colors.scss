@@ -22,7 +22,7 @@ $gamma: (
   orange: (4: #fff9f2, 3: #ffd0b2, 2: #ffa166, 1: #ff914d, 0: #fc8032, -1: #994f22, -2: #662b00, -3: #4d2000),
   yellow: (4: #fcfbeb, 3: #ffebb2, 2: #ffd257, 1: #ffc21a, 0: #e4a600, -1: #8c5600, -2: #593700, -3: #402700),
   green:  (4: #edfff1, 3: #b1e6b2, 2: #6dc770, 1: #4bae50, 0: #269941, -1: #165926, -2: #10401b, -3: #0a2610),
-  blue:   (4: #edfcff, 3: #ccefff, 2: #8cc9ff, 1: #4ea6ed, 0: #177ed5, -1: #115c99, -2: #003d73, -3: #00294d),
+  blue:   (4: #edfcff, 3: #b3daf5, 2: #59b4ff, 1: #459de6, 0: #177ed5, -1: #1466b3, -2: #003d73, -3: #00294d),
   purple: (4: #f7f9ff, 3: #ddccff, 2: #bca6ff, 1: #8b4dff, 0: #7e00ff, -1: #471f99, -2: #400080, -3: #330066),
   pink:   (4: #fff5ff, 3: #ffccfc, 2: #fd99ff, 1: #fc66ff, 0: #fc23ff, -1: #971599, -2: #650e66, -3: #4b0b4d),
 ) !default;
@@ -80,7 +80,7 @@ $shadow-success:   color(green, 3) !default;
 $shadow-error:     color(red, 3) !default;
 $shadow-invalid:   color(red, 3) !default;
 $shadow-focused:   color(yellow, 3) !default;
-$blink-riched:     color(slate, 2) !default;
+$blink-riched:     color(blue, 1) !default;
 $blink-default:    color(slate, 3) !default;
 $blink-muted:      color(slate, 4) !default;
 $blink-disabled:   color(slate, 4) !default;
@@ -105,4 +105,4 @@ $underline-warning:   color(yellow) !default;
 $underline-success:   color(green) !default;
 $underline-error:     color(red) !default;
 $underline-invalid:   color(red) !default;
-$underline-focused:   color(yellow) !default;
+$underline-focused:   color(yellow, 1) !default;

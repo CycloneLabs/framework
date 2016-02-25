@@ -7,6 +7,7 @@ $group-separator-color: $border-default !default;
   :has(Chunk) {
     height: size(3);
     line-height: size(3);
+    text-decoration: initial;
 
     &:not(:last-child) > [class] {
       border-bottom-right-radius: 0;

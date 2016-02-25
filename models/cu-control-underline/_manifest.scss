@@ -7,12 +7,11 @@ $control-underline-focus-underline: $underline-focused !default;
 $control-underline-invalid-underline: $underline-invalid !default;
 
 :model(Control-Underline) {
-  @include radius;
   align-items: flex-start;
   display: flex;
   line-height: size(3);
 
-  :has(Field) {
+  :has(Control) {
     @include stroke($underline: $control-underline-default-underline);
     flex-grow: 1;
     padding-left: size();
@@ -22,6 +21,7 @@ $control-underline-invalid-underline: $underline-invalid !default;
     ~ :has(Icon) {
       @include stroke($underline: $control-underline-default-underline);
       color: $control-underline-text-color;
+      cursor: default;
       margin-right: size(-0.8);
       min-width: size(3);
       order: -1;

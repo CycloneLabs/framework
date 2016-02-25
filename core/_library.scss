@@ -152,13 +152,16 @@
   @if (index($side, left)) {
     $stroke: set-nth($stroke, 4, $thin);
   }
-  @if ($side == ()) {
-    $stroke: $thin, -$thin, -$thin, $thin;
-  }
 
   $result: ();
-  $result: append($result, nth($stroke, 2) nth($stroke, 3) 0 0 $color inset, comma);
-  $result: append($result, nth($stroke, 4) nth($stroke, 1) 0 0 $color inset, comma);
+
+  @if(length($side) == 4 or length($side) == 0) {
+    $stroke: $thin, -$thin, -$thin, $thin;
+    $result: append($result, 0 0 0 $thin $color inset, comma);
+  } @else {
+    $result: append($result, nth($stroke, 2) nth($stroke, 1) 0 0 $color inset, comma);
+    $result: append($result, nth($stroke, 4) nth($stroke, 3) 0 0 $color inset, comma);
+  }
 
   @return (result: $result, stroke: $stroke);
 }
@@ -312,16 +315,6 @@
   &::-webkit-input-placeholder { @content }
   &::-moz-placeholder { @content }
   &:-ms-input-placeholder { @content }
-}
-
-// @ff-select-bugfix  Fix Firefox outline bug on select tag
-// $color             Color which would be applied to text
-//
-// @return            Fixed color style
-
-@mixin ff-select-bugfix($color) {
-  color: transparent;
-  text-shadow: 0 0 0 $color;
 }
 
 // @bug   the pattern to be embedded to wrong situations,

@@ -12,6 +12,7 @@
   :which(muted) { background-color: $bg-muted; }
   :which(selected) { background-color: $bg-selected; }
   :which(hovered) { background-color: $bg-hovered; }
+  :which(activated) { background-color: $bg-activated; }
   :which(info) { background-color: $bg-info; }
   :which(warning) { background-color: $bg-warning; }
   :which(success) { background-color: $bg-success; }
