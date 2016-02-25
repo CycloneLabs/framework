@@ -1,26 +1,30 @@
-$list-switcher-arrow-color: $border-default !default;
-$list-switcher-text-color: text-color($text-default) !default;
-$list-switcher-hover-color: text-color($text-hovered) !default;
-$list-switcher-focus-color: text-color($text-focused) !default;
-$list-switcher-invalid-color: text-color($text-invalid) !default;
-$list-switcher-disabled-color: text-color($text-disabled) !default;
+$list-switcher-arrow-color: text-color($text-riched) !default;
+$list-switcher-disabled-arrow-color: text-color($text-disabled) !default;
+$list-switcher-default-text: text-color($text-default) !default;
 
 :model(List-switcher) {
   appearance: initial;
   background-color: initial;
   border: initial;
+  border-radius: initial;
   box-shadow: initial;
   font-family: inherit;
   margin: initial;
   outline: initial;
-  padding: initial;
+  padding-top: initial;
+  padding-bottom: initial;
+  padding-left: initial;
   text-decoration: initial;
   user-select: none;
 }
 
+_:-moz-tree-row(hover), :model(List-switcher) { //Fix Firefox bug
+  color: transparent;
+  text-shadow: 0 0 0 $list-switcher-default-text;
+}
+
 :model(List-switcher) {
-  @include ff-select-bugfix($list-switcher-text-color);
-  background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-text-color))}' d='M0 2 3 5 l3-3z'/></svg>");
+  background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-arrow-color))}' d='M0 2 3 5 l3-3z'/></svg>"); //TODO COLOR
   background-position: calc(100% - 10px) 45%;
   background-repeat: no-repeat;
   background-size: size();
@@ -29,10 +33,11 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
   height: size(3);
   line-height: size(3);
   overflow: hidden;
+  padding-right: size(2) !important;
   transition: color $animated, text-shadow $animated;
 
   :has(Option) {
-    color: $list-switcher-text-color;
+    color: text-color($text-riched); //TODO Refactoring
     font-size: inherit; //Should be same
     text-shadow: initial;
   }
@@ -40,7 +45,7 @@ $list-switcher-disabled-color: text-color($text-disabled) !default;
   @each $state in $states-order {
     @if $state == Disabled {
       @include state($state) {
-        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-color))}' d='M1 1 5 5 l-2-2 l-2 2 l4-4'/></svg>");
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-arrow-color))}' d='M1 1 5 5 l-2-2 l-2 2 l4-4'/></svg>");
         pointer-events: none;
       }
     }

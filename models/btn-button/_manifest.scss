@@ -25,30 +25,32 @@ $button-disabled-color: text-color($text-disabled) !default;
   transition: color $animated;
   vertical-align: middle;
 
-  @each $state in $states-order {
-    @if $state == Focus {
-      @include state($state) {
-        color: $button-focus-color;
-      }
-    }
-    @elseif $state == Hover {
-      @include state($state) {
-        color: $button-hover-color;
-      }
-    }
-    @elseif $state == Active {
-      @include state($state) {
-        color: $button-active-color;
-        padding-top: $thin;
-      }
-    }
-    @elseif $state == Invalid {
-      @include state($state) {}
-    }
-    @elseif $state == Disabled {
-      @include state($state) {
-        color: $button-disabled-color;
-        pointer-events: none;
+  @include state(Active) {
+    padding-top: $thin;
+  }
+
+  @include state(Disabled) {
+    pointer-events: none;
+  }
+
+  &:not([class*="btn_theme-"]) {
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state) {
+          color: $button-focus-color;
+        }
+      } @else if $state == Hover {
+        @include state($state) {
+          color: $button-hover-color;
+        }
+      } @else if $state == Active {
+        @include state($state) {
+          color: $button-active-color;
+        }
+      } @else if $state == Disabled {
+        @include state($state) {
+          color: $button-disabled-color;
+        }
       }
     }
   }

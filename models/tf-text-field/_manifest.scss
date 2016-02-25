@@ -1,8 +1,3 @@
-$text-field-text-color: text-color($text-default) !default;
-$text-field-focus-color: text-color($text-focused) !default;
-$text-field-hover-color: text-color($text-hovered) !default;
-$text-field-active-color: text-color($text-activated) !default;
-$text-field-invalid-color: text-color($text-invalid) !default;
 $text-field-disabled-color: text-color($text-disabled) !default;
 $text-field-placeholder-opacity: 0.8 !default;
 
@@ -20,7 +15,6 @@ $text-field-placeholder-opacity: 0.8 !default;
 
 :model(Text-field) {
   -webkit-text-fill-color: currentColor;
-  color: $text-field-text-color;
   cursor: text;
   font-size: $font-size-small;
   height: size(3);

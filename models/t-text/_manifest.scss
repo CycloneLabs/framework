@@ -6,6 +6,7 @@
 
   :which(riched) { color: text-color($text-riched); }
   :which(muted) { color: text-color($text-muted); }
+  :which(activated) { color: text-color($text-activated); }
   :which(selected) { color: text-color($text-selected); }
   :which(hovered) { color: text-color($text-hovered); }
   :which(info) { color: text-color($text-info); }

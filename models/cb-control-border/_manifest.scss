@@ -1,5 +1,5 @@
 $control-border-background: $bg-default !default;
-$control-border-text-color: text-color($text-default) !default;
+$control-border-text-color: text-color($text-riched) !default;
 $control-border-disabled-color: text-color($text-disabled) !default;
 $control-border-default-border: $border-default !default;
 $control-border-disabled-border: $border-disabled !default;
@@ -19,6 +19,7 @@ $control-border-invalid-underline: $underline-invalid !default;
     @include stroke($control-border-default-border, $underline: $control-border-default-underline);
     @include radius;
     background-color: inherit;
+    //color: $control-border-text-color; //No! Because it override disabled state from form-field
     flex-grow: 1;
     padding-left: size();
     padding-right: size();
@@ -29,6 +30,7 @@ $control-border-invalid-underline: $underline-invalid !default;
       @include radius(left);
       background-color: inherit;
       color: $control-border-text-color;
+      cursor: default;
       margin-right: size(-0.8);
       min-width: size(3);
       order: -1;
