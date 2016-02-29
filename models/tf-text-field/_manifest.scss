@@ -1,5 +1,6 @@
+$text-field-default-text: text-color($text-riched) !default;
 $text-field-disabled-color: text-color($text-disabled) !default;
-$text-field-placeholder-opacity: 0.8 !default;
+$text-field-placeholder-color: text-color($text-muted) !default;
 
 :model(Text-field) {
   appearance: initial;
@@ -15,6 +16,7 @@ $text-field-placeholder-opacity: 0.8 !default;
 
 :model(Text-field) {
   -webkit-text-fill-color: currentColor;
+  color: $text-field-default-text;
   cursor: text;
   font-size: $font-size-small;
   height: size(3);
@@ -24,8 +26,8 @@ $text-field-placeholder-opacity: 0.8 !default;
   vertical-align: middle;
 
   @include placeholder {
-    color: currentColor;
-    opacity: $text-field-placeholder-opacity;
+    color: $text-field-placeholder-color;
+    opacity: 1;
   }
 
   &:which(Multiline) {

@@ -1,7 +1,6 @@
 $card-background: $bg-default !default;
-$card-border-color: $border-default !default;
-$card-border-muted-color: $border-muted !default;
-$card-border-active-color: $border-hovered !default;
+$card-border-color: $border-muted !default;
+$card-border-active-color: $border-default !default;
 $card-shadow-color: $shadow-default !default;
 
 :model(Card) {
@@ -9,6 +8,7 @@ $card-shadow-color: $shadow-default !default;
   @include radius;
   background-color: $card-background;
   border-color: $card-border-color;
+  display: block;
 
   :has(Body) {
     margin: $thin;
@@ -22,8 +22,6 @@ $card-shadow-color: $shadow-default !default;
   }
 
   &:which(Hover) {
-    @include stroke($card-border-muted-color);
-    border-color: $card-border-muted-color;
     transition: box-shadow $animated;
 
     &:hover {
@@ -32,7 +30,7 @@ $card-shadow-color: $shadow-default !default;
     }
 
     &:which(Shadow) {
-      @include stroke($card-border-muted-color, $shadow: $card-shadow-color);
+      @include stroke($card-border-color, $shadow: $card-shadow-color);
 
       &:hover {
         @include stroke($card-border-active-color, $shadow: $card-shadow-color);

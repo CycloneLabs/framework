@@ -10,14 +10,10 @@
   :which(pink) { background-color: color(pink); }
   :which(riched) { background-color: $bg-riched; }
   :which(muted) { background-color: $bg-muted; }
-  :which(selected) { background-color: $bg-selected; }
-  :which(hovered) { background-color: $bg-hovered; }
-  :which(activated) { background-color: $bg-activated; }
   :which(info) { background-color: $bg-info; }
   :which(warning) { background-color: $bg-warning; }
   :which(success) { background-color: $bg-success; }
   :which(error) { background-color: $bg-error; }
-  :which(focused) { background-color: $bg-focused; }
 
   :which(Wide) {
     width: 100%;
