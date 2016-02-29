@@ -1,6 +1,8 @@
-$list-switcher-arrow-color: text-color($text-riched) !default;
+$list-switcher-arrow-color: $border-default !default;
+$list-switcher-arrow-hover-color: $border-hovered !default;
 $list-switcher-disabled-arrow-color: text-color($text-disabled) !default;
-$list-switcher-default-text: text-color($text-default) !default;
+$list-switcher-default-text: text-color($text-riched) !default;
+$list-switcher-disabled-text: text-color($text-disabled) !default;
 
 :model(List-switcher) {
   appearance: initial;
@@ -24,7 +26,7 @@ _:-moz-tree-row(hover), :model(List-switcher) { //Fix Firefox bug
 }
 
 :model(List-switcher) {
-  background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-arrow-color))}' d='M0 2 3 5 l3-3z'/></svg>"); //TODO COLOR
+  background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-arrow-color))}' d='M0 2 3 5 l3-3z'/></svg>");
   background-position: calc(100% - 10px) 45%;
   background-repeat: no-repeat;
   background-size: size();
@@ -37,7 +39,7 @@ _:-moz-tree-row(hover), :model(List-switcher) { //Fix Firefox bug
   transition: color $animated, text-shadow $animated;
 
   :has(Option) {
-    color: text-color($text-riched); //TODO Refactoring
+    color: $list-switcher-default-text;
     font-size: inherit; //Should be same
     text-shadow: initial;
   }
@@ -45,8 +47,14 @@ _:-moz-tree-row(hover), :model(List-switcher) { //Fix Firefox bug
   @each $state in $states-order {
     @if $state == Disabled {
       @include state($state) {
-        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='rgba(0,0,0,0)' stroke='#{html-encode(color-to-hex($list-switcher-disabled-arrow-color))}' d='M1 1 5 5 l-2-2 l-2 2 l4-4'/></svg>");
+        background-image: initial;
+        color: $list-switcher-disabled-text;
         pointer-events: none;
+      }
+    }
+    @elseif $state == Hover {
+      @include state($state) {
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-arrow-hover-color))}' d='M0 2 3 5 l3-3z'/></svg>");
       }
     }
   }

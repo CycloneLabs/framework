@@ -1,3 +1,5 @@
+$text-header-color: text-color($text-riched) !default;
+
 :model(Text) {
   color: text-color($text-article);
   font-family: $font-family;
@@ -6,16 +8,13 @@
 
   :which(riched) { color: text-color($text-riched); }
   :which(muted) { color: text-color($text-muted); }
-  :which(activated) { color: text-color($text-activated); }
-  :which(selected) { color: text-color($text-selected); }
-  :which(hovered) { color: text-color($text-hovered); }
   :which(info) { color: text-color($text-info); }
   :which(warning) { color: text-color($text-warning); }
   :which(success) { color: text-color($text-success); }
   :which(error) { color: text-color($text-error); }
-  :which(focused) { color: text-color($text-focused); }
 
   :has(Header) {
+    color: $text-header-color;
     font-size: 2 * $font-size-tiny;
     line-height: size(3);
   }

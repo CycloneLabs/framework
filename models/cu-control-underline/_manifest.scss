@@ -1,4 +1,3 @@
-$control-underline-text-color: text-color($text-default) !default;
 $control-underline-disabled-color: text-color($text-disabled) !default;
 $control-underline-disabled-underline: transparent !default;
 $control-underline-default-underline: $underline-default !default;
@@ -20,7 +19,7 @@ $control-underline-invalid-underline: $underline-invalid !default;
 
     ~ :has(Icon) {
       @include stroke($underline: $control-underline-default-underline);
-      color: $control-underline-text-color;
+      color: $control-underline-default-underline;
       cursor: default;
       margin-right: size(-0.8);
       min-width: size(3);
@@ -62,6 +61,7 @@ $control-underline-invalid-underline: $underline-invalid !default;
 
           ~ :has(Icon) {
             @include stroke($underline: $control-underline-hover-underline);
+            color: $control-underline-hover-underline;
           }
 
           ~ :has(Button) {

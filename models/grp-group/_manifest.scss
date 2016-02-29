@@ -1,6 +1,7 @@
 $group-separator-color: $border-default !default;
 
 :model(gRouP) {
+  border-color: inherit;
   display: flex;
   overflow: hidden;
 

@@ -1,7 +1,7 @@
 $control-border-background: $bg-default !default;
-$control-border-text-color: text-color($text-riched) !default;
 $control-border-disabled-color: text-color($text-disabled) !default;
 $control-border-default-border: $border-default !default;
+$control-border-hovered-border: $border-hovered !default;
 $control-border-disabled-border: $border-disabled !default;
 $control-border-default-underline: $underline-default !default;
 $control-border-focus-underline: $underline-focused !default;
@@ -19,7 +19,6 @@ $control-border-invalid-underline: $underline-invalid !default;
     @include stroke($control-border-default-border, $underline: $control-border-default-underline);
     @include radius;
     background-color: inherit;
-    //color: $control-border-text-color; //No! Because it override disabled state from form-field
     flex-grow: 1;
     padding-left: size();
     padding-right: size();
@@ -29,7 +28,7 @@ $control-border-invalid-underline: $underline-invalid !default;
       @include stroke(top bottom left $control-border-default-border, $underline: $control-border-default-underline);
       @include radius(left);
       background-color: inherit;
-      color: $control-border-text-color;
+      color: $control-border-default-border;
       cursor: default;
       margin-right: size(-0.8);
       min-width: size(3);
@@ -68,14 +67,15 @@ $control-border-invalid-underline: $underline-invalid !default;
       }
       @elseif $state == Hover {
         @include state($state) {
-          @include stroke($control-border-default-border, $underline: $control-border-hover-underline);
+          @include stroke($control-border-hovered-border, $underline: $control-border-hover-underline);
 
           ~ :has(Icon) {
-            @include stroke(top bottom left $control-border-default-border, $underline: $control-border-hover-underline);
+            @include stroke(top bottom left $control-border-hovered-border, $underline: $control-border-hover-underline);
+            color: $control-border-hovered-border;
           }
 
           ~ :has(Button) {
-            @include stroke(top right bottom $control-border-default-border, $underline: $control-border-hover-underline);
+            @include stroke(top right bottom $control-border-hovered-border, $underline: $control-border-hover-underline);
           }
         }
       }

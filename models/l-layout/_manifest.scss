@@ -3,7 +3,7 @@ $layout-min-size                    : size(120) !default;
 $layout-overlay-color               : color(black) !default;
 $layout-overlay-transparency        : 0.4 !default;
 $layout-container-background-color  : $bg-default !default;
-$layout-container-border-color      : "" !default;
+$layout-container-border-color      : $border-muted !default;
 $layout-container-edge-margin       : size(3) !default;
 $layout-container-side-margin       : size(3) !default;
 

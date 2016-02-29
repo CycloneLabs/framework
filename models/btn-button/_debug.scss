@@ -1,21 +1,36 @@
-button:model(ButToN) {
-
-  &:which(Disabled):not([disabled]):not([tabindex]) {
-    /**/
-    /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
-    /**/
-    @include bug;
-    content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
-  }
-}
-
-:not(button):not(a):model(ButToN) {
-
-  &:not(:which(Disabled)):not([disabled]):not([tabindex]) {
+:model(ButToN):not(button):not(input):not(a),
+a:model(ButToN):not([href]) {
+  &:not([disabled]):not(:which(Disabled)) {
+    &:not([tabindex]),
+    &[tabindex^="-"] {
     /**/
     /* Bug :  model should have attribute `tabindex` like `0` to receive focus
     /**/
     @include bug;
     content: "model should have attribute `tabindex` like `0` to receive focus";
+    }
+  }
+}
+
+input,
+button {
+  &:not([disabled]):model(ButToN):which(Disabled) {
+    &:not([tabindex^="-"]) { // tabindex `-1` is not applyed
+      /**/
+      /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
+      /**/
+      @include bug;
+      content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+    }
+  }
+}
+
+a[href]:model(ButToN):which(Disabled) {
+  &:not([tabindex^="-"]) { // tabindex `-1` is not applyed
+    /**/
+    /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
+    /**/
+    @include bug;
+    content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
   }
 }
