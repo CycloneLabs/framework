@@ -95,6 +95,9 @@ $control-border-invalid-underline: $underline-invalid !default;
       @elseif $state == Disabled {
         @include state($state) {
           @include stroke($control-border-disabled-border);
+          @include placeholder {
+            color: transparent;
+          }
 
           ~ :has(Icon) {
             @include stroke(top bottom left $control-border-disabled-border);
@@ -103,14 +106,9 @@ $control-border-invalid-underline: $underline-invalid !default;
 
           ~ :has(Button) {
             @include stroke(top right bottom $control-border-disabled-border);
-
             @include state($state) {
               display: none;
             }
-          }
-
-          @include placeholder {
-            color: transparent;
           }
         }
       }

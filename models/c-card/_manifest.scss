@@ -4,37 +4,41 @@ $card-border-active-color: $border-default !default;
 $card-shadow-color: $shadow-default !default;
 
 :model(Card) {
-  @include stroke($card-border-color);
   @include radius;
   background-color: $card-background;
   border-color: $card-border-color;
+  border-style: solid;
+  border-width: $thin;
   display: block;
 
   :has(Body) {
-    margin: $thin;
-    border-top: $thin solid;
-    border-color: inherit;
+    border-bottom: inherit;
+    border-top: inherit;
     transition: border $animated;
+
+    + :has(Body) {
+      border-top: initial;
+    }
+
+    &:first-child {
+      border-top: initial;
+      top: initial;
+    }
+
+    &:last-child {
+      border-bottom: initial;
+    }
   }
 
   &:which(Shadow) {
-    @include stroke($card-border-color, $shadow: $card-shadow-color);
+    @include stroke($shadow: $card-shadow-color);
   }
 
   &:which(Hover) {
-    transition: box-shadow $animated;
+    transition: box-shadow $animated, border-color $animated;
 
     &:hover {
-      @include stroke($card-border-active-color);
       border-color: $card-border-active-color;
-    }
-
-    &:which(Shadow) {
-      @include stroke($card-border-color, $shadow: $card-shadow-color);
-
-      &:hover {
-        @include stroke($card-border-active-color, $shadow: $card-shadow-color);
-      }
     }
   }
 }

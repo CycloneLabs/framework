@@ -21,8 +21,8 @@ $group-separator-color: $border-default !default;
     }
 
     + :has(Chunk) {
-      border-left: thin solid;
       border-color: inherit;
+      border-left: thin solid;
     }
 
     &:which(Spacer) {

@@ -7,9 +7,9 @@ module.exports = postcss.plugin('postcss-nsbuilder', function (opts) {
   }
 
   function get(type, string) {
-    var startPos = type.length + 2; // symbols : and (
-    var endPos = string.length + 1; // symbol )
-    return clean(string.substring(startPos, endPos));
+    var start = type.length + 2; // symbols : and (
+    var end = string.length + 1; // symbol )
+    return clean(string.substring(start, end));
   }
 
   function separate(string, separator) {
@@ -40,18 +40,19 @@ module.exports = postcss.plugin('postcss-nsbuilder', function (opts) {
       var currentModule = matches.filter(function(item) { return !!~item.indexOf(':model') })[0];
       var updatedSelector = rule.selector, name;
       var prefix = abbr( get('model', currentModule) );
+      var matchesCounter = matches.length;
 
-      for(matchesCounter = matches.length; matchesCounter--;) {
+      while(matchesCounter--) {
         switch (true) {
           case !!~matches[matchesCounter].indexOf(':model'):
-            name = '.' + get('model', matches[matchesCounter])
-            break
+            name = '.' + get('model', matches[matchesCounter]);
+            break;
           case !!~matches[matchesCounter].indexOf(':has'):
             name = '.' + prefix + '-' + get('has', matches[matchesCounter]);
-            break
+            break;
           case !!~matches[matchesCounter].indexOf(':which'):
-            name = '.' + prefix + '_' + get('which', matches[matchesCounter])
-            break
+            name = '.' + prefix + '_' + get('which', matches[matchesCounter]);
+            break;
         }
         updatedSelector = updatedSelector.replace(matches[matchesCounter], name.toLowerCase());
       }
