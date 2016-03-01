@@ -6,6 +6,14 @@ $text-header-color: text-color($text-riched) !default;
   font-size: $font-size-normal;
   line-height: size(2);
 
+  :which(slate) { color: color(slate); }
+  :which(red) { color: color(red); }
+  :which(orange) { color: color(orange); }
+  :which(yellow) { color: color(yellow); }
+  :which(green) { color: color(green); }
+  :which(blue) { color: color(blue); }
+  :which(purple) { color: color(purple); }
+  :which(pink) { color: color(pink); }
   :which(riched) { color: text-color($text-riched); }
   :which(muted) { color: text-color($text-muted); }
   :which(info) { color: text-color($text-info); }

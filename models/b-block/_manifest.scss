@@ -16,8 +16,8 @@
   :which(error) { background-color: $bg-error; }
 
   :which(Wide) {
-    width: 100%;
     display: inline-block;
+    width: 100%;
   }
 
   :which(Overflow) {
@@ -33,17 +33,17 @@
   }
 
   :which(Header) {
-    position: relative;
-    z-index: $z-local;
     @include radius(bottom, 0);
     @include radius(top);
+    position: relative;
+    z-index: $z-local;
   }
 
   :which(Footer) {
-    position: relative;
-    top: -$thin;
     @include radius(bottom);
     @include radius(top, 0);
+    position: relative;
+    top: -$thin;
   }
 
   :which(Indented) {
@@ -71,6 +71,10 @@
 
 [tabindex] {
   outline: initial;
+}
+
+a {
+  color: inherit;
 }
 
 @if (map-get($m, debug)) { @import "debug"; }
