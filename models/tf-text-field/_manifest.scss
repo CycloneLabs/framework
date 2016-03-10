@@ -15,6 +15,7 @@ $text-field-placeholder-color: text-color($text-muted) !default;
 }
 
 :model(Text-field) {
+  -moz-osx-font-smoothing: grayscale;
   -webkit-text-fill-color: currentColor;
   color: $text-field-default-text;
   cursor: text;
@@ -26,6 +27,7 @@ $text-field-placeholder-color: text-color($text-muted) !default;
   vertical-align: middle;
 
   @include placeholder {
+    -webkit-text-fill-color: currentColor;
     color: $text-field-placeholder-color;
     opacity: 1;
   }
