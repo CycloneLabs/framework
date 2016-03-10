@@ -303,19 +303,18 @@
 
 // @state               Makes original and artificial selector by class and pseudo-class
 // $state               State name
-// $suffix-combinator   Selector's combinator to apply other part of selector
 // $suffix              End placed part of selector
 //
 // @return    Properties in new selector
 
-@mixin state($state, $suffix-combinator: "", $suffix: "") {
+@mixin state($state, $suffix: "") {
   $state-alias: $state;
   @if($state == Selected) {
     $state-alias: checked;
   }
 
-  &:#{to-lower-case($state-alias) unquote($suffix-combinator) unquote($suffix)},
-  &:which(#{$state}) #{unquote($suffix-combinator) unquote($suffix)} {
+  &:#{to-lower-case($state-alias)}#{unquote($suffix)},
+  &:which(#{$state})#{unquote($suffix)} {
     @content;
   }
 }
