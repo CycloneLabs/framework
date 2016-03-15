@@ -2,7 +2,7 @@
 
   :has(Rhythm):before {
     $shadow: ();
-    @for $i from 0 to 100 {
+    @for $i from 0 to 200 {
       $shadow: append($shadow, "0 #{$line-step * 2 * $i - 10} 0 0 rgba(122, 93, 197, 0.2)", comma);
       $shadow: append($shadow, "0 #{$line-step * 2 * $i} 0 0 rgba(197, 93, 122, 0.2)", comma);
     }
