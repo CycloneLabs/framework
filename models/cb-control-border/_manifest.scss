@@ -16,7 +16,7 @@ $control-border-invalid-underline: $underline-invalid !default;
   line-height: size(3);
 
   :has(Control) {
-    @include stroke($control-border-default-border, $underline: $control-border-default-underline);
+    @include stroke(left top right $control-border-default-border, $underline: $control-border-default-underline);
     @include radius;
     background-color: inherit;
     flex-grow: 1;
@@ -25,7 +25,7 @@ $control-border-invalid-underline: $underline-invalid !default;
     transition: color $animated, box-shadow $animated;
 
     ~ :has(Icon) {
-      @include stroke(top bottom left $control-border-default-border, $underline: $control-border-default-underline);
+      @include stroke(top left $control-border-default-border, $underline: $control-border-default-underline);
       @include radius(left);
       background-color: inherit;
       color: $control-border-default-border;
@@ -40,7 +40,7 @@ $control-border-invalid-underline: $underline-invalid !default;
     }
 
     ~ :has(Button) {
-      @include stroke(top right bottom $control-border-default-border, $underline: $control-border-default-underline);
+      @include stroke(top right $control-border-default-border, $underline: $control-border-default-underline);
       @include radius(right);
       background-color: inherit;
       margin-left: size(-0.8);
@@ -54,41 +54,41 @@ $control-border-invalid-underline: $underline-invalid !default;
     @each $state in $states-order {
       @if $state == Focus {
         @include state($state) {
-          @include stroke($control-border-default-border, $underline: $control-border-focus-underline);
+          @include stroke(left top right $control-border-default-border, $underline: $control-border-focus-underline);
 
           ~ :has(Icon) {
-            @include stroke(top bottom left $control-border-default-border, $underline: $control-border-focus-underline);
+            @include stroke(top left $control-border-default-border, $underline: $control-border-focus-underline);
           }
 
           ~ :has(Button) {
-            @include stroke(top right bottom $control-border-default-border, $underline: $control-border-focus-underline);
+            @include stroke(top right $control-border-default-border, $underline: $control-border-focus-underline);
           }
         }
       }
       @elseif $state == Hover {
         @include state($state) {
-          @include stroke($control-border-hovered-border, $underline: $control-border-hover-underline);
+          @include stroke(left top right $control-border-hovered-border, $underline: $control-border-hover-underline);
 
           ~ :has(Icon) {
-            @include stroke(top bottom left $control-border-hovered-border, $underline: $control-border-hover-underline);
+            @include stroke(top left $control-border-hovered-border, $underline: $control-border-hover-underline);
             color: $control-border-hovered-border;
           }
 
           ~ :has(Button) {
-            @include stroke(top right bottom $control-border-hovered-border, $underline: $control-border-hover-underline);
+            @include stroke(top right $control-border-hovered-border, $underline: $control-border-hover-underline);
           }
         }
       }
       @elseif $state == Invalid {
         @include state($state) {
-          @include stroke($control-border-default-border, $underline: $control-border-invalid-underline);
+          @include stroke(left top right $control-border-default-border, $underline: $control-border-invalid-underline);
 
           ~ :has(Icon) {
-            @include stroke(top bottom left $control-border-default-border, $underline: $control-border-invalid-underline);
+            @include stroke(top left $control-border-default-border, $underline: $control-border-invalid-underline);
           }
 
           ~ :has(Button) {
-            @include stroke(top right bottom $control-border-default-border, $underline: $control-border-invalid-underline);
+            @include stroke(top right $control-border-default-border, $underline: $control-border-invalid-underline);
           }
         }
       }

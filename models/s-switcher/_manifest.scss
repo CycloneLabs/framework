@@ -52,43 +52,59 @@ $switcher-selected-color: text-color($text-selected) !default;
 
     @each $state in $states-order {
       @if $state == Focus {
-        @include state($state, "+", ":has(Label)") {
-          color: $switcher-focus-color;
+        @include state($state) {
+          + :has(Label) {
+            color: $switcher-focus-color;
+          }
         }
 
-        @include state($state, "+", ":has(Label)::before") {
-          color: $switcher-focus-color;
+        @include state($state) {
+          + :has(Label)::before {
+            color: $switcher-focus-color;
+          }
         }
       }
       @elseif $state == Hover {
-        @include state($state, "+", ":has(Label)") {
-          color: $switcher-hover-color;
+        @include state($state) {
+          + :has(Label) {
+            color: $switcher-hover-color;
+          }
         }
 
-        @include state($state, "+", ":has(Label)::before") {
-          color: $switcher-hover-color;
+        @include state($state) {
+          + :has(Label)::before {
+            color: $switcher-hover-color;
+          }
         }
       }
       @elseif $state == Active {
         @include state($state) {}
       }
       @elseif $state == Invalid {
-        @include state($state, "+", ":has(Label)") {
-          color: $switcher-invalid-color;
+        @include state($state) {
+          + :has(Label) {
+            color: $switcher-invalid-color;
+          }
         }
 
-        @include state($state, "+", ":has(Label)::before") {
-          color: $switcher-invalid-color;
+        @include state($state) {
+          + :has(Label)::before {
+            color: $switcher-invalid-color;
+          }
         }
       }
       @elseif $state == Disabled {
-        @include state($state, "+", ":has(Label)") {
-          color: $switcher-disabled-color;
-          pointer-events: none;
+        @include state($state) {
+          + :has(Label) {
+            color: $switcher-disabled-color;
+            pointer-events: none;
+          }
         }
 
-        @include state($state, "+", ":has(Label)::before") {
-          color: $switcher-disabled-color;
+        @include state($state) {
+          + :has(Label)::before {
+            color: $switcher-disabled-color;
+          }
         }
       }
     }

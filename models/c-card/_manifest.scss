@@ -6,36 +6,39 @@ $card-shadow-color: $shadow-default !default;
 :model(Card) {
   @include radius;
   background-color: $card-background;
-  border-color: $card-border-color;
-  border-style: solid;
-  border-width: $thin;
+  border: $thin solid $card-border-color;
   display: block;
+  margin-bottom: -2 * $thin;
+  position: relative;
+  top: -$thin;
 
   :has(Body) {
-    border-bottom: inherit;
-    border-top: inherit;
-    transition: border $animated;
+    border-bottom-style: solid;
+    border-color: inherit;
+    border-top-style: solid;
+    border-width: $thin;
+    transition: box-shadow $animated, border-color $animated; //TODO https://bugs.webkit.org/show_bug.cgi?id=46041
+    margin: -$thin 0;
 
-    + :has(Body) {
-      border-top: initial;
-    }
-
+    + :has(Body),
     &:first-child {
       border-top: initial;
-      top: initial;
+      margin-top: initial;
     }
 
     &:last-child {
       border-bottom: initial;
+      margin-bottom: initial;
     }
   }
 
   &:which(Shadow) {
     @include stroke($shadow: $card-shadow-color);
+    border: $thin solid $card-border-active-color;
   }
 
-  &:which(Hover) {
-    transition: box-shadow $animated, border-color $animated;
+  &:which(Hover):not(:which(Shadow)) {
+    transition: border-color $animated;
 
     &:hover {
       border-color: $card-border-active-color;
