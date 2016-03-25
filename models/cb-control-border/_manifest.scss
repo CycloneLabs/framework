@@ -95,7 +95,7 @@ $control-border-invalid-underline: $underline-invalid !default;
       @elseif $state == Disabled {
         @include state($state) {
           @include stroke($control-border-disabled-border);
-          @include placeholder {
+          &::placeholder {
             color: transparent;
           }
 

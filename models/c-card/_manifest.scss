@@ -17,8 +17,8 @@ $card-shadow-color: $shadow-default !default;
     border-color: inherit;
     border-top-style: solid;
     border-width: $thin;
-    transition: box-shadow $animated, border-color $animated; //TODO https://bugs.webkit.org/show_bug.cgi?id=46041
     margin: -$thin 0;
+    transition: box-shadow $animated, border-color $animated; //TODO https://bugs.webkit.org/show_bug.cgi?id=46041
 
     + :has(Body),
     &:first-child {
@@ -32,12 +32,12 @@ $card-shadow-color: $shadow-default !default;
     }
   }
 
-  &:which(Shadow) {
+  &:is(Shadow) {
     @include stroke($shadow: $card-shadow-color);
     border: $thin solid $card-border-active-color;
   }
 
-  &:which(Hover):not(:which(Shadow)) {
+  &:is(Hover):not(:is(Shadow)) {
     transition: border-color $animated;
 
     &:hover {

@@ -1,6 +1,8 @@
 $fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/FortAwesome/Font-Awesome/pull/6020/files
 
 :model(Icon) {
+  //Reason: including vendor prefixes
+  // scss-lint:disable PropertySortOrder
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: inline-block;
@@ -11,29 +13,29 @@ $fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/F
   text-rendering: auto; // optimizelegibility throws things off #1094
   width: 1.4em;
 
-  &:which(2x) { font-size: 2 * $font-size-tiny; }
+  &:is(2x) { font-size: 2 * $font-size-tiny; }
 
-  &:which(3x) { font-size: 3 * $font-size-tiny; }
+  &:is(3x) { font-size: 3 * $font-size-tiny; }
 
-  &:which(4x) { font-size: 4 * $font-size-tiny; }
+  &:is(4x) { font-size: 4 * $font-size-tiny; }
 
-  &:which(5x) { font-size: 5 * $font-size-tiny; }
+  &:is(5x) { font-size: 5 * $font-size-tiny; }
 
-  &:which(spin) { animation: spin $animation-time * 8 infinite linear; }
+  &:is(spin) { animation: spin $animation-time * 8 infinite linear; }
 
-  &:which(pulse) { animation: spin $animation-time * 8 infinite steps(9); }
+  &:is(pulse) { animation: spin $animation-time * 8 infinite steps(9); }
 
-  &:which(inverse) { filter: invert(100%); }
+  &:is(inverse) { filter: invert(100%); }
 
-  &:which(rotate-90) { transform: rotate(90deg); }
+  &:is(rotate-90) { transform: rotate(90deg); }
 
-  &:which(rotate-180) { transform: rotate(180deg); }
+  &:is(rotate-180) { transform: rotate(180deg); }
 
-  &:which(rotate-270) { transform: rotate(270deg); }
+  &:is(rotate-270) { transform: rotate(270deg); }
 
-  &:which(h-flip) { transform: scale(-1, 1); }
+  &:is(h-flip) { transform: scale(-1, 1); }
 
-  &:which(v-flip) { transform: scale(1, -1); }
+  &:is(v-flip) { transform: scale(1, -1); }
 }
 
 @import "../../node_modules/font-awesome/scss/variables";

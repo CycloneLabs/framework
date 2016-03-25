@@ -17,29 +17,35 @@ $layout-container-side-margin       : size(3) !default;
     padding-left: $layout-container-side-margin;
     padding-right: $layout-container-side-margin;
 
-    &:which(Painted) {
+    &:is(Painted) {
       @include stroke(bottom $layout-container-border-color);
       background-color: $layout-container-background-color;
     }
 
-    &:not(:which(Painted)) + :which(Painted),
-    &:not(:which(Painted)) + * :which(Painted) {
+    &:not(:is(Painted)) + :is(Painted),
+    &:not(:is(Painted)) + * :is(Painted) {
       @include stroke(bottom top $layout-container-border-color);
     }
 
-    &:which(Margined) {
+    &:is(Margined) {
       padding-bottom: $layout-container-edge-margin;
       padding-top: $layout-container-edge-margin;
     }
   }
 
-  :has(Overlay) {
-    background-color: rgba($layout-overlay-color, $layout-overlay-transparency);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: $z-overlay;
+  &:is(Overlay) {
+    overflow: hidden;
+
+    &:before {
+      background-color: rgba($layout-overlay-color, $layout-overlay-transparency);
+      bottom: 0;
+      content: "";
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      user-select: none;
+      z-index: $z-overlay;
+    }
   }
 }

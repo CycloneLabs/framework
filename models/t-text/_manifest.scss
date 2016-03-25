@@ -7,20 +7,33 @@ $text-default-text: text-color($text-article) !default;
   font-size: $font-size-normal;
   line-height: size(2);
 
-  :which(slate) { color: color(slate); }
-  :which(red) { color: color(red); }
-  :which(orange) { color: color(orange); }
-  :which(yellow) { color: color(yellow); }
-  :which(green) { color: color(green); }
-  :which(blue) { color: color(blue); }
-  :which(purple) { color: color(purple); }
-  :which(pink) { color: color(pink); }
-  :which(riched) { color: text-color($text-riched); }
-  :which(muted) { color: text-color($text-muted); }
-  :which(info) { color: text-color($text-info); }
-  :which(warning) { color: text-color($text-warning); }
-  :which(success) { color: text-color($text-success); }
-  :which(error) { color: text-color($text-error); }
+  :is(slate) { color: color(slate); }
+
+  :is(red) { color: color(red); }
+
+  :is(orange) { color: color(orange); }
+
+  :is(yellow) { color: color(yellow); }
+
+  :is(green) { color: color(green); }
+
+  :is(blue) { color: color(blue); }
+
+  :is(purple) { color: color(purple); }
+
+  :is(pink) { color: color(pink); }
+
+  :is(riched) { color: text-color($text-riched); }
+
+  :is(muted) { color: text-color($text-muted); }
+
+  :is(info) { color: text-color($text-info); }
+
+  :is(warning) { color: text-color($text-warning); }
+
+  :is(success) { color: text-color($text-success); }
+
+  :is(error) { color: text-color($text-error); }
 
   :has(Header) {
     color: $text-header-color;
@@ -28,47 +41,47 @@ $text-default-text: text-color($text-article) !default;
     line-height: size(3);
   }
 
-  :which(Small) {
+  :is(Small) {
     font-size: $font-size-tiny;
   }
 
-  :which(Medium) {
+  :is(Medium) {
     font-size: $font-size-small;
   }
 
-  :which(Large) {
+  :is(Large) {
     font-size: $font-size-normal;
   }
 
-  :which(Plain) {
+  :is(Plain) {
     font-family: $font-family-mono;
     overflow: auto;
     white-space: pre;
   }
 
-  :which(Crop) {
+  :is(Crop) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  :which(Right) {
+  :is(Right) {
     text-align: right;
   }
 
-  :which(Left) {
+  :is(Left) {
     text-align: left;
   }
 
-  :which(Center) {
+  :is(Center) {
     text-align: center;
   }
 
-  :which(Bold) {
+  :is(Bold) {
     font-weight: bold;
   }
 
-  :which(Italic) {
+  :is(Italic) {
     font-style: italic;
   }
 }

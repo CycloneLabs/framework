@@ -7,36 +7,31 @@ $list-switcher-disabled-text: text-color($text-disabled) !default;
 :model(List-switcher) {
   appearance: initial;
   background-color: initial;
-  border: initial;
-  border-radius: initial;
-  box-shadow: initial;
-  font-family: inherit;
-  margin: initial;
-  outline: initial;
-  padding-bottom: initial;
-  padding-left: initial;
-  padding-top: initial;
-  text-decoration: initial;
-  user-select: none;
-}
-
-_:-moz-tree-row(hover), :model(List-switcher) { //Fix Firefox bug
-  color: transparent;
-  text-shadow: 0 0 0 $list-switcher-default-text;
-}
-
-:model(List-switcher) {
   background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-arrow-color))}' d='M0 2 3 5 l3-3z'/></svg>");
   background-position: calc(100% - 10px) 45%;
   background-repeat: no-repeat;
   background-size: size();
+  border: initial;
+  border-radius: initial;
+  box-shadow: initial;
   cursor: pointer;
+  font-family: inherit;
   font-size: $font-size-small;
   height: size(3);
   line-height: size(3);
+  margin: initial;
+  outline: initial;
   overflow: hidden;
-  padding-right: size(2) !important;
+  padding-bottom: initial;
+  padding-left: initial;
+  padding-top: initial;
+  text-decoration: initial;
   transition: color $animated, text-shadow $animated;
+  user-select: none;
+
+  &:not(:disabled):not(:is(disabled)) {
+    padding-right: size(2);
+  }
 
   :has(Option) {
     color: $list-switcher-default-text;
@@ -60,4 +55,5 @@ _:-moz-tree-row(hover), :model(List-switcher) { //Fix Firefox bug
   }
 }
 
+@import "hack";
 @if (map-get($m, debug)) { @import "debug"; }

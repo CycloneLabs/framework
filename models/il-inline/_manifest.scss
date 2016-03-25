@@ -8,33 +8,33 @@
     margin-left: size(-1);
   }
 
-  :which(Indented) {
+  :is(Indented) {
     margin-left: size();
   }
 
-  :which(Indented-x) {
+  :is(Indented-x) {
     margin-left: size(2);
   }
 
   :has(RtL) {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: wrap row-reverse;
     justify-content: flex-end;
 
     //TODO Check "Negative margins" solution (2)
     margin-right: size(-1);
 
-    :which(Indented) {
+    :is(Indented) {
       margin-right: size();
     }
 
-    :which(Indented-x) {
+    :is(Indented-x) {
       margin-right: size(2);
     }
   }
 
-  :which(Indented),
-  :which(Indented-x) {
+  :is(Indented),
+  :is(Indented-x) {
     display: inline-block;
     vertical-align: top;
 

@@ -1,7 +1,4 @@
-:model(Grid) > :which(First):first-child + :which(Last):last-child {
-  /**/
-  /* Bug    :  Bad practice
-  /**/
+:model(Grid) > :is(First):first-child + :is(Last):last-child {
   @include bug;
   content: "For this purpose, use grid modifier `between`";
 }
