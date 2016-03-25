@@ -1,3 +1,5 @@
+// reason: Public info
+// scss-lint:disable Comment
 /**/
 /* Oakwood
 /* https://github.com/Cyclonelabs/framework.git
@@ -8,18 +10,15 @@
 // Entry file
 // Imports all Oakwood files in their intended order for easy mass-inclusion
 // Set up your build using the `$modules` variable
-// Example how to enable all models and features:
-// $models: (all: true, debug: true);
 
 @if not variable-exists(models) {
-  $models: (core: true, basic: true);
+  $models: (all: true, debug: false);
 } $m: $models;
 
 // Global requirements
 @if map-get($m, all) or map-get($m, core) or map-get($m, library) { @import "core/library"; }
 @if map-get($m, all) or map-get($m, core) or map-get($m, variables) { @import "core/variables"; }
 @if map-get($m, all) or map-get($m, core) or map-get($m, normalize) { @import "node_modules/normalize.css/normalize"; }
-@if map-get($m, all) or map-get($m, custom) or map-get($m, animate) { @import "node_modules/animate.css/animate"; }
 
 // Models
 @if map-get($m, all) or map-get($m, core) or map-get($m, text) { @import "models/t-text/manifest"; }

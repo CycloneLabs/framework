@@ -8,20 +8,17 @@ $button-disabled-color: text-color($text-disabled) !default;
   background-color: initial;
   border: initial;
   box-shadow: initial;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
   font-family: inherit;
+  font-size: $font-size-small;
+  height: size(3);
+  line-height: size(3);
   margin: initial;
   outline: initial;
   padding: initial;
   text-decoration: initial;
-  user-select: none;
-}
-
-:model(ButToN) {
-  cursor: pointer;
-  display: inline-block;
-  font-size: $font-size-small;
-  height: size(3);
-  line-height: size(3);
   transition: color $animated;
   vertical-align: middle;
 
@@ -39,15 +36,18 @@ $button-disabled-color: text-color($text-disabled) !default;
         @include state($state) {
           color: $button-focus-color;
         }
-      } @else if $state == Hover {
+      }
+      @else if $state == Hover {
         @include state($state) {
           color: $button-hover-color;
         }
-      } @else if $state == Active {
+      }
+      @else if $state == Active {
         @include state($state) {
           color: $button-active-color;
         }
-      } @else if $state == Disabled {
+      }
+      @else if $state == Disabled {
         @include state($state) {
           color: $button-disabled-color;
         }

@@ -1,63 +1,69 @@
 var postcss = require('postcss');
 
 module.exports = postcss.plugin('postcss-nsbuilder', function (opts) {
-
-  function clean(string) {
-    return string.replace(/[^-_0-9a-z]/gi, '');
+  function cache(func) {
+    var dump = !('cache' in func) ? func.cache = {} : func.cache;
+    return function() {
+      var key = JSON.stringify(Array.prototype.slice.call(arguments));
+      for(var i in dump) if(i === key) return dump[key];
+      return dump[key] = func.apply(this, arguments);
+    }
   }
 
-  function get(type, string) {
-    var start = type.length + 2; // symbols : and (
-    var end = string.length + 1; // symbol )
-    return clean(string.substring(start, end));
-  }
-
-  function separate(string, separator) {
-    return string.split(new RegExp("\S*" + separator + "\S*"));
-  }
-
-  function separateCamelCase(string) {
+  function separateBy(x, string) {
+    if(x !== 'cc') return string.split(new RegExp("\S*" + x + "\S*"));
     return string.replace( /([a-z])([A-Z])/g, '$1,$2' ).split(',');
   }
 
-  function abbr(string) {
-    var separatedByDash = separate(string, '-'), result = '', i = 0;
-    while(i < separatedByDash.length) {
-      var separatedByUnderscore = separate(separatedByDash[i++], '_'), j = 0;
-      while(j < separatedByUnderscore.length) {
-        var separatedByCamelCase = separateCamelCase(separatedByUnderscore[j++]), k = 0;
-        while(k < separatedByCamelCase.length) {
-          result += separatedByCamelCase[k++].slice(0, 1);
-        }
-      }
-    }
+  function getName(type, string) {
+    var start = type.length + 2; // symbols : and (
+    var end = string.length + 1; // symbol )
+    return string.substring(start, end).replace(/[^-_0-9a-z]/gi, '');
+  }
+
+  function getType(str) {
+    return ~str.indexOf(':model') ? 'model' :
+           ~str.indexOf(':has') ? 'has' :
+           ~str.indexOf(':is') ? 'is' : false;
+  }
+
+  function getAbbr(val) {
+    var result = "";
+    separateBy('-', val).forEach(function(val) {
+      separateBy('_', val).forEach(function(val) {
+        separateBy('cc', val).forEach(function(val) {
+          result += val.slice(0, 1);
+        })
+      })
+    });
     return result;
   }
 
   return function (css, result) {
-    css.walkRules(/:model|:has|:which/, function (rule) {
-      var matches = rule.selector.match(/:model\(.+?\)|:has\(.+?\)|:which\(.+?\)/igm);
-      var currentModule = matches.filter(function(item) { return !!~item.indexOf(':model') })[0];
-      var updatedSelector = rule.selector, name;
-      var prefix = abbr( get('model', currentModule) );
-      var matchesCounter = matches.length;
+    var cachedAbbr = cache(getAbbr);
+    var cachedType = cache(getType);
+    var cachedName = cache(getName);
 
-      while(matchesCounter--) {
-        switch (true) {
-          case !!~matches[matchesCounter].indexOf(':model'):
-            name = '.' + get('model', matches[matchesCounter]);
-            break;
-          case !!~matches[matchesCounter].indexOf(':has'):
-            name = '.' + prefix + '-' + get('has', matches[matchesCounter]);
-            break;
-          case !!~matches[matchesCounter].indexOf(':which'):
-            name = '.' + prefix + '_' + get('which', matches[matchesCounter]);
-            break;
-        }
-        updatedSelector = updatedSelector.replace(matches[matchesCounter], name.toLowerCase());
-      }
+    css.walkRules(/:model|:has|:is/, function (rule) {
+      var selector = rule.selector;
+      var matches = selector.match(/:model\(.+?\)|:has\(.+?\)|:is\(.+?\)/igm);
+      var prefix = cachedAbbr( cachedName('model',
+        matches.filter(function(val) {
+          return cachedType(val) == 'model';
+        }).shift())).toLowerCase();
 
-      rule.selector = updatedSelector;
+      matches.forEach(function(val) {
+        var type = cachedType(val);
+        var name = cachedName(type, val.toLowerCase());
+        var echo = ".";
+
+        if(type == 'model') echo += name;
+        if(type == 'has') echo += prefix + '-' + name;
+        if(type == 'is') echo += prefix + '_' + name;
+        selector = selector.replace(val, echo);
+      });
+
+      rule.selector = selector;
     });
   }
 });

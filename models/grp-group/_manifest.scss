@@ -25,7 +25,7 @@ $group-separator-color: $border-default !default;
       border-left-color: inherit;
     }
 
-    &:which(Spacer) {
+    &:is(Spacer) {
       flex-grow: 1;
     }
   }

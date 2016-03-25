@@ -1,82 +1,82 @@
 :model(Padding) {
 
-  :which(On),
-  :which(Vertical),
-  :which(Twelve),
-  :which(One),
-  :which(Two),
-  :which(Ten),
-  :which(Eleven) {
+  :is(On),
+  :is(Vertical),
+  :is(Twelve),
+  :is(One),
+  :is(Two),
+  :is(Ten),
+  :is(Eleven) {
     padding-top: size();
   }
 
-  :which(On-x),
-  :which(Vertical-x),
-  :which(Twelve-x),
-  :which(One-x),
-  :which(Two-x),
-  :which(Ten-x),
-  :which(Eleven-x) {
+  :is(On-x),
+  :is(Vertical-x),
+  :is(Twelve-x),
+  :is(One-x),
+  :is(Two-x),
+  :is(Ten-x),
+  :is(Eleven-x) {
     padding-top: size(2);
   }
 
-  :which(On),
-  :which(Horizontal),
-  :which(Three),
-  :which(One),
-  :which(Two),
-  :which(Four),
-  :which(Five) {
+  :is(On),
+  :is(Horizontal),
+  :is(Three),
+  :is(One),
+  :is(Two),
+  :is(Four),
+  :is(Five) {
     padding-right: size();
   }
 
-  :which(On-x),
-  :which(Horizontal-x),
-  :which(Three-x),
-  :which(One-x),
-  :which(Two-x),
-  :which(Four-x),
-  :which(Five-x) {
+  :is(On-x),
+  :is(Horizontal-x),
+  :is(Three-x),
+  :is(One-x),
+  :is(Two-x),
+  :is(Four-x),
+  :is(Five-x) {
     padding-right: size(2);
   }
 
-  :which(On),
-  :which(Vertical),
-  :which(Six),
-  :which(Four),
-  :which(Five),
-  :which(Seven),
-  :which(Eight) {
+  :is(On),
+  :is(Vertical),
+  :is(Six),
+  :is(Four),
+  :is(Five),
+  :is(Seven),
+  :is(Eight) {
     padding-bottom: size();
   }
 
-  :which(On-x),
-  :which(Vertical-x),
-  :which(Six-x),
-  :which(Four-x),
-  :which(Five-x),
-  :which(Seven-x),
-  :which(Eight-x) {
+  :is(On-x),
+  :is(Vertical-x),
+  :is(Six-x),
+  :is(Four-x),
+  :is(Five-x),
+  :is(Seven-x),
+  :is(Eight-x) {
     padding-bottom: size(2);
   }
 
-  :which(On),
-  :which(Horizontal),
-  :which(Nine),
-  :which(Seven),
-  :which(Eight),
-  :which(Ten),
-  :which(Eleven) {
+  :is(On),
+  :is(Horizontal),
+  :is(Nine),
+  :is(Seven),
+  :is(Eight),
+  :is(Ten),
+  :is(Eleven) {
     padding-left: size();
   }
 
-  :which(On-x),
-  :which(Horizontal-x),
-  :which(Nine-x),
-  :which(Seven-x),
-  :which(Eight-x),
-  :which(Ten-x),
-  :which(Eleven-x) {
+  :is(On-x),
+  :is(Horizontal-x),
+  :is(Nine-x),
+  :is(Seven-x),
+  :is(Eight-x),
+  :is(Ten-x),
+  :is(Eleven-x) {
     padding-left: size(2);
   }
 }

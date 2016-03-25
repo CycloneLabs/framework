@@ -25,12 +25,14 @@
     @return map-get(map-get($gamma, $name), $tone);
   }
   @warn Gamma is missing;
-  @return #000;
+  @return #000000;
 }
 
-//@text-color   Sets color of text on the strength of background color
-//$color     Text color state
-//$bg-color     Block background color
+// @text-color  Sets color of text on the strength of background color
+// $color       Text color state
+// $bg-color    Block background color
+//
+// @return      Calculated text-color
 
 @function text-color($color, $bg-color: color(white)) {
   $dark: red($bg-color) * 0.213 + green($bg-color) * 0.715 + blue($bg-color) * 0.072 < 255 / 2;
@@ -59,7 +61,7 @@
 // @return        Unquoted hex color
 
 @function color-to-hex($color) {
-  @return #{unquote('#')}#{dec-to-hex(red($color))}#{dec-to-hex(green($color))}#{dec-to-hex(blue($color))};
+  @return #{unquote("#")}#{dec-to-hex(red($color))}#{dec-to-hex(green($color))}#{dec-to-hex(blue($color))};
 }
 
 // @str-replace   Replace `search` with `replace` in string by Hugo Giraudel
@@ -69,7 +71,7 @@
 //
 // @return        Updated string
 
-@function str-replace($string, $search, $replace: '') {
+@function str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
   @if $index {
     @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
@@ -157,7 +159,8 @@
   @if(length($side) == 4 or length($side) == 0) {
     $stroke: $thin, -$thin, -$thin, $thin;
     $result: append($result, 0 0 0 $thin $color inset, comma);
-  } @else {
+  }
+  @else {
     $result: append($result, nth($stroke, 2) nth($stroke, 1) 0 0 $color inset, comma);
     $result: append($result, nth($stroke, 4) nth($stroke, 3) 0 0 $color inset, comma);
   }
@@ -243,7 +246,7 @@
 // @return   One or two border-radius properties
 
 @mixin radius($side: false, $radius: $m-radius-radius) {
-  $side: unquote($side + '');
+  $side: unquote($side + "");
   $side: to-lower-case($side);
 
   @if ($side == top-left or $side == top-right or $side == bottom-left or $side == bottom-right) {
@@ -262,11 +265,11 @@
   }
 }
 
-// @stroke    Makes a border, blink and other graphical parts by box-shadow property
-// $border    List with sides and color
-// $blink     Blink color
-// $custom    Any `box-shadow` rules which apply with
-// $underline Underline color
+// @stroke     Makes a border, blink and other graphical parts by box-shadow property
+// $border     List with sides and color
+// $blink      Blink color
+// $custom     Any `box-shadow` rules which apply with
+// $underline  Underline color
 //
 // @return   Generated box-shadow property which makes border, blink and other rules;
 
@@ -301,11 +304,11 @@
   box-shadow: $result;
 }
 
-// @state               Makes original and artificial selector by class and pseudo-class
-// $state               State name
-// $suffix              End placed part of selector
+// @state   Makes original and artificial selector by class and pseudo-class
+// $state   State name
+// $suffix  End placed part of selector
 //
-// @return    Properties in new selector
+// @return  Properties in new selector
 
 @mixin state($state, $suffix: "") {
   $state-alias: $state;
@@ -314,23 +317,13 @@
   }
 
   &:#{to-lower-case($state-alias)}#{unquote($suffix)},
-  &:which(#{$state})#{unquote($suffix)} {
+  &:is(#{$state})#{unquote($suffix)} {
     @content;
   }
 }
 
-// @placeholder Cross browser placeholder relation
-//
-// @return browser specify selectors with @content
-
-@mixin placeholder {
-  &::-webkit-input-placeholder { @content }
-  &::-moz-placeholder { @content }
-  &:-ms-input-placeholder { @content }
-}
-
 // @bug   the pattern to be embedded to wrong situations,
 @mixin bug {
-  background: linear-gradient(to top, #f0f, transparent);
-  outline: 2px dotted #f0f;
+  background: linear-gradient(to top, #FF00FF, transparent);
+  outline: 2px dotted #FF00FF;
 }

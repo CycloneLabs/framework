@@ -12,41 +12,41 @@ $half-gutter-width         : $gutter-width / 2 !default;
   margin-left: $gutter-compensation;
   margin-right: $gutter-compensation;
 
-  &:which(reverse) {
+  &:is(reverse) {
     flex-direction: row-reverse;
   }
 
-  &:which(top) {
+  &:is(top) {
     align-items: flex-start;
   }
 
-  &:which(middle) {
+  &:is(middle) {
     align-items: center;
   }
 
-  &:which(bottom) {
+  &:is(bottom) {
     align-items: flex-end;
   }
 
-  &:which(around) {
+  &:is(around) {
     justify-content: space-around;
   }
 
-  &:which(between) {
+  &:is(between) {
     justify-content: space-between;
   }
 
-  &:which(start) {
+  &:is(start) {
     justify-content: flex-start;
     text-align: start;
   }
 
-  &:which(center) {
+  &:is(center) {
     justify-content: center;
     text-align: center;
   }
 
-  &:which(end) {
+  &:is(end) {
     justify-content: flex-end;
     text-align: end;
   }
@@ -65,9 +65,11 @@ $half-gutter-width         : $gutter-width / 2 !default;
     padding-right: $half-gutter-width;
   }
 
-  > :which(reverse) { flex-direction: column-reverse; }
-  > :which(first) { order: -1; }
-  > :which(last) { order: 1; }
+  > :is(reverse) { flex-direction: column-reverse; }
+
+  > :is(first) { order: -1; }
+
+  > :is(last) { order: 1; }
 
   @for $i from 1 through $grid-cells {
     > :has(col-#{$i}) {
@@ -77,7 +79,7 @@ $half-gutter-width         : $gutter-width / 2 !default;
       padding-right: $half-gutter-width;
     }
 
-    > :which(offset-#{$i}) {
+    > :is(offset-#{$i}) {
       margin-left: $i * (100% / $grid-cells);
     }
   }

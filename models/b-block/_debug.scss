@@ -17,9 +17,6 @@
   }
 
   :has(Indent):not(:empty) {
-    /**/
-    /* Bug    :  Item should be empty
-    /**/
     @include bug;
     content: "Block-indent should be empty";
   }
@@ -28,19 +25,18 @@
   :has(Indent) + :has(Indent-x),
   :has(Indent-x) + :has(Indent),
   :has(Indent-x) + :has(Indent-x) {
-    /**/
-    /* Bug    :  Items does not stack
-    /**/
     @include bug;
     content: "Block-indent does not stack";
   }
 
-  :has(Footer):which(Indented),
-  :has(Footer):which(Indented-x) {
-    /**/
-    /* Bug    :  Footer should be pressed to the previous block
-    /**/
+  :has(Footer):is(Indented),
+  :has(Footer):is(Indented-x) {
     @include bug;
     content: "Footer should be pressed to the previous block";
+  }
+
+  :model(Card) :model(gRouP):is(header) {
+    @include bug;
+    content: "Card model needs no modifier such as header and footer";
   }
 }

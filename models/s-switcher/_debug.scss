@@ -1,11 +1,8 @@
 :model(Switcher) {
 
-  input:which(Disabled):not([disabled]):not([tabindex]) {
+  input:is(Disabled):not([disabled]):not([tabindex]) {
 
     + :has(Label) {
-      /**/
-      /* Bug :  modifier Disabled should be used with attribute `tabindex` with value `-1`
-      /**/
       @include bug;
       content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
     }

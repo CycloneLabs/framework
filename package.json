@@ -21,12 +21,12 @@
     "builder": "./node_modules/.bin/gulp builder"
   },
   "dependencies": {
-    "animate.css": "3.x",
     "font-awesome": "4.x",
-    "normalize.css": "3.x"
+    "normalize.css": "4.x"
   },
   "devDependencies": {
     "autoprefixer": "6.x",
+    "scss-lint": "x",
     "gulp": "3.x",
     "gulp-csso": "1.x",
     "gulp-debug": "2.x",

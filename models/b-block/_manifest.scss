@@ -1,26 +1,39 @@
 :model(Block) {
 
-  :which(slate) { background-color: color(slate); }
-  :which(red) { background-color: color(red); }
-  :which(orange) { background-color: color(orange); }
-  :which(yellow) { background-color: color(yellow); }
-  :which(green) { background-color: color(green); }
-  :which(blue) { background-color: color(blue); }
-  :which(purple) { background-color: color(purple); }
-  :which(pink) { background-color: color(pink); }
-  :which(riched) { background-color: $bg-riched; }
-  :which(muted) { background-color: $bg-muted; }
-  :which(info) { background-color: $bg-info; }
-  :which(warning) { background-color: $bg-warning; }
-  :which(success) { background-color: $bg-success; }
-  :which(error) { background-color: $bg-error; }
+  :is(slate) { background-color: color(slate); }
 
-  :which(Wide) {
+  :is(red) { background-color: color(red); }
+
+  :is(orange) { background-color: color(orange); }
+
+  :is(yellow) { background-color: color(yellow); }
+
+  :is(green) { background-color: color(green); }
+
+  :is(blue) { background-color: color(blue); }
+
+  :is(purple) { background-color: color(purple); }
+
+  :is(pink) { background-color: color(pink); }
+
+  :is(riched) { background-color: $bg-riched; }
+
+  :is(muted) { background-color: $bg-muted; }
+
+  :is(info) { background-color: $bg-info; }
+
+  :is(warning) { background-color: $bg-warning; }
+
+  :is(success) { background-color: $bg-success; }
+
+  :is(error) { background-color: $bg-error; }
+
+  :is(Wide) {
     display: inline-block;
     width: 100%;
   }
 
-  :which(Overflow) {
+  :is(Overflow) {
     height: size(7);
     max-height: size(80);
     min-height: size(3); //TODO https://code.google.com/p/chromium/issues/detail?id=94583
@@ -32,14 +45,14 @@
     }
   }
 
-  :which(Header) {
+  :is(Header) {
     @include radius(bottom, 0);
     @include radius(top);
     position: relative;
     z-index: $z-local;
   }
 
-  :which(Footer) {
+  :is(Footer) {
     @include radius(bottom);
     @include radius(top, 0);
     position: relative;
@@ -50,11 +63,11 @@
     }
   }
 
-  :which(Indented) {
+  :is(Indented) {
     margin-top: size();
   }
 
-  :which(Indented-x) {
+  :is(Indented-x) {
     margin-top: size(2);
   }
 

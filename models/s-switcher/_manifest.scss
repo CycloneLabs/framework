@@ -10,7 +10,7 @@ $switcher-selected-color: text-color($text-selected) !default;
   display: inline-block;
   pointer-events: none;
 
-  &:which(Stable) {
+  &:is(Stable) {
 
     :has(Label)::before {
       font-size: initial;
@@ -115,6 +115,8 @@ $switcher-selected-color: text-color($text-selected) !default;
     transition: color $animated;
 
     &::before {
+      //Reason: including vendor prefixes
+      // scss-lint:disable PropertySortOrder
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
       color: $switcher-color;
