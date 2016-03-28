@@ -1,0 +1,111 @@
+$switch-choose-background: $bg-default;
+$switch-choose-border: $border-default;
+$switch-choose-border-disable: $border-disabled;
+$switch-choose-border-hover: $border-hovered;
+$switch-choose-underline-default: $underline-default;
+$switch-choose-underline-focus: $underline-focused;
+$switch-choose-underline-hover: $underline-hovered;
+$switch-choose-bullet-default: $border-default;
+$switch-choose-bullet-hover: $border-hovered;
+$switch-choose-text: text-color($text-riched);
+$switch-choose-text-disabled: text-color($text-disabled);
+$switch-choose-bullet-size: size();
+
+:model(Switch-Choose) {
+  pointer-events: none;
+
+  :has(control) {
+    opacity: 0;
+    position: absolute;
+
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state, "+ :has(Label)") {
+          @include stroke($underline: $switch-choose-underline-focus);
+        }
+      }
+      @if $state == Hover {
+        @include state($state, "+ :has(Label)") {
+          @include stroke($underline: $switch-choose-underline-hover);
+          border-color: $switch-choose-border-hover;
+
+          &:before {
+            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($switch-choose-bullet-hover))}' d='M0 0 3 3 l-3 3z'/></svg>");
+          }
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state, "+ :has(Label)") {
+          border: $thin solid $switch-choose-border-disable;
+          box-shadow: initial;
+          color: $switch-choose-text-disabled;
+          pointer-events: none;
+        }
+      }
+      @if $state == Checked {
+        @include state($state, "+ :has(label)") {
+          &:before {
+            transform: scaleX(1);
+          }
+
+          :first-child {
+            transform: translate(0, 0);
+          }
+
+          :last-child {
+            transform: translate(100%, size(-3));
+          }
+        }
+      }
+    }
+  }
+
+  :has(label) {
+    @include radius;
+    @include stroke($underline: $switch-choose-underline-default);
+    background: $switch-choose-background;
+    border: $thin solid $switch-choose-border;
+    border-bottom: none;
+    color: $switch-choose-text;
+    cursor: pointer;
+    display: block;
+    height: size(3);
+    line-height: size(3);
+    overflow: hidden;
+    pointer-events: auto;
+    position: relative;
+    transition: border-color $animated, box-shadow $animated;
+    user-select: none;
+
+    &:before {
+      background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($switch-choose-bullet-default))}' d='M0 0 3 3 l-3 3z'/></svg>");
+      background-position: calc(100% - #{size()}) size();
+      background-repeat: no-repeat;
+      background-size: $switch-choose-bullet-size;
+      content: "";
+      height: 100%;
+      position: absolute;
+      transform: scaleX(-1);
+      transition: transform $animated;
+      width: 100%;
+    }
+
+    :last-child,
+    :first-child {
+      display: block;
+      transition: transform $animated;
+    }
+
+    :first-child {
+      padding: 0 size(2) + $switch-choose-bullet-size 0 size();
+      transform: translate(-100%, 0);
+    }
+
+    :last-child {
+      padding: 0 size() 0 size(2) + $switch-choose-bullet-size;
+      transform: translate(0, size(-3));
+    }
+  }
+}
+
+@if (map-get($m, debug)) { @import "debug"; }

@@ -1,0 +1,4 @@
+:model(Switch-Choose) :has(Control):is(Disabled) {
+  @include bug;
+  content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+}

@@ -18,6 +18,7 @@ $button-disabled-color: text-color($text-disabled) !default;
   margin: initial;
   outline: initial;
   padding: initial;
+  pointer-events: auto;
   text-decoration: initial;
   transition: color $animated;
   vertical-align: middle;

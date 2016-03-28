@@ -18,6 +18,7 @@ $models: (all: true, debug: false) !default;
   "models/grp-group/manifest", "models/btn-button/manifest",
   "models/s-switch/manifest", "models/input/manifest",
   "models/select/manifest", "models/d-decorator/manifest",
+  "models/sc-switch-choose/manifest",
   "models/p-padding/manifest", "models/il-inline/manifest",
   "models/b-block/manifest", "models/g-grid/manifest";
 }
@@ -36,7 +37,7 @@ $models: (all: true, debug: false) !default;
 @if map-has-key($models, form) {
   @import "models/btn-button/manifest", "models/s-switch/manifest",
   "models/input/manifest", "models/select/manifest",
-  "models/d-decorator/manifest";
+  "models/d-decorator/manifest", "models/sc-switch-choose/manifest";
 }
 
 @if map-has-key($models, custom) {
@@ -56,6 +57,7 @@ $models: (all: true, debug: false) !default;
 @if map-has-key($models, group) { @import "models/grp-group/manifest"; }
 @if map-has-key($models, button) { @import "models/btn-button/manifest"; }
 @if map-has-key($models, switch) { @import "models/s-switch/manifest"; }
+@if map-has-key($models, switch-choose) { @import "models/sc-switch-choose/manifest"; }
 @if map-has-key($models, input) { @import "models/input/manifest"; }
 @if map-has-key($models, select) { @import "models/select/manifest"; }
 @if map-has-key($models, decorator) { @import "models/d-decorator/manifest"; }
