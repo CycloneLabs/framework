@@ -1,0 +1,162 @@
+$d-background: $bg-default !default;
+$d-text-disable: text-color($text-disabled) !default;
+$d-border-default: $border-default !default;
+$d-border-hover: $border-hovered !default;
+$d-border-disable: $border-disabled !default;
+$d-underline-default: $underline-default !default;
+$d-underline-hover: $underline-hovered !default;
+$d-underline-focus: $underline-focused !default;
+$d-underline-invalid: $underline-invalid !default;
+$d-underline-disable: transparent !default;
+
+:model(Decorator) {
+  align-items: flex-start;
+  display: flex;
+  line-height: size(3);
+
+  :has(Control),
+  :has(Control) ~ :has(Icon),
+  :has(Control) ~ :has(Button) {
+    @include stroke($underline: $d-underline-default);
+    background-color: inherit;
+    padding-left: size();
+    padding-right: size();
+    transition: inherit;
+  }
+
+  :has(Control) {
+    flex-grow: 1;
+
+    ~ :has(Icon) {
+      color: $d-border-default;
+      cursor: default;
+      margin-right: size(-1 / 3);
+      min-width: size(3);
+      order: -1;
+      padding-right: size(1 / 3);
+      position: relative;
+      user-select: none;
+      z-index: $z-local;
+    }
+
+    ~ :has(Button) {
+      margin-left: size(-1 / 3);
+      min-width: size(3);
+      order: 1;
+      padding-left: size(1 / 3);
+      position: relative;
+      user-select: none;
+      z-index: $z-local;
+    }
+
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state) {
+          &,
+          ~ :has(Icon),
+          ~ :has(Button) {
+            @include stroke($underline: $d-underline-focus);
+          }
+        }
+      }
+      @elseif $state == Invalid {
+        @include state($state) {
+          &,
+          ~ :has(Icon),
+          ~ :has(Button) {
+            @include stroke($underline: $d-underline-invalid);
+          }
+        }
+      }
+      @elseif $state == Hover {
+        @include state($state) {
+          ~ :has(Icon) {
+            color: $d-underline-hover;
+          }
+
+          &,
+          ~ :has(Icon),
+          ~ :has(Button) {
+            @include stroke($underline: $d-underline-hover);
+          }
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state) {
+          @include stroke($underline: $d-underline-disable);
+
+          &::placeholder {
+            color: transparent;
+          }
+
+          ~ :has(Icon) {
+            @include stroke($underline: $d-underline-disable);
+            color: $d-text-disable;
+          }
+
+          ~ :has(Button) {
+            @include stroke($underline: $d-underline-disable);
+            @include state($state) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+:model(Decorator):is(Outer) { //TODO change modifier name
+  @include radius;
+  background-color: $d-background;
+  transition: color $animated, border-color $animated, box-shadow $animated;
+
+  :has(Control) {
+    @include radius;
+    border-left: $thin solid $d-border-default;
+    border-right: $thin solid $d-border-default;
+    border-top: $thin solid $d-border-default;
+    height: size(3);
+
+    ~ :has(Icon) {
+      @include radius(left);
+      border-left: $thin solid $d-border-default;
+      border-top: $thin solid $d-border-default;
+      height: size(3);
+    }
+
+    ~ :has(Button) {
+      @include radius(right);
+      border-right: $thin solid $d-border-default;
+      border-top: $thin solid $d-border-default;
+      height: size(3);
+    }
+
+    @each $state in $states-order {
+      @if $state == Hover {
+        @include state($state) {
+          &,
+          ~ :has(Icon),
+          ~ :has(Button) {
+            border-color: $d-border-hover;
+          }
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state) {
+          &,
+          ~ :has(Icon),
+          ~ :has(Button) {
+            border-bottom: $thin solid;
+            border-color: $d-border-disable;
+          }
+        }
+      }
+    }
+  }
+}
+
+:model(Decorator):not(:is(Outer)) {
+  background-color: inherit;
+  transition: color $animated, box-shadow $animated;
+}
