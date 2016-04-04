@@ -6,4 +6,3 @@ compiled
 *.html
 *.log
 !bundler/*.js
-!gulpfile.js
