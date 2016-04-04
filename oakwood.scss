@@ -32,6 +32,7 @@
 @if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "models/ls-list-switcher/manifest"; }
 @if map-get($m, all) or map-get($m, form) or map-get($m, control-border) { @import "models/cb-control-border/manifest"; }
 @if map-get($m, all) or map-get($m, form) or map-get($m, control-underline) { @import "models/cu-control-underline/manifest"; }
+@if map-get($m, all) or map-get($m, form) or map-get($m, decorator) { @import "models/d-decorator/manifest"; }
 
 // Utilities
 @if map-get($m, all) or map-get($m, core) or map-get($m, padding) { @import "models/p-padding/manifest"; }
