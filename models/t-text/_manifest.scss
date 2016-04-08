@@ -1,8 +1,8 @@
 $text-header-color: text-color($text-riched) !default;
-$text-default-text: text-color($text-article) !default;
+$text-text-color: text-color($text-article) !default;
 
 :model(Text) {
-  color: $text-default-text;
+  color: $text-text-color;
   font-family: $font-family;
   font-size: $font-size-normal;
   line-height: size(2);
