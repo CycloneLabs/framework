@@ -1,0 +1,113 @@
+$switch-color: text-color($text-default) !default;
+$switch-hover-color: text-color($text-hovered) !default;
+$switch-focus-color: text-color($text-focused) !default;
+$switch-invalid-color: text-color($text-invalid) !default;
+$switch-disabled-color: text-color($text-disabled) !default;
+$switch-selected-color: text-color($text-selected) !default;
+
+:model(Switch) {
+  cursor: pointer;
+  display: inline-block;
+  pointer-events: none;
+
+  &:is(Stable) {
+
+    :has(Label)::before {
+      font-size: initial;
+    }
+  }
+
+  :has(Checkbox) {
+
+    + :has(Label)::before {
+      content: "\F096";
+    }
+
+    &:checked + :has(label)::before {
+      color: $switch-selected-color;
+      content: "\F046";
+    }
+
+    &:indeterminate + :has(label)::before {
+      content: "";
+    }
+  }
+
+  :has(Radio) {
+
+    + :has(Label)::before {
+      content: "";
+    }
+
+    &:checked + :has(Label)::before {
+      color: $switch-selected-color;
+      content: "";
+    }
+  }
+
+  :has(Radio),
+  :has(Checkbox) {
+    opacity: 0; //Hide element
+    position: absolute; //Remove element from current context
+
+    @each $state in $states-order {
+      @if $state == Focus {
+        @include state($state) {
+          + :has(Label),
+          + :has(Label)::before {
+            color: $switch-focus-color;
+          }
+        }
+      }
+      @elseif $state == Hover {
+        @include state($state) {
+          + :has(Label),
+          + :has(Label)::before {
+            color: $switch-hover-color;
+          }
+        }
+      }
+      @elseif $state == Invalid {
+        @include state($state) {
+          + :has(Label),
+          + :has(Label)::before {
+            color: $switch-invalid-color;
+          }
+        }
+      }
+      @elseif $state == Disabled {
+        @include state($state) {
+          + :has(Label),
+          + :has(Label)::before {
+            color: $switch-disabled-color;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+
+  :has(Label) {
+    pointer-events: auto; //Restore clickability
+    transition: color $animated;
+
+    &::before {
+      //Reason: including vendor prefixes
+      // scss-lint:disable PropertySortOrder
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      color: $switch-color;
+      display: inline-block;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 0.55em;
+      text-rendering: auto; //Optimizelegibility throws things off #1094
+      transform: translate(0, 0); //Ensures no half-pixel rendering in firefox
+      transition: color $animated;
+      width: 1.2em;
+    }
+  }
+}
+
+@if (map-get($models, debug)) { @import "debug"; }

@@ -1,0 +1,7 @@
+:model(Decorator) {
+
+  :has(Control) + :has(Control) {
+    @include bug;
+    content: "Two controls in the same decorator do not work";
+  }
+}

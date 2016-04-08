@@ -1,0 +1,15 @@
+select:model(Select) {
+
+  &:is(Disabled):not([disabled]):not([tabindex]) {
+    @include bug;
+    content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+  }
+}
+
+:not(select):model(Select) {
+
+  &:not(:is(Disabled)):not([disabled]):not([tabindex]) {
+    @include bug;
+    content: "model should have attribute `tabindex` like `0` to receive focus";
+  }
+}

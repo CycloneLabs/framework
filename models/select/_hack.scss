@@ -1,0 +1,4 @@
+_:-moz-tree-row(hover), :model(Select) { //Fix Firefox bug
+  color: transparent;
+  text-shadow: 0 0 0 $select-text-default;
+}

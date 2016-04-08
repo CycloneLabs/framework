@@ -1,0 +1,58 @@
+$select-arrow-default: $border-default !default;
+$select-arrow-hover: $border-hovered !default;
+$select-text-default: text-color($text-riched) !default;
+$select-text-disabled: text-color($text-disabled) !default;
+
+:model(Select) {
+  appearance: initial;
+  background-color: initial;
+  background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($select-arrow-default))}' d='M0 2 3 5 l3-3z'/></svg>");
+  background-position: calc(100% - 10px) 45%;
+  background-repeat: no-repeat;
+  background-size: size();
+  border: initial;
+  border-radius: initial;
+  box-shadow: initial;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: $font-size-small;
+  height: size(3);
+  line-height: size(3);
+  margin: initial;
+  outline: initial;
+  overflow: hidden;
+  padding-bottom: initial;
+  padding-left: initial;
+  padding-top: initial;
+  text-decoration: initial;
+  transition: color $animated, text-shadow $animated;
+  user-select: none;
+
+  &:not(:disabled):not(:is(disabled)) {
+    padding-right: size(3);
+  }
+
+  > :nth-child(n) {
+    color: $select-text-default;
+    font-size: inherit; //Should be same
+    text-shadow: initial;
+  }
+
+  @each $state in $states-order {
+    @if $state == Disabled {
+      @include state($state) {
+        background-image: initial;
+        color: $select-text-disabled;
+        pointer-events: none;
+      }
+    }
+    @elseif $state == Hover {
+      @include state($state) {
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($select-arrow-hover))}' d='M0 2 3 5 l3-3z'/></svg>");
+      }
+    }
+  }
+}
+
+@import "hack";
+@if (map-get($models, debug)) { @import "debug"; }

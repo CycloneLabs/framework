@@ -1,0 +1,44 @@
+$input-text-default: text-color($text-riched) !default;
+$input-text-disabled: text-color($text-disabled) !default;
+$input-placeholder: text-color($text-muted) !default;
+
+:model(Input) {
+  //Reason: including vendor prefixes
+  // scss-lint:disable PropertySortOrder
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-fill-color: currentColor;
+  appearance: initial;
+  background-color: initial;
+  border: initial;
+  box-shadow: initial;
+  color: $input-text-default;
+  cursor: text;
+  font-family: inherit;
+  font-size: $font-size-small;
+  height: size(3);
+  line-height: size(3);
+  margin: initial;
+  outline: initial;
+  padding: initial;
+  text-decoration: initial;
+  text-rendering: optimizelegibility;
+  transition: color $animated;
+  vertical-align: middle;
+
+  &::placeholder {
+    -webkit-text-fill-color: currentColor;
+    color: $input-placeholder;
+    opacity: 1;
+  }
+
+  @each $state in $states-order {
+    @if $state == Disabled {
+      @include state($state) {
+        color: $input-text-disabled;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+@if (map-get($models, debug)) { @import "debug"; }
