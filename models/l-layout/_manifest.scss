@@ -9,7 +9,7 @@ $layout-container-side-margin       : size(3) !default;
 
 :model(Layout) {
   background-color: $layout-background-color;
-  height: 100%;
+  min-height: 100%;
   min-width: $layout-min-size;
 
   :has(Container) {

@@ -6,30 +6,37 @@
 // Imports all Oakwood files in their intended order for easy mass-inclusion
 // Set up your build using the `$models` variable
 
-$models: (all, debug: false) !default;
+$models: (all: true, debug: false) !default;
+
+@import "core/library";
+@import "core/variables";
 
 @if map-has-key($models, all) {
-  @import "core/library", "core/variables", "~normalize.css/normalize",
-  "models/t-text/manifest", "models/i-icon/manifest", "models/c-card/manifest",
-  "models/l-layout/manifest", "models/grp-group/manifest", "models/btn-button/manifest",
-  "models/s-switch/manifest", "models/input/manifest", "models/select/manifest",
-  "models/d-decorator/manifest", "models/p-padding/manifest", "models/il-inline/manifest",
+  @import "~normalize.css/normalize",
+  "models/t-text/manifest", "models/i-icon/manifest",
+  "models/c-card/manifest", "models/l-layout/manifest",
+  "models/grp-group/manifest", "models/btn-button/manifest",
+  "models/s-switch/manifest", "models/input/manifest",
+  "models/select/manifest", "models/d-decorator/manifest",
+  "models/p-padding/manifest", "models/il-inline/manifest",
   "models/b-block/manifest", "models/g-grid/manifest";
 }
 
 @if map-has-key($models, core) {
-  @import "core/library", "core/variables", "~normalize.css/normalize",
-  "models/t-text/manifest", "models/p-padding/manifest", "models/il-inline/manifest",
-  "models/b-block/manifest";
+  @import "~normalize.css/normalize",
+  "models/t-text/manifest", "models/p-padding/manifest",
+  "models/il-inline/manifest", "models/b-block/manifest";
 }
 
 @if map-has-key($models, basic) {
-  @import "models/i-icon/manifest", "models/c-card/manifest", "models/l-layout/manifest";
+  @import "models/i-icon/manifest", "models/c-card/manifest",
+  "models/l-layout/manifest";
 }
 
 @if map-has-key($models, form) {
-  @import "models/btn-button/manifest", "models/s-switch/manifest", "models/input/manifest",
-  "models/select/manifest", "models/d-decorator/manifest";
+  @import "models/btn-button/manifest", "models/s-switch/manifest",
+  "models/input/manifest", "models/select/manifest",
+  "models/d-decorator/manifest";
 }
 
 @if map-has-key($models, custom) {
