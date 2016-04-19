@@ -99,8 +99,4 @@ input:-moz-focusring {
   outline: none;
 }
 
-:root {
-  height: 100%;
-}
-
 @if (map-get($models, debug)) { @import "debug"; }
