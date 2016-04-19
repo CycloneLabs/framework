@@ -1,8 +1,8 @@
-$text-field-default-text: text-color($text-riched) !default;
-$text-field-disabled-color: text-color($text-disabled) !default;
-$text-field-placeholder-color: text-color($text-muted) !default;
+$input-text-default: text-color($text-riched) !default;
+$input-text-disabled: text-color($text-disabled) !default;
+$input-placeholder: text-color($text-muted) !default;
 
-:model(Text-field) {
+:model(Input) {
   //Reason: including vendor prefixes
   // scss-lint:disable PropertySortOrder
   -moz-osx-font-smoothing: grayscale;
@@ -11,7 +11,7 @@ $text-field-placeholder-color: text-color($text-muted) !default;
   background-color: initial;
   border: initial;
   box-shadow: initial;
-  color: $text-field-default-text;
+  color: $input-text-default;
   cursor: text;
   font-family: inherit;
   font-size: $font-size-small;
@@ -27,23 +27,18 @@ $text-field-placeholder-color: text-color($text-muted) !default;
 
   &::placeholder {
     -webkit-text-fill-color: currentColor;
-    color: $text-field-placeholder-color;
+    color: $input-placeholder;
     opacity: 1;
-  }
-
-  &:is(Multiline) {
-    line-height: size(2);
-    padding-top: size(0.5);
   }
 
   @each $state in $states-order {
     @if $state == Disabled {
       @include state($state) {
-        color: $text-field-disabled-color;
+        color: $input-text-disabled;
         pointer-events: none;
       }
     }
   }
 }
 
-@if (map-get($m, debug)) { @import "debug"; }
+@if (map-get($models, debug)) { @import "debug"; }

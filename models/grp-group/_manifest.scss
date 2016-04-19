@@ -1,9 +1,16 @@
-$group-separator-color: $border-default !default;
-
 :model(gRouP) {
   border-color: inherit;
   display: flex;
   overflow: hidden;
+
+  &:is(Collapse) :has(Chunk) + :has(Chunk) {
+    border-left: none;
+  }
+
+  &:not(:is(Collapse)) :has(Chunk) + :has(Chunk) {
+    border-left: thin solid;
+    border-left-color: inherit;
+  }
 
   :has(Chunk) {
     height: size(3);
@@ -18,11 +25,6 @@ $group-separator-color: $border-default !default;
     &:not(:first-child) > [class] {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
-    }
-
-    + :has(Chunk) {
-      border-left: thin solid;
-      border-left-color: inherit;
     }
 
     &:is(Spacer) {

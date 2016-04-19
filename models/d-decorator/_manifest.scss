@@ -106,27 +106,27 @@ $d-underline-disable: transparent !default;
   }
 }
 
-:model(Decorator):is(Outer) { //TODO change modifier name
+:model(Decorator):not(:is(Inset)) {
   @include radius;
   background-color: $d-background;
   transition: color $animated, border-color $animated, box-shadow $animated;
 
   :has(Control) {
-    @include radius;
+    @include radius(true, inherit);
     border-left: $thin solid $d-border-default;
     border-right: $thin solid $d-border-default;
     border-top: $thin solid $d-border-default;
     height: size(3);
 
     ~ :has(Icon) {
-      @include radius(left);
+      @include radius(left, inherit);
       border-left: $thin solid $d-border-default;
       border-top: $thin solid $d-border-default;
       height: size(3);
     }
 
     ~ :has(Button) {
-      @include radius(right);
+      @include radius(right, inherit);
       border-right: $thin solid $d-border-default;
       border-top: $thin solid $d-border-default;
       height: size(3);
@@ -156,7 +156,9 @@ $d-underline-disable: transparent !default;
   }
 }
 
-:model(Decorator):not(:is(Outer)) {
+:model(Decorator):is(Inset) {
   background-color: inherit;
   transition: color $animated, box-shadow $animated;
 }
+
+@if (map-get($models, debug)) { @import "debug"; }

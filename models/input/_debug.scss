@@ -1,4 +1,4 @@
-select:model(List-switcher) {
+input:model(Input) {
 
   &:is(Disabled):not([disabled]):not([tabindex]) {
     @include bug;
@@ -6,7 +6,7 @@ select:model(List-switcher) {
   }
 }
 
-:not(select):model(List-switcher) {
+:not(input):not(textarea):model(Input) {
 
   &:not(:is(Disabled)):not([disabled]):not([tabindex]) {
     @include bug;

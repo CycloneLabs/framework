@@ -1,4 +1,4 @@
-input:model(Text-field) {
+select:model(Select) {
 
   &:is(Disabled):not([disabled]):not([tabindex]) {
     @include bug;
@@ -6,7 +6,7 @@ input:model(Text-field) {
   }
 }
 
-:not(input):not(textarea):model(Text-field) {
+:not(select):model(Select) {
 
   &:not(:is(Disabled)):not([disabled]):not([tabindex]) {
     @include bug;

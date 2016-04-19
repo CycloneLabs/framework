@@ -1,12 +1,12 @@
 $card-background: $bg-default !default;
-$card-border-color: $border-muted !default;
-$card-border-active-color: $border-default !default;
-$card-shadow-color: $shadow-default !default;
+$card-border-default: $border-muted !default;
+$card-border-active: $border-default !default;
+$card-shadow: $shadow-default !default;
 
 :model(Card) {
   @include radius;
   background-color: $card-background;
-  border: $thin solid $card-border-color;
+  border: $thin solid $card-border-default;
   display: block;
   margin-bottom: -2 * $thin;
   position: relative;
@@ -33,15 +33,15 @@ $card-shadow-color: $shadow-default !default;
   }
 
   &:is(Shadow) {
-    @include stroke($shadow: $card-shadow-color);
-    border: $thin solid $card-border-active-color;
+    @include stroke($shadow: $card-shadow);
+    border: $thin solid $card-border-active;
   }
 
   &:is(Hover):not(:is(Shadow)) {
     transition: border-color $animated;
 
     &:hover {
-      border-color: $card-border-active-color;
+      border-color: $card-border-active;
     }
   }
 }

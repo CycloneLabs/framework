@@ -1,11 +1,11 @@
-$switcher-color: text-color($text-default) !default;
-$switcher-hover-color: text-color($text-hovered) !default;
-$switcher-focus-color: text-color($text-focused) !default;
-$switcher-invalid-color: text-color($text-invalid) !default;
-$switcher-disabled-color: text-color($text-disabled) !default;
-$switcher-selected-color: text-color($text-selected) !default;
+$switch-color: text-color($text-default) !default;
+$switch-hover-color: text-color($text-hovered) !default;
+$switch-focus-color: text-color($text-focused) !default;
+$switch-invalid-color: text-color($text-invalid) !default;
+$switch-disabled-color: text-color($text-disabled) !default;
+$switch-selected-color: text-color($text-selected) !default;
 
-:model(Switcher) {
+:model(Switch) {
   cursor: pointer;
   display: inline-block;
   pointer-events: none;
@@ -24,7 +24,7 @@ $switcher-selected-color: text-color($text-selected) !default;
     }
 
     &:checked + :has(label)::before {
-      color: $switcher-selected-color;
+      color: $switch-selected-color;
       content: "\F046";
     }
 
@@ -40,7 +40,7 @@ $switcher-selected-color: text-color($text-selected) !default;
     }
 
     &:checked + :has(Label)::before {
-      color: $switcher-selected-color;
+      color: $switch-selected-color;
       content: "";
     }
   }
@@ -53,57 +53,34 @@ $switcher-selected-color: text-color($text-selected) !default;
     @each $state in $states-order {
       @if $state == Focus {
         @include state($state) {
-          + :has(Label) {
-            color: $switcher-focus-color;
-          }
-        }
-
-        @include state($state) {
+          + :has(Label),
           + :has(Label)::before {
-            color: $switcher-focus-color;
+            color: $switch-focus-color;
           }
         }
       }
       @elseif $state == Hover {
         @include state($state) {
-          + :has(Label) {
-            color: $switcher-hover-color;
-          }
-        }
-
-        @include state($state) {
+          + :has(Label),
           + :has(Label)::before {
-            color: $switcher-hover-color;
+            color: $switch-hover-color;
           }
         }
-      }
-      @elseif $state == Active {
-        @include state($state) {}
       }
       @elseif $state == Invalid {
         @include state($state) {
-          + :has(Label) {
-            color: $switcher-invalid-color;
-          }
-        }
-
-        @include state($state) {
+          + :has(Label),
           + :has(Label)::before {
-            color: $switcher-invalid-color;
+            color: $switch-invalid-color;
           }
         }
       }
       @elseif $state == Disabled {
         @include state($state) {
-          + :has(Label) {
-            color: $switcher-disabled-color;
-            pointer-events: none;
-          }
-        }
-
-        @include state($state) {
+          + :has(Label),
           + :has(Label)::before {
-            color: $switcher-disabled-color;
+            color: $switch-disabled-color;
+            pointer-events: none;
           }
         }
       }
@@ -119,18 +96,18 @@ $switcher-selected-color: text-color($text-selected) !default;
       // scss-lint:disable PropertySortOrder
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
-      color: $switcher-color;
+      color: $switch-color;
+      display: inline-block;
       font-family: FontAwesome;
       font-style: normal;
       font-weight: normal;
       line-height: 0.55em;
-      padding-right: 0.55em;
       text-rendering: auto; //Optimizelegibility throws things off #1094
       transform: translate(0, 0); //Ensures no half-pixel rendering in firefox
       transition: color $animated;
-      width: 0.55em;
+      width: 1.2em;
     }
   }
 }
 
-@if (map-get($m, debug)) { @import "debug"; }
+@if (map-get($models, debug)) { @import "debug"; }

@@ -9,9 +9,8 @@ $fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/F
   font: normal normal normal $font-size-normal FontAwesome; // shortening font declaration
   font-size: inherit; // can't have font-size inherit on line above, so need to override
   line-height: inherit;
-  text-align: center;
+  text-transform: none;
   text-rendering: auto; // optimizelegibility throws things off #1094
-  width: 1.4em;
 
   &:is(2x) { font-size: 2 * $font-size-tiny; }
 
@@ -22,6 +21,8 @@ $fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/F
   &:is(5x) { font-size: 5 * $font-size-tiny; }
 
   &:is(spin) { animation: spin $animation-time * 8 infinite linear; }
+
+  &:is(stable) { width: 1.4em; }
 
   &:is(pulse) { animation: spin $animation-time * 8 infinite steps(9); }
 
@@ -38,5 +39,5 @@ $fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/F
   &:is(v-flip) { transform: scale(1, -1); }
 }
 
-@import "../../node_modules/font-awesome/scss/variables";
-@import "../../node_modules/font-awesome/scss/icons";
+@import "~font-awesome/scss/variables";
+@import "~font-awesome/scss/icons";

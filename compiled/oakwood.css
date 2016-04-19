@@ -1,10 +1,5 @@
 @charset "UTF-8";
-/**/
-/* Oakwood
-/* https://github.com/Cyclonelabs/framework.git
-/*
-/* Released under MIT license
-/**/
+/*! Oakwood | MIT license | github.com/Cyclonelabs/framework */
 /*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -436,9 +431,8 @@ textarea {
   font: normal normal normal 15px FontAwesome;
   font-size: inherit;
   line-height: inherit;
-  text-align: center;
-  text-rendering: auto;
-  width: 1.4em; }
+  text-transform: none;
+  text-rendering: auto; }
   .icon.i_2x {
     font-size: 22px; }
   .icon.i_3x {
@@ -450,6 +444,8 @@ textarea {
   .icon.i_spin {
     -webkit-animation: spin 1200ms infinite linear;
             animation: spin 1200ms infinite linear; }
+  .icon.i_stable {
+    width: 1.4em; }
   .icon.i_pulse {
     -webkit-animation: spin 1200ms infinite steps(9);
             animation: spin 1200ms infinite steps(9); }
@@ -2451,6 +2447,11 @@ textarea {
   display: -ms-flexbox;
   display: flex;
   overflow: hidden; }
+  .group.grp_collapse .grp-chunk + .grp-chunk {
+    border-left: none; }
+  .group:not(.grp_collapse) .grp-chunk + .grp-chunk {
+    border-left: thin solid;
+    border-left-color: inherit; }
   .group .grp-chunk {
     height: 30px;
     line-height: 30px;
@@ -2461,9 +2462,6 @@ textarea {
     .group .grp-chunk:not(:first-child) > [class] {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0; }
-    .group .grp-chunk + .grp-chunk {
-      border-left: thin solid;
-      border-left-color: inherit; }
     .group .grp-chunk.grp_spacer {
       -webkit-box-flex: 1;
       -webkit-flex-grow: 1;
@@ -2525,88 +2523,88 @@ button:not([disabled]):not([tabindex^="-"]).button.btn_disabled {
   outline: 2px dotted #FF00FF;
   content: "modifier Disabled should be used with attribute `tabindex` with value `-1`"; }
 
-.switcher {
+.switch {
   cursor: pointer;
   display: inline-block;
   pointer-events: none; }
-  .switcher.s_stable .s-label::before {
+  .switch.s_stable .s-label::before {
     font-size: initial; }
-  .switcher .s-checkbox + .s-label::before {
+  .switch .s-checkbox + .s-label::before {
     content: "\F096"; }
-  .switcher .s-checkbox:checked + .s-label::before {
+  .switch .s-checkbox:checked + .s-label::before {
     color: #177ED5;
     content: "\F046"; }
-  .switcher .s-checkbox:indeterminate + .s-label::before {
+  .switch .s-checkbox:indeterminate + .s-label::before {
     content: "\F147"; }
-  .switcher .s-radio + .s-label::before {
+  .switch .s-radio + .s-label::before {
     content: "\F10C"; }
-  .switcher .s-radio:checked + .s-label::before {
+  .switch .s-radio:checked + .s-label::before {
     color: #177ED5;
     content: "\F192"; }
-  .switcher .s-radio,
-  .switcher .s-checkbox {
+  .switch .s-radio,
+  .switch .s-checkbox {
     opacity: 0;
     position: absolute; }
-    .switcher .s-radio:invalid + .s-label, .switcher .s-radio.s_invalid + .s-label,
-    .switcher .s-checkbox:invalid + .s-label,
-    .switcher .s-checkbox.s_invalid + .s-label {
+    .switch .s-radio:invalid + .s-label,
+    .switch .s-radio:invalid + .s-label::before, .switch .s-radio.s_invalid + .s-label,
+    .switch .s-radio.s_invalid + .s-label::before,
+    .switch .s-checkbox:invalid + .s-label,
+    .switch .s-checkbox:invalid + .s-label::before,
+    .switch .s-checkbox.s_invalid + .s-label,
+    .switch .s-checkbox.s_invalid + .s-label::before {
       color: #E6543E; }
-    .switcher .s-radio:invalid + .s-label::before, .switcher .s-radio.s_invalid + .s-label::before,
-    .switcher .s-checkbox:invalid + .s-label::before,
-    .switcher .s-checkbox.s_invalid + .s-label::before {
-      color: #E6543E; }
-    .switcher .s-radio:focus + .s-label, .switcher .s-radio.s_focus + .s-label,
-    .switcher .s-checkbox:focus + .s-label,
-    .switcher .s-checkbox.s_focus + .s-label {
+    .switch .s-radio:focus + .s-label,
+    .switch .s-radio:focus + .s-label::before, .switch .s-radio.s_focus + .s-label,
+    .switch .s-radio.s_focus + .s-label::before,
+    .switch .s-checkbox:focus + .s-label,
+    .switch .s-checkbox:focus + .s-label::before,
+    .switch .s-checkbox.s_focus + .s-label,
+    .switch .s-checkbox.s_focus + .s-label::before {
       color: #E4A600; }
-    .switcher .s-radio:focus + .s-label::before, .switcher .s-radio.s_focus + .s-label::before,
-    .switcher .s-checkbox:focus + .s-label::before,
-    .switcher .s-checkbox.s_focus + .s-label::before {
-      color: #E4A600; }
-    .switcher .s-radio:hover + .s-label, .switcher .s-radio.s_hover + .s-label,
-    .switcher .s-checkbox:hover + .s-label,
-    .switcher .s-checkbox.s_hover + .s-label {
+    .switch .s-radio:hover + .s-label,
+    .switch .s-radio:hover + .s-label::before, .switch .s-radio.s_hover + .s-label,
+    .switch .s-radio.s_hover + .s-label::before,
+    .switch .s-checkbox:hover + .s-label,
+    .switch .s-checkbox:hover + .s-label::before,
+    .switch .s-checkbox.s_hover + .s-label,
+    .switch .s-checkbox.s_hover + .s-label::before {
       color: #177ED5; }
-    .switcher .s-radio:hover + .s-label::before, .switcher .s-radio.s_hover + .s-label::before,
-    .switcher .s-checkbox:hover + .s-label::before,
-    .switcher .s-checkbox.s_hover + .s-label::before {
-      color: #177ED5; }
-    .switcher .s-radio:disabled + .s-label, .switcher .s-radio.s_disabled + .s-label,
-    .switcher .s-checkbox:disabled + .s-label,
-    .switcher .s-checkbox.s_disabled + .s-label {
+    .switch .s-radio:disabled + .s-label,
+    .switch .s-radio:disabled + .s-label::before, .switch .s-radio.s_disabled + .s-label,
+    .switch .s-radio.s_disabled + .s-label::before,
+    .switch .s-checkbox:disabled + .s-label,
+    .switch .s-checkbox:disabled + .s-label::before,
+    .switch .s-checkbox.s_disabled + .s-label,
+    .switch .s-checkbox.s_disabled + .s-label::before {
       color: #8FA6BF;
       pointer-events: none; }
-    .switcher .s-radio:disabled + .s-label::before, .switcher .s-radio.s_disabled + .s-label::before,
-    .switcher .s-checkbox:disabled + .s-label::before,
-    .switcher .s-checkbox.s_disabled + .s-label::before {
-      color: #8FA6BF; }
-  .switcher .s-label {
+  .switch .s-label {
     pointer-events: auto;
     -webkit-transition: color 150ms ease-out;
     transition: color 150ms ease-out; }
-    .switcher .s-label::before {
+    .switch .s-label::before {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
       color: #7D96B3;
+      display: inline-block;
       font-family: FontAwesome;
       font-style: normal;
       font-weight: normal;
       line-height: 0.55em;
-      padding-right: 0.55em;
       text-rendering: auto;
       -webkit-transform: translate(0, 0);
               transform: translate(0, 0);
       -webkit-transition: color 150ms ease-out;
       transition: color 150ms ease-out;
-      width: 0.55em; }
+      width: 1.2em; }
 
-.switcher input.s_disabled:not([disabled]):not([tabindex]) + .s-label {
+.switch input.s_disabled:not([disabled]):not([tabindex]) + .s-label {
   background: -webkit-linear-gradient(bottom, #FF00FF, transparent);
   background: linear-gradient(to top, #FF00FF, transparent);
   outline: 2px dotted #FF00FF;
   content: "modifier Disabled should be used with attribute `tabindex` with value `-1`"; }
 
-.text-field {
+.input {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-fill-color: currentColor;
   -webkit-appearance: initial;
@@ -2629,42 +2627,39 @@ button:not([disabled]):not([tabindex^="-"]).button.btn_disabled {
   -webkit-transition: color 150ms ease-out;
   transition: color 150ms ease-out;
   vertical-align: middle; }
-  .text-field::-webkit-input-placeholder {
+  .input::-webkit-input-placeholder {
     -webkit-text-fill-color: currentColor;
     color: #8FA6BF;
     opacity: 1; }
-  .text-field::-moz-placeholder {
+  .input::-moz-placeholder {
     -webkit-text-fill-color: currentColor;
     color: #8FA6BF;
     opacity: 1; }
-  .text-field:-ms-input-placeholder {
+  .input:-ms-input-placeholder {
     -webkit-text-fill-color: currentColor;
     color: #8FA6BF;
     opacity: 1; }
-  .text-field::placeholder {
+  .input::placeholder {
     -webkit-text-fill-color: currentColor;
     color: #8FA6BF;
     opacity: 1; }
-  .text-field.tf_multiline {
-    line-height: 20px;
-    padding-top: 5px; }
-  .text-field:disabled, .text-field.tf_disabled {
+  .input:disabled, .input.i_disabled {
     color: #8FA6BF;
     pointer-events: none; }
 
-input.text-field.tf_disabled:not([disabled]):not([tabindex]) {
+input.input.i_disabled:not([disabled]):not([tabindex]) {
   background: -webkit-linear-gradient(bottom, #FF00FF, transparent);
   background: linear-gradient(to top, #FF00FF, transparent);
   outline: 2px dotted #FF00FF;
   content: "modifier Disabled should be used with attribute `tabindex` with value `-1`"; }
 
-:not(input):not(textarea).text-field:not(.tf_disabled):not([disabled]):not([tabindex]) {
+:not(input):not(textarea).input:not(.i_disabled):not([disabled]):not([tabindex]) {
   background: -webkit-linear-gradient(bottom, #FF00FF, transparent);
   background: linear-gradient(to top, #FF00FF, transparent);
   outline: 2px dotted #FF00FF;
   content: "model should have attribute `tabindex` like `0` to receive focus"; }
 
-.list-switcher {
+.select {
   -webkit-appearance: initial;
      -moz-appearance: initial;
           appearance: initial;
@@ -2694,148 +2689,36 @@ input.text-field.tf_disabled:not([disabled]):not([tabindex]) {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none; }
-  .list-switcher:not(:disabled):not(.ls_disabled) {
-    padding-right: 20px; }
-  .list-switcher .ls-option {
+  .select:not(:disabled):not(.s_disabled) {
+    padding-right: 30px; }
+  .select > :nth-child(n) {
     color: #404F61;
     font-size: inherit;
     text-shadow: initial; }
-  .list-switcher:hover, .list-switcher.ls_hover {
+  .select:hover, .select.s_hover {
     background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='%23556980' d='M0 2 3 5 l3-3z'/></svg>"); }
-  .list-switcher:disabled, .list-switcher.ls_disabled {
+  .select:disabled, .select.s_disabled {
     background-image: initial;
     color: #8FA6BF;
     pointer-events: none; }
 
-_:-moz-tree-row(hover), .list-switcher {
+_:-moz-tree-row(hover), .select {
   color: transparent;
   text-shadow: 0 0 0 #404F61; }
 
-select.list-switcher.ls_disabled:not([disabled]):not([tabindex]) {
+select.select.s_disabled:not([disabled]):not([tabindex]) {
   background: -webkit-linear-gradient(bottom, #FF00FF, transparent);
   background: linear-gradient(to top, #FF00FF, transparent);
   outline: 2px dotted #FF00FF;
   content: "modifier Disabled should be used with attribute `tabindex` with value `-1`"; }
 
-:not(select).list-switcher:not(.ls_disabled):not([disabled]):not([tabindex]) {
+:not(select).select:not(.s_disabled):not([disabled]):not([tabindex]) {
   background: -webkit-linear-gradient(bottom, #FF00FF, transparent);
   background: linear-gradient(to top, #FF00FF, transparent);
   outline: 2px dotted #FF00FF;
   content: "model should have attribute `tabindex` like `0` to receive focus"; }
 
-.control-border {
-  border-radius: 3px;
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  line-height: 30px; }
-  .control-border .cb-control {
-    border-color: #8FA6BF;
-    box-shadow: -1px 1px 0 0 #8FA6BF inset, 1px 0 0 0 #8FA6BF inset, 0 -2px 0 0 #8FA6BF inset;
-    border-radius: 3px;
-    background-color: inherit;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    padding-left: 10px;
-    padding-right: 10px;
-    -webkit-transition: color 150ms ease-out, box-shadow 150ms ease-out;
-    transition: color 150ms ease-out, box-shadow 150ms ease-out; }
-    .control-border .cb-control ~ .cb-icon {
-      border-color: #8FA6BF;
-      box-shadow: 0 1px 0 0 #8FA6BF inset, 1px 0 0 0 #8FA6BF inset, 0 -2px 0 0 #8FA6BF inset;
-      border-bottom-left-radius: 3px;
-      border-top-left-radius: 3px;
-      background-color: inherit;
-      color: #8FA6BF;
-      cursor: default;
-      margin-right: -8px;
-      min-width: 30px;
-      -webkit-box-ordinal-group: 0;
-      -webkit-order: -1;
-          -ms-flex-order: -1;
-              order: -1;
-      position: relative;
-      -webkit-transition: color 150ms ease-out, box-shadow 150ms ease-out;
-      transition: color 150ms ease-out, box-shadow 150ms ease-out;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
-      z-index: 50; }
-    .control-border .cb-control ~ .cb-button {
-      border-color: #8FA6BF;
-      box-shadow: -1px 1px 0 0 #8FA6BF inset, 0 0 0 0 #8FA6BF inset, 0 -2px 0 0 #8FA6BF inset;
-      border-bottom-right-radius: 3px;
-      border-top-right-radius: 3px;
-      background-color: inherit;
-      margin-left: -8px;
-      min-width: 30px;
-      -webkit-box-ordinal-group: 2;
-      -webkit-order: 1;
-          -ms-flex-order: 1;
-              order: 1;
-      position: relative;
-      -webkit-transition: color 150ms ease-out, box-shadow 150ms ease-out;
-      transition: color 150ms ease-out, box-shadow 150ms ease-out;
-      z-index: 50; }
-    .control-border .cb-control:invalid, .control-border .cb-control.cb_invalid {
-      border-color: #8FA6BF;
-      box-shadow: -1px 1px 0 0 #8FA6BF inset, 1px 0 0 0 #8FA6BF inset, 0 -2px 0 0 #E6543E inset; }
-      .control-border .cb-control:invalid ~ .cb-icon, .control-border .cb-control.cb_invalid ~ .cb-icon {
-        border-color: #8FA6BF;
-        box-shadow: 0 1px 0 0 #8FA6BF inset, 1px 0 0 0 #8FA6BF inset, 0 -2px 0 0 #E6543E inset; }
-      .control-border .cb-control:invalid ~ .cb-button, .control-border .cb-control.cb_invalid ~ .cb-button {
-        border-color: #8FA6BF;
-        box-shadow: -1px 1px 0 0 #8FA6BF inset, 0 0 0 0 #8FA6BF inset, 0 -2px 0 0 #E6543E inset; }
-    .control-border .cb-control:focus, .control-border .cb-control.cb_focus {
-      border-color: #8FA6BF;
-      box-shadow: -1px 1px 0 0 #8FA6BF inset, 1px 0 0 0 #8FA6BF inset, 0 -2px 0 0 #FFC21A inset; }
-      .control-border .cb-control:focus ~ .cb-icon, .control-border .cb-control.cb_focus ~ .cb-icon {
-        border-color: #8FA6BF;
-        box-shadow: 0 1px 0 0 #8FA6BF inset, 1px 0 0 0 #8FA6BF inset, 0 -2px 0 0 #FFC21A inset; }
-      .control-border .cb-control:focus ~ .cb-button, .control-border .cb-control.cb_focus ~ .cb-button {
-        border-color: #8FA6BF;
-        box-shadow: -1px 1px 0 0 #8FA6BF inset, 0 0 0 0 #8FA6BF inset, 0 -2px 0 0 #FFC21A inset; }
-    .control-border .cb-control:hover, .control-border .cb-control.cb_hover {
-      border-color: #556980;
-      box-shadow: -1px 1px 0 0 #556980 inset, 1px 0 0 0 #556980 inset, 0 -2px 0 0 #556980 inset; }
-      .control-border .cb-control:hover ~ .cb-icon, .control-border .cb-control.cb_hover ~ .cb-icon {
-        border-color: #556980;
-        box-shadow: 0 1px 0 0 #556980 inset, 1px 0 0 0 #556980 inset, 0 -2px 0 0 #556980 inset;
-        color: #556980; }
-      .control-border .cb-control:hover ~ .cb-button, .control-border .cb-control.cb_hover ~ .cb-button {
-        border-color: #556980;
-        box-shadow: -1px 1px 0 0 #556980 inset, 0 0 0 0 #556980 inset, 0 -2px 0 0 #556980 inset; }
-    .control-border .cb-control:disabled, .control-border .cb-control.cb_disabled {
-      border-color: #D1E0F0;
-      box-shadow: 0 0 0 1px #D1E0F0 inset; }
-      .control-border .cb-control:disabled::-webkit-input-placeholder, .control-border .cb-control.cb_disabled::-webkit-input-placeholder {
-        color: transparent; }
-      .control-border .cb-control:disabled::-moz-placeholder, .control-border .cb-control.cb_disabled::-moz-placeholder {
-        color: transparent; }
-      .control-border .cb-control:disabled:-ms-input-placeholder, .control-border .cb-control.cb_disabled:-ms-input-placeholder {
-        color: transparent; }
-      .control-border .cb-control:disabled::placeholder, .control-border .cb-control.cb_disabled::placeholder {
-        color: transparent; }
-      .control-border .cb-control:disabled ~ .cb-icon, .control-border .cb-control.cb_disabled ~ .cb-icon {
-        border-color: #D1E0F0;
-        box-shadow: 0 1px 0 0 #D1E0F0 inset, 1px -1px 0 0 #D1E0F0 inset;
-        color: #8FA6BF; }
-      .control-border .cb-control:disabled ~ .cb-button, .control-border .cb-control.cb_disabled ~ .cb-button {
-        border-color: #D1E0F0;
-        box-shadow: -1px 1px 0 0 #D1E0F0 inset, 0 -1px 0 0 #D1E0F0 inset; }
-        .control-border .cb-control:disabled ~ .cb-button:disabled, .control-border .cb-control:disabled ~ .cb-button.cb_disabled, .control-border .cb-control.cb_disabled ~ .cb-button:disabled, .control-border .cb-control.cb_disabled ~ .cb-button.cb_disabled {
-          display: none; }
-
-.control-underline {
+.decorator {
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
@@ -2845,82 +2728,135 @@ select.list-switcher.ls_disabled:not([disabled]):not([tabindex]) {
   display: -ms-flexbox;
   display: flex;
   line-height: 30px; }
-  .control-underline .cu-control {
+  .decorator .d-control,
+  .decorator .d-control ~ .d-icon,
+  .decorator .d-control ~ .d-button {
     box-shadow: 0 -2px 0 0 #8FA6BF inset;
+    background-color: inherit;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-transition: inherit;
+    transition: inherit; }
+  .decorator .d-control {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
-            flex-grow: 1;
-    padding-left: 10px;
-    padding-right: 10px;
-    -webkit-transition: color 150ms ease-out, box-shadow 150ms ease-out;
-    transition: color 150ms ease-out, box-shadow 150ms ease-out; }
-    .control-underline .cu-control ~ .cu-icon {
-      box-shadow: 0 -2px 0 0 #8FA6BF inset;
+            flex-grow: 1; }
+    .decorator .d-control ~ .d-icon {
       color: #8FA6BF;
       cursor: default;
-      margin-right: -8px;
+      margin-right: -3.33333px;
       min-width: 30px;
       -webkit-box-ordinal-group: 0;
       -webkit-order: -1;
           -ms-flex-order: -1;
               order: -1;
+      padding-right: 3.33333px;
       position: relative;
-      -webkit-transition: color 150ms ease-out, box-shadow 150ms ease-out;
-      transition: color 150ms ease-out, box-shadow 150ms ease-out;
       -webkit-user-select: none;
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none;
       z-index: 50; }
-    .control-underline .cu-control ~ .cu-button {
-      box-shadow: 0 -2px 0 0 #8FA6BF inset;
-      margin-left: -8px;
+    .decorator .d-control ~ .d-button {
+      margin-left: -3.33333px;
       min-width: 30px;
       -webkit-box-ordinal-group: 2;
       -webkit-order: 1;
           -ms-flex-order: 1;
               order: 1;
+      padding-left: 3.33333px;
       position: relative;
-      -webkit-transition: color 150ms ease-out, box-shadow 150ms ease-out;
-      transition: color 150ms ease-out, box-shadow 150ms ease-out;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
       z-index: 50; }
-    .control-underline .cu-control:invalid, .control-underline .cu-control.cu_invalid {
+    .decorator .d-control:invalid,
+    .decorator .d-control:invalid ~ .d-icon,
+    .decorator .d-control:invalid ~ .d-button, .decorator .d-control.d_invalid,
+    .decorator .d-control.d_invalid ~ .d-icon,
+    .decorator .d-control.d_invalid ~ .d-button {
       box-shadow: 0 -2px 0 0 #E6543E inset; }
-      .control-underline .cu-control:invalid ~ .cu-icon, .control-underline .cu-control.cu_invalid ~ .cu-icon {
-        box-shadow: 0 -2px 0 0 #E6543E inset; }
-      .control-underline .cu-control:invalid ~ .cu-button, .control-underline .cu-control.cu_invalid ~ .cu-button {
-        box-shadow: 0 -2px 0 0 #E6543E inset; }
-    .control-underline .cu-control:focus, .control-underline .cu-control.cu_focus {
+    .decorator .d-control:focus,
+    .decorator .d-control:focus ~ .d-icon,
+    .decorator .d-control:focus ~ .d-button, .decorator .d-control.d_focus,
+    .decorator .d-control.d_focus ~ .d-icon,
+    .decorator .d-control.d_focus ~ .d-button {
       box-shadow: 0 -2px 0 0 #FFC21A inset; }
-      .control-underline .cu-control:focus ~ .cu-icon, .control-underline .cu-control.cu_focus ~ .cu-icon {
-        box-shadow: 0 -2px 0 0 #FFC21A inset; }
-      .control-underline .cu-control:focus ~ .cu-button, .control-underline .cu-control.cu_focus ~ .cu-button {
-        box-shadow: 0 -2px 0 0 #FFC21A inset; }
-    .control-underline .cu-control:hover, .control-underline .cu-control.cu_hover {
+    .decorator .d-control:hover ~ .d-icon, .decorator .d-control.d_hover ~ .d-icon {
+      color: #556980; }
+    .decorator .d-control:hover,
+    .decorator .d-control:hover ~ .d-icon,
+    .decorator .d-control:hover ~ .d-button, .decorator .d-control.d_hover,
+    .decorator .d-control.d_hover ~ .d-icon,
+    .decorator .d-control.d_hover ~ .d-button {
       box-shadow: 0 -2px 0 0 #556980 inset; }
-      .control-underline .cu-control:hover ~ .cu-icon, .control-underline .cu-control.cu_hover ~ .cu-icon {
-        box-shadow: 0 -2px 0 0 #556980 inset;
-        color: #556980; }
-      .control-underline .cu-control:hover ~ .cu-button, .control-underline .cu-control.cu_hover ~ .cu-button {
-        box-shadow: 0 -2px 0 0 #556980 inset; }
-    .control-underline .cu-control:disabled, .control-underline .cu-control.cu_disabled {
+    .decorator .d-control:disabled, .decorator .d-control.d_disabled {
       box-shadow: 0 -2px 0 0 transparent inset; }
-      .control-underline .cu-control:disabled::-webkit-input-placeholder, .control-underline .cu-control.cu_disabled::-webkit-input-placeholder {
+      .decorator .d-control:disabled::-webkit-input-placeholder, .decorator .d-control.d_disabled::-webkit-input-placeholder {
         color: transparent; }
-      .control-underline .cu-control:disabled::-moz-placeholder, .control-underline .cu-control.cu_disabled::-moz-placeholder {
+      .decorator .d-control:disabled::-moz-placeholder, .decorator .d-control.d_disabled::-moz-placeholder {
         color: transparent; }
-      .control-underline .cu-control:disabled:-ms-input-placeholder, .control-underline .cu-control.cu_disabled:-ms-input-placeholder {
+      .decorator .d-control:disabled:-ms-input-placeholder, .decorator .d-control.d_disabled:-ms-input-placeholder {
         color: transparent; }
-      .control-underline .cu-control:disabled::placeholder, .control-underline .cu-control.cu_disabled::placeholder {
+      .decorator .d-control:disabled::placeholder, .decorator .d-control.d_disabled::placeholder {
         color: transparent; }
-      .control-underline .cu-control:disabled ~ .cu-icon, .control-underline .cu-control.cu_disabled ~ .cu-icon {
+      .decorator .d-control:disabled ~ .d-icon, .decorator .d-control.d_disabled ~ .d-icon {
         box-shadow: 0 -2px 0 0 transparent inset;
         color: #8FA6BF; }
-      .control-underline .cu-control:disabled ~ .cu-button, .control-underline .cu-control.cu_disabled ~ .cu-button {
+      .decorator .d-control:disabled ~ .d-button, .decorator .d-control.d_disabled ~ .d-button {
         box-shadow: 0 -2px 0 0 transparent inset; }
-        .control-underline .cu-control:disabled ~ .cu-button:disabled, .control-underline .cu-control:disabled ~ .cu-button.cu_disabled, .control-underline .cu-control.cu_disabled ~ .cu-button:disabled, .control-underline .cu-control.cu_disabled ~ .cu-button.cu_disabled {
+        .decorator .d-control:disabled ~ .d-button:disabled, .decorator .d-control:disabled ~ .d-button.d_disabled, .decorator .d-control.d_disabled ~ .d-button:disabled, .decorator .d-control.d_disabled ~ .d-button.d_disabled {
           display: none; }
+
+.decorator:not(.d_inset) {
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  -webkit-transition: color 150ms ease-out, border-color 150ms ease-out, box-shadow 150ms ease-out;
+  transition: color 150ms ease-out, border-color 150ms ease-out, box-shadow 150ms ease-out; }
+  .decorator:not(.d_inset) .d-control {
+    border-radius: inherit;
+    border-left: 1px solid #8FA6BF;
+    border-right: 1px solid #8FA6BF;
+    border-top: 1px solid #8FA6BF;
+    height: 30px; }
+    .decorator:not(.d_inset) .d-control ~ .d-icon {
+      border-bottom-left-radius: inherit;
+      border-top-left-radius: inherit;
+      border-left: 1px solid #8FA6BF;
+      border-top: 1px solid #8FA6BF;
+      height: 30px; }
+    .decorator:not(.d_inset) .d-control ~ .d-button {
+      border-bottom-right-radius: inherit;
+      border-top-right-radius: inherit;
+      border-right: 1px solid #8FA6BF;
+      border-top: 1px solid #8FA6BF;
+      height: 30px; }
+    .decorator:not(.d_inset) .d-control:hover,
+    .decorator:not(.d_inset) .d-control:hover ~ .d-icon,
+    .decorator:not(.d_inset) .d-control:hover ~ .d-button, .decorator:not(.d_inset) .d-control.d_hover,
+    .decorator:not(.d_inset) .d-control.d_hover ~ .d-icon,
+    .decorator:not(.d_inset) .d-control.d_hover ~ .d-button {
+      border-color: #556980; }
+    .decorator:not(.d_inset) .d-control:disabled,
+    .decorator:not(.d_inset) .d-control:disabled ~ .d-icon,
+    .decorator:not(.d_inset) .d-control:disabled ~ .d-button, .decorator:not(.d_inset) .d-control.d_disabled,
+    .decorator:not(.d_inset) .d-control.d_disabled ~ .d-icon,
+    .decorator:not(.d_inset) .d-control.d_disabled ~ .d-button {
+      border-bottom: 1px solid;
+      border-color: #D1E0F0; }
+
+.decorator.d_inset {
+  background-color: inherit;
+  -webkit-transition: color 150ms ease-out, box-shadow 150ms ease-out;
+  transition: color 150ms ease-out, box-shadow 150ms ease-out; }
+
+.decorator .d-control + .d-control {
+  background: -webkit-linear-gradient(bottom, #FF00FF, transparent);
+  background: linear-gradient(to top, #FF00FF, transparent);
+  outline: 2px dotted #FF00FF;
+  content: "Two controls in the same decorator do not work"; }
 
 .padding .p_on,
 .padding .p_vertical,
@@ -3193,6 +3129,10 @@ select.list-switcher.ls_disabled:not([disabled]):not([tabindex]) {
 
 a {
   color: inherit; }
+
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: none; }
 
 .block .b-rhythm:before {
   box-shadow: 0 -10px 0 0 rgba(122, 93, 197, 0.2), 0 0px 0 0 rgba(197, 93, 122, 0.2), 0 10px 0 0 rgba(122, 93, 197, 0.2), 0 20px 0 0 rgba(197, 93, 122, 0.2), 0 30px 0 0 rgba(122, 93, 197, 0.2), 0 40px 0 0 rgba(197, 93, 122, 0.2), 0 50px 0 0 rgba(122, 93, 197, 0.2), 0 60px 0 0 rgba(197, 93, 122, 0.2), 0 70px 0 0 rgba(122, 93, 197, 0.2), 0 80px 0 0 rgba(197, 93, 122, 0.2), 0 90px 0 0 rgba(122, 93, 197, 0.2), 0 100px 0 0 rgba(197, 93, 122, 0.2), 0 110px 0 0 rgba(122, 93, 197, 0.2), 0 120px 0 0 rgba(197, 93, 122, 0.2), 0 130px 0 0 rgba(122, 93, 197, 0.2), 0 140px 0 0 rgba(197, 93, 122, 0.2), 0 150px 0 0 rgba(122, 93, 197, 0.2), 0 160px 0 0 rgba(197, 93, 122, 0.2), 0 170px 0 0 rgba(122, 93, 197, 0.2), 0 180px 0 0 rgba(197, 93, 122, 0.2), 0 190px 0 0 rgba(122, 93, 197, 0.2), 0 200px 0 0 rgba(197, 93, 122, 0.2), 0 210px 0 0 rgba(122, 93, 197, 0.2), 0 220px 0 0 rgba(197, 93, 122, 0.2), 0 230px 0 0 rgba(122, 93, 197, 0.2), 0 240px 0 0 rgba(197, 93, 122, 0.2), 0 250px 0 0 rgba(122, 93, 197, 0.2), 0 260px 0 0 rgba(197, 93, 122, 0.2), 0 270px 0 0 rgba(122, 93, 197, 0.2), 0 280px 0 0 rgba(197, 93, 122, 0.2), 0 290px 0 0 rgba(122, 93, 197, 0.2), 0 300px 0 0 rgba(197, 93, 122, 0.2), 0 310px 0 0 rgba(122, 93, 197, 0.2), 0 320px 0 0 rgba(197, 93, 122, 0.2), 0 330px 0 0 rgba(122, 93, 197, 0.2), 0 340px 0 0 rgba(197, 93, 122, 0.2), 0 350px 0 0 rgba(122, 93, 197, 0.2), 0 360px 0 0 rgba(197, 93, 122, 0.2), 0 370px 0 0 rgba(122, 93, 197, 0.2), 0 380px 0 0 rgba(197, 93, 122, 0.2), 0 390px 0 0 rgba(122, 93, 197, 0.2), 0 400px 0 0 rgba(197, 93, 122, 0.2), 0 410px 0 0 rgba(122, 93, 197, 0.2), 0 420px 0 0 rgba(197, 93, 122, 0.2), 0 430px 0 0 rgba(122, 93, 197, 0.2), 0 440px 0 0 rgba(197, 93, 122, 0.2), 0 450px 0 0 rgba(122, 93, 197, 0.2), 0 460px 0 0 rgba(197, 93, 122, 0.2), 0 470px 0 0 rgba(122, 93, 197, 0.2), 0 480px 0 0 rgba(197, 93, 122, 0.2), 0 490px 0 0 rgba(122, 93, 197, 0.2), 0 500px 0 0 rgba(197, 93, 122, 0.2), 0 510px 0 0 rgba(122, 93, 197, 0.2), 0 520px 0 0 rgba(197, 93, 122, 0.2), 0 530px 0 0 rgba(122, 93, 197, 0.2), 0 540px 0 0 rgba(197, 93, 122, 0.2), 0 550px 0 0 rgba(122, 93, 197, 0.2), 0 560px 0 0 rgba(197, 93, 122, 0.2), 0 570px 0 0 rgba(122, 93, 197, 0.2), 0 580px 0 0 rgba(197, 93, 122, 0.2), 0 590px 0 0 rgba(122, 93, 197, 0.2), 0 600px 0 0 rgba(197, 93, 122, 0.2), 0 610px 0 0 rgba(122, 93, 197, 0.2), 0 620px 0 0 rgba(197, 93, 122, 0.2), 0 630px 0 0 rgba(122, 93, 197, 0.2), 0 640px 0 0 rgba(197, 93, 122, 0.2), 0 650px 0 0 rgba(122, 93, 197, 0.2), 0 660px 0 0 rgba(197, 93, 122, 0.2), 0 670px 0 0 rgba(122, 93, 197, 0.2), 0 680px 0 0 rgba(197, 93, 122, 0.2), 0 690px 0 0 rgba(122, 93, 197, 0.2), 0 700px 0 0 rgba(197, 93, 122, 0.2), 0 710px 0 0 rgba(122, 93, 197, 0.2), 0 720px 0 0 rgba(197, 93, 122, 0.2), 0 730px 0 0 rgba(122, 93, 197, 0.2), 0 740px 0 0 rgba(197, 93, 122, 0.2), 0 750px 0 0 rgba(122, 93, 197, 0.2), 0 760px 0 0 rgba(197, 93, 122, 0.2), 0 770px 0 0 rgba(122, 93, 197, 0.2), 0 780px 0 0 rgba(197, 93, 122, 0.2), 0 790px 0 0 rgba(122, 93, 197, 0.2), 0 800px 0 0 rgba(197, 93, 122, 0.2), 0 810px 0 0 rgba(122, 93, 197, 0.2), 0 820px 0 0 rgba(197, 93, 122, 0.2), 0 830px 0 0 rgba(122, 93, 197, 0.2), 0 840px 0 0 rgba(197, 93, 122, 0.2), 0 850px 0 0 rgba(122, 93, 197, 0.2), 0 860px 0 0 rgba(197, 93, 122, 0.2), 0 870px 0 0 rgba(122, 93, 197, 0.2), 0 880px 0 0 rgba(197, 93, 122, 0.2), 0 890px 0 0 rgba(122, 93, 197, 0.2), 0 900px 0 0 rgba(197, 93, 122, 0.2), 0 910px 0 0 rgba(122, 93, 197, 0.2), 0 920px 0 0 rgba(197, 93, 122, 0.2), 0 930px 0 0 rgba(122, 93, 197, 0.2), 0 940px 0 0 rgba(197, 93, 122, 0.2), 0 950px 0 0 rgba(122, 93, 197, 0.2), 0 960px 0 0 rgba(197, 93, 122, 0.2), 0 970px 0 0 rgba(122, 93, 197, 0.2), 0 980px 0 0 rgba(197, 93, 122, 0.2), 0 990px 0 0 rgba(122, 93, 197, 0.2), 0 1000px 0 0 rgba(197, 93, 122, 0.2), 0 1010px 0 0 rgba(122, 93, 197, 0.2), 0 1020px 0 0 rgba(197, 93, 122, 0.2), 0 1030px 0 0 rgba(122, 93, 197, 0.2), 0 1040px 0 0 rgba(197, 93, 122, 0.2), 0 1050px 0 0 rgba(122, 93, 197, 0.2), 0 1060px 0 0 rgba(197, 93, 122, 0.2), 0 1070px 0 0 rgba(122, 93, 197, 0.2), 0 1080px 0 0 rgba(197, 93, 122, 0.2), 0 1090px 0 0 rgba(122, 93, 197, 0.2), 0 1100px 0 0 rgba(197, 93, 122, 0.2), 0 1110px 0 0 rgba(122, 93, 197, 0.2), 0 1120px 0 0 rgba(197, 93, 122, 0.2), 0 1130px 0 0 rgba(122, 93, 197, 0.2), 0 1140px 0 0 rgba(197, 93, 122, 0.2), 0 1150px 0 0 rgba(122, 93, 197, 0.2), 0 1160px 0 0 rgba(197, 93, 122, 0.2), 0 1170px 0 0 rgba(122, 93, 197, 0.2), 0 1180px 0 0 rgba(197, 93, 122, 0.2), 0 1190px 0 0 rgba(122, 93, 197, 0.2), 0 1200px 0 0 rgba(197, 93, 122, 0.2), 0 1210px 0 0 rgba(122, 93, 197, 0.2), 0 1220px 0 0 rgba(197, 93, 122, 0.2), 0 1230px 0 0 rgba(122, 93, 197, 0.2), 0 1240px 0 0 rgba(197, 93, 122, 0.2), 0 1250px 0 0 rgba(122, 93, 197, 0.2), 0 1260px 0 0 rgba(197, 93, 122, 0.2), 0 1270px 0 0 rgba(122, 93, 197, 0.2), 0 1280px 0 0 rgba(197, 93, 122, 0.2), 0 1290px 0 0 rgba(122, 93, 197, 0.2), 0 1300px 0 0 rgba(197, 93, 122, 0.2), 0 1310px 0 0 rgba(122, 93, 197, 0.2), 0 1320px 0 0 rgba(197, 93, 122, 0.2), 0 1330px 0 0 rgba(122, 93, 197, 0.2), 0 1340px 0 0 rgba(197, 93, 122, 0.2), 0 1350px 0 0 rgba(122, 93, 197, 0.2), 0 1360px 0 0 rgba(197, 93, 122, 0.2), 0 1370px 0 0 rgba(122, 93, 197, 0.2), 0 1380px 0 0 rgba(197, 93, 122, 0.2), 0 1390px 0 0 rgba(122, 93, 197, 0.2), 0 1400px 0 0 rgba(197, 93, 122, 0.2), 0 1410px 0 0 rgba(122, 93, 197, 0.2), 0 1420px 0 0 rgba(197, 93, 122, 0.2), 0 1430px 0 0 rgba(122, 93, 197, 0.2), 0 1440px 0 0 rgba(197, 93, 122, 0.2), 0 1450px 0 0 rgba(122, 93, 197, 0.2), 0 1460px 0 0 rgba(197, 93, 122, 0.2), 0 1470px 0 0 rgba(122, 93, 197, 0.2), 0 1480px 0 0 rgba(197, 93, 122, 0.2), 0 1490px 0 0 rgba(122, 93, 197, 0.2), 0 1500px 0 0 rgba(197, 93, 122, 0.2), 0 1510px 0 0 rgba(122, 93, 197, 0.2), 0 1520px 0 0 rgba(197, 93, 122, 0.2), 0 1530px 0 0 rgba(122, 93, 197, 0.2), 0 1540px 0 0 rgba(197, 93, 122, 0.2), 0 1550px 0 0 rgba(122, 93, 197, 0.2), 0 1560px 0 0 rgba(197, 93, 122, 0.2), 0 1570px 0 0 rgba(122, 93, 197, 0.2), 0 1580px 0 0 rgba(197, 93, 122, 0.2), 0 1590px 0 0 rgba(122, 93, 197, 0.2), 0 1600px 0 0 rgba(197, 93, 122, 0.2), 0 1610px 0 0 rgba(122, 93, 197, 0.2), 0 1620px 0 0 rgba(197, 93, 122, 0.2), 0 1630px 0 0 rgba(122, 93, 197, 0.2), 0 1640px 0 0 rgba(197, 93, 122, 0.2), 0 1650px 0 0 rgba(122, 93, 197, 0.2), 0 1660px 0 0 rgba(197, 93, 122, 0.2), 0 1670px 0 0 rgba(122, 93, 197, 0.2), 0 1680px 0 0 rgba(197, 93, 122, 0.2), 0 1690px 0 0 rgba(122, 93, 197, 0.2), 0 1700px 0 0 rgba(197, 93, 122, 0.2), 0 1710px 0 0 rgba(122, 93, 197, 0.2), 0 1720px 0 0 rgba(197, 93, 122, 0.2), 0 1730px 0 0 rgba(122, 93, 197, 0.2), 0 1740px 0 0 rgba(197, 93, 122, 0.2), 0 1750px 0 0 rgba(122, 93, 197, 0.2), 0 1760px 0 0 rgba(197, 93, 122, 0.2), 0 1770px 0 0 rgba(122, 93, 197, 0.2), 0 1780px 0 0 rgba(197, 93, 122, 0.2), 0 1790px 0 0 rgba(122, 93, 197, 0.2), 0 1800px 0 0 rgba(197, 93, 122, 0.2), 0 1810px 0 0 rgba(122, 93, 197, 0.2), 0 1820px 0 0 rgba(197, 93, 122, 0.2), 0 1830px 0 0 rgba(122, 93, 197, 0.2), 0 1840px 0 0 rgba(197, 93, 122, 0.2), 0 1850px 0 0 rgba(122, 93, 197, 0.2), 0 1860px 0 0 rgba(197, 93, 122, 0.2), 0 1870px 0 0 rgba(122, 93, 197, 0.2), 0 1880px 0 0 rgba(197, 93, 122, 0.2), 0 1890px 0 0 rgba(122, 93, 197, 0.2), 0 1900px 0 0 rgba(197, 93, 122, 0.2), 0 1910px 0 0 rgba(122, 93, 197, 0.2), 0 1920px 0 0 rgba(197, 93, 122, 0.2), 0 1930px 0 0 rgba(122, 93, 197, 0.2), 0 1940px 0 0 rgba(197, 93, 122, 0.2), 0 1950px 0 0 rgba(122, 93, 197, 0.2), 0 1960px 0 0 rgba(197, 93, 122, 0.2), 0 1970px 0 0 rgba(122, 93, 197, 0.2), 0 1980px 0 0 rgba(197, 93, 122, 0.2), 0 1990px 0 0 rgba(122, 93, 197, 0.2), 0 2000px 0 0 rgba(197, 93, 122, 0.2), 0 2010px 0 0 rgba(122, 93, 197, 0.2), 0 2020px 0 0 rgba(197, 93, 122, 0.2), 0 2030px 0 0 rgba(122, 93, 197, 0.2), 0 2040px 0 0 rgba(197, 93, 122, 0.2), 0 2050px 0 0 rgba(122, 93, 197, 0.2), 0 2060px 0 0 rgba(197, 93, 122, 0.2), 0 2070px 0 0 rgba(122, 93, 197, 0.2), 0 2080px 0 0 rgba(197, 93, 122, 0.2), 0 2090px 0 0 rgba(122, 93, 197, 0.2), 0 2100px 0 0 rgba(197, 93, 122, 0.2), 0 2110px 0 0 rgba(122, 93, 197, 0.2), 0 2120px 0 0 rgba(197, 93, 122, 0.2), 0 2130px 0 0 rgba(122, 93, 197, 0.2), 0 2140px 0 0 rgba(197, 93, 122, 0.2), 0 2150px 0 0 rgba(122, 93, 197, 0.2), 0 2160px 0 0 rgba(197, 93, 122, 0.2), 0 2170px 0 0 rgba(122, 93, 197, 0.2), 0 2180px 0 0 rgba(197, 93, 122, 0.2), 0 2190px 0 0 rgba(122, 93, 197, 0.2), 0 2200px 0 0 rgba(197, 93, 122, 0.2), 0 2210px 0 0 rgba(122, 93, 197, 0.2), 0 2220px 0 0 rgba(197, 93, 122, 0.2), 0 2230px 0 0 rgba(122, 93, 197, 0.2), 0 2240px 0 0 rgba(197, 93, 122, 0.2), 0 2250px 0 0 rgba(122, 93, 197, 0.2), 0 2260px 0 0 rgba(197, 93, 122, 0.2), 0 2270px 0 0 rgba(122, 93, 197, 0.2), 0 2280px 0 0 rgba(197, 93, 122, 0.2), 0 2290px 0 0 rgba(122, 93, 197, 0.2), 0 2300px 0 0 rgba(197, 93, 122, 0.2), 0 2310px 0 0 rgba(122, 93, 197, 0.2), 0 2320px 0 0 rgba(197, 93, 122, 0.2), 0 2330px 0 0 rgba(122, 93, 197, 0.2), 0 2340px 0 0 rgba(197, 93, 122, 0.2), 0 2350px 0 0 rgba(122, 93, 197, 0.2), 0 2360px 0 0 rgba(197, 93, 122, 0.2), 0 2370px 0 0 rgba(122, 93, 197, 0.2), 0 2380px 0 0 rgba(197, 93, 122, 0.2), 0 2390px 0 0 rgba(122, 93, 197, 0.2), 0 2400px 0 0 rgba(197, 93, 122, 0.2), 0 2410px 0 0 rgba(122, 93, 197, 0.2), 0 2420px 0 0 rgba(197, 93, 122, 0.2), 0 2430px 0 0 rgba(122, 93, 197, 0.2), 0 2440px 0 0 rgba(197, 93, 122, 0.2), 0 2450px 0 0 rgba(122, 93, 197, 0.2), 0 2460px 0 0 rgba(197, 93, 122, 0.2), 0 2470px 0 0 rgba(122, 93, 197, 0.2), 0 2480px 0 0 rgba(197, 93, 122, 0.2), 0 2490px 0 0 rgba(122, 93, 197, 0.2), 0 2500px 0 0 rgba(197, 93, 122, 0.2), 0 2510px 0 0 rgba(122, 93, 197, 0.2), 0 2520px 0 0 rgba(197, 93, 122, 0.2), 0 2530px 0 0 rgba(122, 93, 197, 0.2), 0 2540px 0 0 rgba(197, 93, 122, 0.2), 0 2550px 0 0 rgba(122, 93, 197, 0.2), 0 2560px 0 0 rgba(197, 93, 122, 0.2), 0 2570px 0 0 rgba(122, 93, 197, 0.2), 0 2580px 0 0 rgba(197, 93, 122, 0.2), 0 2590px 0 0 rgba(122, 93, 197, 0.2), 0 2600px 0 0 rgba(197, 93, 122, 0.2), 0 2610px 0 0 rgba(122, 93, 197, 0.2), 0 2620px 0 0 rgba(197, 93, 122, 0.2), 0 2630px 0 0 rgba(122, 93, 197, 0.2), 0 2640px 0 0 rgba(197, 93, 122, 0.2), 0 2650px 0 0 rgba(122, 93, 197, 0.2), 0 2660px 0 0 rgba(197, 93, 122, 0.2), 0 2670px 0 0 rgba(122, 93, 197, 0.2), 0 2680px 0 0 rgba(197, 93, 122, 0.2), 0 2690px 0 0 rgba(122, 93, 197, 0.2), 0 2700px 0 0 rgba(197, 93, 122, 0.2), 0 2710px 0 0 rgba(122, 93, 197, 0.2), 0 2720px 0 0 rgba(197, 93, 122, 0.2), 0 2730px 0 0 rgba(122, 93, 197, 0.2), 0 2740px 0 0 rgba(197, 93, 122, 0.2), 0 2750px 0 0 rgba(122, 93, 197, 0.2), 0 2760px 0 0 rgba(197, 93, 122, 0.2), 0 2770px 0 0 rgba(122, 93, 197, 0.2), 0 2780px 0 0 rgba(197, 93, 122, 0.2), 0 2790px 0 0 rgba(122, 93, 197, 0.2), 0 2800px 0 0 rgba(197, 93, 122, 0.2), 0 2810px 0 0 rgba(122, 93, 197, 0.2), 0 2820px 0 0 rgba(197, 93, 122, 0.2), 0 2830px 0 0 rgba(122, 93, 197, 0.2), 0 2840px 0 0 rgba(197, 93, 122, 0.2), 0 2850px 0 0 rgba(122, 93, 197, 0.2), 0 2860px 0 0 rgba(197, 93, 122, 0.2), 0 2870px 0 0 rgba(122, 93, 197, 0.2), 0 2880px 0 0 rgba(197, 93, 122, 0.2), 0 2890px 0 0 rgba(122, 93, 197, 0.2), 0 2900px 0 0 rgba(197, 93, 122, 0.2), 0 2910px 0 0 rgba(122, 93, 197, 0.2), 0 2920px 0 0 rgba(197, 93, 122, 0.2), 0 2930px 0 0 rgba(122, 93, 197, 0.2), 0 2940px 0 0 rgba(197, 93, 122, 0.2), 0 2950px 0 0 rgba(122, 93, 197, 0.2), 0 2960px 0 0 rgba(197, 93, 122, 0.2), 0 2970px 0 0 rgba(122, 93, 197, 0.2), 0 2980px 0 0 rgba(197, 93, 122, 0.2), 0 2990px 0 0 rgba(122, 93, 197, 0.2), 0 3000px 0 0 rgba(197, 93, 122, 0.2), 0 3010px 0 0 rgba(122, 93, 197, 0.2), 0 3020px 0 0 rgba(197, 93, 122, 0.2), 0 3030px 0 0 rgba(122, 93, 197, 0.2), 0 3040px 0 0 rgba(197, 93, 122, 0.2), 0 3050px 0 0 rgba(122, 93, 197, 0.2), 0 3060px 0 0 rgba(197, 93, 122, 0.2), 0 3070px 0 0 rgba(122, 93, 197, 0.2), 0 3080px 0 0 rgba(197, 93, 122, 0.2), 0 3090px 0 0 rgba(122, 93, 197, 0.2), 0 3100px 0 0 rgba(197, 93, 122, 0.2), 0 3110px 0 0 rgba(122, 93, 197, 0.2), 0 3120px 0 0 rgba(197, 93, 122, 0.2), 0 3130px 0 0 rgba(122, 93, 197, 0.2), 0 3140px 0 0 rgba(197, 93, 122, 0.2), 0 3150px 0 0 rgba(122, 93, 197, 0.2), 0 3160px 0 0 rgba(197, 93, 122, 0.2), 0 3170px 0 0 rgba(122, 93, 197, 0.2), 0 3180px 0 0 rgba(197, 93, 122, 0.2), 0 3190px 0 0 rgba(122, 93, 197, 0.2), 0 3200px 0 0 rgba(197, 93, 122, 0.2), 0 3210px 0 0 rgba(122, 93, 197, 0.2), 0 3220px 0 0 rgba(197, 93, 122, 0.2), 0 3230px 0 0 rgba(122, 93, 197, 0.2), 0 3240px 0 0 rgba(197, 93, 122, 0.2), 0 3250px 0 0 rgba(122, 93, 197, 0.2), 0 3260px 0 0 rgba(197, 93, 122, 0.2), 0 3270px 0 0 rgba(122, 93, 197, 0.2), 0 3280px 0 0 rgba(197, 93, 122, 0.2), 0 3290px 0 0 rgba(122, 93, 197, 0.2), 0 3300px 0 0 rgba(197, 93, 122, 0.2), 0 3310px 0 0 rgba(122, 93, 197, 0.2), 0 3320px 0 0 rgba(197, 93, 122, 0.2), 0 3330px 0 0 rgba(122, 93, 197, 0.2), 0 3340px 0 0 rgba(197, 93, 122, 0.2), 0 3350px 0 0 rgba(122, 93, 197, 0.2), 0 3360px 0 0 rgba(197, 93, 122, 0.2), 0 3370px 0 0 rgba(122, 93, 197, 0.2), 0 3380px 0 0 rgba(197, 93, 122, 0.2), 0 3390px 0 0 rgba(122, 93, 197, 0.2), 0 3400px 0 0 rgba(197, 93, 122, 0.2), 0 3410px 0 0 rgba(122, 93, 197, 0.2), 0 3420px 0 0 rgba(197, 93, 122, 0.2), 0 3430px 0 0 rgba(122, 93, 197, 0.2), 0 3440px 0 0 rgba(197, 93, 122, 0.2), 0 3450px 0 0 rgba(122, 93, 197, 0.2), 0 3460px 0 0 rgba(197, 93, 122, 0.2), 0 3470px 0 0 rgba(122, 93, 197, 0.2), 0 3480px 0 0 rgba(197, 93, 122, 0.2), 0 3490px 0 0 rgba(122, 93, 197, 0.2), 0 3500px 0 0 rgba(197, 93, 122, 0.2), 0 3510px 0 0 rgba(122, 93, 197, 0.2), 0 3520px 0 0 rgba(197, 93, 122, 0.2), 0 3530px 0 0 rgba(122, 93, 197, 0.2), 0 3540px 0 0 rgba(197, 93, 122, 0.2), 0 3550px 0 0 rgba(122, 93, 197, 0.2), 0 3560px 0 0 rgba(197, 93, 122, 0.2), 0 3570px 0 0 rgba(122, 93, 197, 0.2), 0 3580px 0 0 rgba(197, 93, 122, 0.2), 0 3590px 0 0 rgba(122, 93, 197, 0.2), 0 3600px 0 0 rgba(197, 93, 122, 0.2), 0 3610px 0 0 rgba(122, 93, 197, 0.2), 0 3620px 0 0 rgba(197, 93, 122, 0.2), 0 3630px 0 0 rgba(122, 93, 197, 0.2), 0 3640px 0 0 rgba(197, 93, 122, 0.2), 0 3650px 0 0 rgba(122, 93, 197, 0.2), 0 3660px 0 0 rgba(197, 93, 122, 0.2), 0 3670px 0 0 rgba(122, 93, 197, 0.2), 0 3680px 0 0 rgba(197, 93, 122, 0.2), 0 3690px 0 0 rgba(122, 93, 197, 0.2), 0 3700px 0 0 rgba(197, 93, 122, 0.2), 0 3710px 0 0 rgba(122, 93, 197, 0.2), 0 3720px 0 0 rgba(197, 93, 122, 0.2), 0 3730px 0 0 rgba(122, 93, 197, 0.2), 0 3740px 0 0 rgba(197, 93, 122, 0.2), 0 3750px 0 0 rgba(122, 93, 197, 0.2), 0 3760px 0 0 rgba(197, 93, 122, 0.2), 0 3770px 0 0 rgba(122, 93, 197, 0.2), 0 3780px 0 0 rgba(197, 93, 122, 0.2), 0 3790px 0 0 rgba(122, 93, 197, 0.2), 0 3800px 0 0 rgba(197, 93, 122, 0.2), 0 3810px 0 0 rgba(122, 93, 197, 0.2), 0 3820px 0 0 rgba(197, 93, 122, 0.2), 0 3830px 0 0 rgba(122, 93, 197, 0.2), 0 3840px 0 0 rgba(197, 93, 122, 0.2), 0 3850px 0 0 rgba(122, 93, 197, 0.2), 0 3860px 0 0 rgba(197, 93, 122, 0.2), 0 3870px 0 0 rgba(122, 93, 197, 0.2), 0 3880px 0 0 rgba(197, 93, 122, 0.2), 0 3890px 0 0 rgba(122, 93, 197, 0.2), 0 3900px 0 0 rgba(197, 93, 122, 0.2), 0 3910px 0 0 rgba(122, 93, 197, 0.2), 0 3920px 0 0 rgba(197, 93, 122, 0.2), 0 3930px 0 0 rgba(122, 93, 197, 0.2), 0 3940px 0 0 rgba(197, 93, 122, 0.2), 0 3950px 0 0 rgba(122, 93, 197, 0.2), 0 3960px 0 0 rgba(197, 93, 122, 0.2), 0 3970px 0 0 rgba(122, 93, 197, 0.2), 0 3980px 0 0 rgba(197, 93, 122, 0.2);

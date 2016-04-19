@@ -1,13 +1,12 @@
-$list-switcher-arrow-color: $border-default !default;
-$list-switcher-arrow-hover-color: $border-hovered !default;
-$list-switcher-disabled-arrow-color: text-color($text-disabled) !default;
-$list-switcher-default-text: text-color($text-riched) !default;
-$list-switcher-disabled-text: text-color($text-disabled) !default;
+$select-arrow-default: $border-default !default;
+$select-arrow-hover: $border-hovered !default;
+$select-text-default: text-color($text-riched) !default;
+$select-text-disabled: text-color($text-disabled) !default;
 
-:model(List-switcher) {
+:model(Select) {
   appearance: initial;
   background-color: initial;
-  background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-arrow-color))}' d='M0 2 3 5 l3-3z'/></svg>");
+  background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($select-arrow-default))}' d='M0 2 3 5 l3-3z'/></svg>");
   background-position: calc(100% - 10px) 45%;
   background-repeat: no-repeat;
   background-size: size();
@@ -30,11 +29,11 @@ $list-switcher-disabled-text: text-color($text-disabled) !default;
   user-select: none;
 
   &:not(:disabled):not(:is(disabled)) {
-    padding-right: size(2);
+    padding-right: size(3);
   }
 
-  :has(Option) {
-    color: $list-switcher-default-text;
+  > :nth-child(n) {
+    color: $select-text-default;
     font-size: inherit; //Should be same
     text-shadow: initial;
   }
@@ -43,17 +42,17 @@ $list-switcher-disabled-text: text-color($text-disabled) !default;
     @if $state == Disabled {
       @include state($state) {
         background-image: initial;
-        color: $list-switcher-disabled-text;
+        color: $select-text-disabled;
         pointer-events: none;
       }
     }
     @elseif $state == Hover {
       @include state($state) {
-        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($list-switcher-arrow-hover-color))}' d='M0 2 3 5 l3-3z'/></svg>");
+        background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'><path fill='#{html-encode(color-to-hex($select-arrow-hover))}' d='M0 2 3 5 l3-3z'/></svg>");
       }
     }
   }
 }
 
 @import "hack";
-@if (map-get($m, debug)) { @import "debug"; }
+@if (map-get($models, debug)) { @import "debug"; }

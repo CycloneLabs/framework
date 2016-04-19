@@ -1,44 +1,74 @@
 // reason: Public info
 // scss-lint:disable Comment
-/**/
-/* Oakwood
-/* https://github.com/Cyclonelabs/framework.git
-/*
-/* Released under MIT license
-/**/
+/*! Oakwood | MIT license | github.com/Cyclonelabs/framework */
 
 // Entry file
 // Imports all Oakwood files in their intended order for easy mass-inclusion
-// Set up your build using the `$modules` variable
+// Set up your build using the `$models` variable
 
-@if not variable-exists(models) {
-  $models: (all: true, debug: false);
-} $m: $models;
+$models: (all: true, debug: false) !default;
+
+@import "core/library";
+@import "core/variables";
+
+@if map-has-key($models, all) {
+  @import "~normalize.css/normalize",
+  "models/t-text/manifest", "models/i-icon/manifest",
+  "models/c-card/manifest", "models/l-layout/manifest",
+  "models/grp-group/manifest", "models/btn-button/manifest",
+  "models/s-switch/manifest", "models/input/manifest",
+  "models/select/manifest", "models/d-decorator/manifest",
+  "models/p-padding/manifest", "models/il-inline/manifest",
+  "models/b-block/manifest", "models/g-grid/manifest";
+}
+
+@if map-has-key($models, core) {
+  @import "~normalize.css/normalize",
+  "models/t-text/manifest", "models/p-padding/manifest",
+  "models/il-inline/manifest", "models/b-block/manifest";
+}
+
+@if map-has-key($models, basic) {
+  @import "models/i-icon/manifest", "models/c-card/manifest",
+  "models/l-layout/manifest";
+}
+
+@if map-has-key($models, form) {
+  @import "models/btn-button/manifest", "models/s-switch/manifest",
+  "models/input/manifest", "models/select/manifest",
+  "models/d-decorator/manifest";
+}
+
+@if map-has-key($models, custom) {
+  @import "models/grp-group/manifest";
+}
 
 // Global requirements
-@if map-get($m, all) or map-get($m, core) or map-get($m, library) { @import "core/library"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, variables) { @import "core/variables"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, normalize) { @import "node_modules/normalize.css/normalize"; }
+@if map-has-key($models, library) { @import "core/library"; }
+@if map-has-key($models, variables) { @import "core/variables"; }
+@if map-has-key($models, normalize) { @import "~normalize.css/normalize"; }
 
 // Models
-@if map-get($m, all) or map-get($m, core) or map-get($m, text) { @import "models/t-text/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, icon) { @import "models/i-icon/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, card) { @import "models/c-card/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, layout) { @import "models/l-layout/manifest"; }
-@if map-get($m, all) or map-get($m, custom) or map-get($m, group) { @import "models/grp-group/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, button) { @import "models/btn-button/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, switcher) { @import "models/s-switcher/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, text-field) { @import "models/tf-text-field/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, list-switcher) { @import "models/ls-list-switcher/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, control-border) { @import "models/cb-control-border/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, control-underline) { @import "models/cu-control-underline/manifest"; }
-@if map-get($m, all) or map-get($m, form) or map-get($m, decorator) { @import "models/d-decorator/manifest"; }
+@if map-has-key($models, text) { @import "models/t-text/manifest"; }
+@if map-has-key($models, icon) { @import "models/i-icon/manifest"; }
+@if map-has-key($models, card) { @import "models/c-card/manifest"; }
+@if map-has-key($models, layout) { @import "models/l-layout/manifest"; }
+@if map-has-key($models, group) { @import "models/grp-group/manifest"; }
+@if map-has-key($models, button) { @import "models/btn-button/manifest"; }
+@if map-has-key($models, switch) { @import "models/s-switch/manifest"; }
+@if map-has-key($models, input) { @import "models/input/manifest"; }
+@if map-has-key($models, select) { @import "models/select/manifest"; }
+@if map-has-key($models, decorator) { @import "models/d-decorator/manifest"; }
 
 // Utilities
-@if map-get($m, all) or map-get($m, core) or map-get($m, padding) { @import "models/p-padding/manifest"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, inline) { @import "models/il-inline/manifest"; }
-@if map-get($m, all) or map-get($m, core) or map-get($m, block) { @import "models/b-block/manifest"; }
-@if map-get($m, all) or map-get($m, basic) or map-get($m, grid) { @import "models/g-grid/manifest"; }
+@if map-has-key($models, padding) { @import "models/p-padding/manifest"; }
+@if map-has-key($models, inline) { @import "models/il-inline/manifest"; }
+@if map-has-key($models, block) { @import "models/b-block/manifest"; }
+@if map-has-key($models, grid) { @import "models/g-grid/manifest"; }
 
-// FontAwesome dependency
-@if map-get($m, all) or map-get($m, basic) or map-get($m, form) or map-get($m, icon) or map-get($m, switcher) { @import "node_modules/font-awesome/scss/path"; }
+// Icons font
+@if map-has-key($models, all) or
+    map-has-key($models, basic) or map-has-key($models, form) or
+    map-has-key($models, icon) or map-has-key($models, switch) {
+  @import "~font-awesome/scss/path";
+}

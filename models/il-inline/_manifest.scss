@@ -36,7 +36,8 @@
   :is(Indented),
   :is(Indented-x) {
     display: inline-block;
-    vertical-align: top;
+    //vertical-align: top; //only top or bottom aligment appropriate for rhythm
+    vertical-align: bottom; //aligment top is failed with selector: E(some icons) + E(text)
 
     //TODO Check "Negative margins" solution (3)
     //&:first-child {

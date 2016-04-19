@@ -94,4 +94,9 @@ a {
   color: inherit;
 }
 
-@if (map-get($m, debug)) { @import "debug"; }
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: none;
+}
+
+@if (map-get($models, debug)) { @import "debug"; }

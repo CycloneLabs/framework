@@ -7,9 +7,15 @@ $layout-container-border-color      : $border-muted !default;
 $layout-container-edge-margin       : size(3) !default;
 $layout-container-side-margin       : size(3) !default;
 
+:root {
+  height: auto;
+  min-height: 100%;
+}
+
 :model(Layout) {
   background-color: $layout-background-color;
   height: 100%;
+  min-height: 100vh;
   min-width: $layout-min-size;
 
   :has(Container) {

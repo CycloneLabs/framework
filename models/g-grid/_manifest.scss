@@ -85,4 +85,4 @@ $half-gutter-width         : $gutter-width / 2 !default;
   }
 }
 
-@if (map-get($m, debug)) { @import "debug"; }
+@if (map-get($models, debug)) { @import "debug"; }
