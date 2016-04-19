@@ -9,6 +9,7 @@ $card-shadow: $shadow-default !default;
   border: $thin solid $card-border-default;
   display: block;
   margin-bottom: -2 * $thin;
+  overflow: hidden;
   position: relative;
   top: -$thin;
 

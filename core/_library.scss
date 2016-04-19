@@ -312,9 +312,6 @@
 
 @mixin state($state, $suffix: "") {
   $state-alias: $state;
-  @if($state == Selected) {
-    $state-alias: checked;
-  }
 
   &:#{to-lower-case($state-alias)}#{unquote($suffix)},
   &:is(#{$state})#{unquote($suffix)} {
