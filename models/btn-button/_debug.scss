@@ -1,23 +1,26 @@
-:model(ButToN):not(button):not(input):not(a),
-a:model(ButToN):not([href]) {
-  &:not([disabled]):not(:is(Disabled)) {
-    &:not([tabindex]),
-    &[tabindex^="-"] {
-      @include bug;
-      content: "model should have attribute `tabindex` like `0` to receive focus";
+@if (map-get($models, debug)) {
+
+  :model(ButToN):not(button):not(input):not(a),
+  a:model(ButToN):not([href]) {
+    &:not([disabled]):not(:is(Disabled)) {
+      &:not([tabindex]),
+      &[tabindex^="-"] {
+        @include bug;
+        content: "model should have attribute `tabindex` like `0` to receive focus";
+      }
     }
   }
-}
 
-input,
-button {
-  &:not([disabled]):not([tabindex^="-"]):model(ButToN):is(Disabled) {
+  input,
+  button {
+    &:not([disabled]):not([tabindex^="-"]):model(ButToN):is(Disabled) {
+      @include bug;
+      content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+    }
+  }
+
+  [href]:not([tabindex^="-"]):model(ButToN):is(Disabled) {
     @include bug;
     content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
   }
-}
-
-[href]:not([tabindex^="-"]):model(ButToN):is(Disabled) {
-  @include bug;
-  content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
 }

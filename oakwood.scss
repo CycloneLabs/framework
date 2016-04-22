@@ -11,66 +11,15 @@ $models: (all: true, debug: false) !default;
 @import "core/library";
 @import "core/variables";
 
-@if map-has-key($models, all) {
-  @import "~normalize.css/normalize",
-  "models/t-text/manifest", "models/i-icon/manifest",
-  "models/c-card/manifest", "models/l-layout/manifest",
-  "models/grp-group/manifest", "models/btn-button/manifest",
-  "models/s-switch/manifest", "models/input/manifest",
-  "models/select/manifest", "models/d-decorator/manifest",
-  "models/sc-switch-choose/manifest",
-  "models/p-padding/manifest", "models/il-inline/manifest",
-  "models/b-block/manifest", "models/g-grid/manifest";
-}
+@import "~normalize.css/normalize",
+"models/t-text/manifest", "models/i-icon/manifest",
+"models/c-card/manifest", "models/l-layout/manifest",
+"models/grp-group/manifest", "models/btn-button/manifest",
+"models/s-switch/manifest", "models/input/manifest",
+"models/select/manifest", "models/d-decorator/manifest",
+"models/sc-switch-choose/manifest",
+"models/p-padding/manifest", "models/il-inline/manifest",
+"models/b-block/manifest", "models/g-grid/manifest";
 
-@if map-has-key($models, core) {
-  @import "~normalize.css/normalize",
-  "models/t-text/manifest", "models/p-padding/manifest",
-  "models/il-inline/manifest", "models/b-block/manifest";
-}
-
-@if map-has-key($models, basic) {
-  @import "models/i-icon/manifest", "models/c-card/manifest",
-  "models/l-layout/manifest";
-}
-
-@if map-has-key($models, form) {
-  @import "models/btn-button/manifest", "models/s-switch/manifest",
-  "models/input/manifest", "models/select/manifest",
-  "models/d-decorator/manifest", "models/sc-switch-choose/manifest";
-}
-
-@if map-has-key($models, custom) {
-  @import "models/grp-group/manifest";
-}
-
-// Global requirements
-@if map-has-key($models, library) { @import "core/library"; }
-@if map-has-key($models, variables) { @import "core/variables"; }
-@if map-has-key($models, normalize) { @import "~normalize.css/normalize"; }
-
-// Models
-@if map-has-key($models, text) { @import "models/t-text/manifest"; }
-@if map-has-key($models, icon) { @import "models/i-icon/manifest"; }
-@if map-has-key($models, card) { @import "models/c-card/manifest"; }
-@if map-has-key($models, layout) { @import "models/l-layout/manifest"; }
-@if map-has-key($models, group) { @import "models/grp-group/manifest"; }
-@if map-has-key($models, button) { @import "models/btn-button/manifest"; }
-@if map-has-key($models, switch) { @import "models/s-switch/manifest"; }
-@if map-has-key($models, switch-choose) { @import "models/sc-switch-choose/manifest"; }
-@if map-has-key($models, input) { @import "models/input/manifest"; }
-@if map-has-key($models, select) { @import "models/select/manifest"; }
-@if map-has-key($models, decorator) { @import "models/d-decorator/manifest"; }
-
-// Utilities
-@if map-has-key($models, padding) { @import "models/p-padding/manifest"; }
-@if map-has-key($models, inline) { @import "models/il-inline/manifest"; }
-@if map-has-key($models, block) { @import "models/b-block/manifest"; }
-@if map-has-key($models, grid) { @import "models/g-grid/manifest"; }
-
-// Icons font
-@if map-has-key($models, all) or
-    map-has-key($models, basic) or map-has-key($models, form) or
-    map-has-key($models, icon) or map-has-key($models, switch) {
-  @import "~font-awesome/scss/path";
-}
+// TODO Add wrapper to normalize for disabling
+//@if map-has-key($models, normalize) { @import "~normalize.css/normalize"; }

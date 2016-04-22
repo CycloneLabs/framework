@@ -1,57 +1,60 @@
-$layout-background-color            : $bg-muted !default;
-$layout-min-size                    : size(120) !default;
-$layout-overlay-color               : color(black) !default;
-$layout-overlay-transparency        : 0.4 !default;
-$layout-container-background-color  : $bg-default !default;
-$layout-container-border-color      : $border-muted !default;
-$layout-container-edge-margin       : size(3) !default;
-$layout-container-side-margin       : size(3) !default;
+@if map-has-key($models, all) or map-has-key($models, basic) or map-has-key($models, layout) {
 
-:root {
-  height: auto;
-  min-height: 100%;
-}
+  $layout-background-color            : $bg-muted !default;
+  $layout-min-size                    : size(120) !default;
+  $layout-overlay-color               : color(black) !default;
+  $layout-overlay-transparency        : 0.4 !default;
+  $layout-container-background-color  : $bg-default !default;
+  $layout-container-border-color      : $border-muted !default;
+  $layout-container-edge-margin       : size(3) !default;
+  $layout-container-side-margin       : size(3) !default;
 
-:model(Layout) {
-  background-color: $layout-background-color;
-  height: 100%;
-  min-height: 100vh;
-  min-width: $layout-min-size;
-
-  :has(Container) {
-    display: block;
-    padding-left: $layout-container-side-margin;
-    padding-right: $layout-container-side-margin;
-
-    &:is(Painted) {
-      @include stroke(bottom $layout-container-border-color);
-      background-color: $layout-container-background-color;
-    }
-
-    &:not(:is(Painted)) + :is(Painted),
-    &:not(:is(Painted)) + * :is(Painted) {
-      @include stroke(bottom top $layout-container-border-color);
-    }
-
-    &:is(Margined) {
-      padding-bottom: $layout-container-edge-margin;
-      padding-top: $layout-container-edge-margin;
-    }
+  :root {
+    height: auto;
+    min-height: 100%;
   }
 
-  &:is(Overlay) {
-    overflow: hidden;
+  :model(Layout) {
+    background-color: $layout-background-color;
+    height: 100%;
+    min-height: 100vh;
+    min-width: $layout-min-size;
 
-    &:before {
-      background-color: rgba($layout-overlay-color, $layout-overlay-transparency);
-      bottom: 0;
-      content: "";
-      left: 0;
-      position: fixed;
-      right: 0;
-      top: 0;
-      user-select: none;
-      z-index: $z-overlay;
+    :has(Container) {
+      display: block;
+      padding-left: $layout-container-side-margin;
+      padding-right: $layout-container-side-margin;
+
+      &:is(Painted) {
+        @include stroke(bottom $layout-container-border-color);
+        background-color: $layout-container-background-color;
+      }
+
+      &:not(:is(Painted)) + :is(Painted),
+      &:not(:is(Painted)) + * :is(Painted) {
+        @include stroke(bottom top $layout-container-border-color);
+      }
+
+      &:is(Margined) {
+        padding-bottom: $layout-container-edge-margin;
+        padding-top: $layout-container-edge-margin;
+      }
+    }
+
+    &:is(Overlay) {
+      overflow: hidden;
+
+      &:before {
+        background-color: rgba($layout-overlay-color, $layout-overlay-transparency);
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        user-select: none;
+        z-index: $z-overlay;
+      }
     }
   }
 }

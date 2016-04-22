@@ -1,4 +1,7 @@
-:model(Grid) > :is(First):first-child + :is(Last):last-child {
-  @include bug;
-  content: "For this purpose, use grid modifier `between`";
+@if (map-get($models, debug)) {
+
+  :model(Grid) > :is(First):first-child + :is(Last):last-child {
+    @include bug;
+    content: "For this purpose, use grid modifier `between`";
+  }
 }

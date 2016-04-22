@@ -1,102 +1,105 @@
-:model(Block) {
+@if map-has-key($models, all) or map-has-key($models, core) or map-has-key($models, block) {
 
-  :is(slate) { background-color: color(slate); }
+  :model(Block) {
 
-  :is(red) { background-color: color(red); }
+    :is(slate) { background-color: color(slate); }
 
-  :is(orange) { background-color: color(orange); }
+    :is(red) { background-color: color(red); }
 
-  :is(yellow) { background-color: color(yellow); }
+    :is(orange) { background-color: color(orange); }
 
-  :is(green) { background-color: color(green); }
+    :is(yellow) { background-color: color(yellow); }
 
-  :is(blue) { background-color: color(blue); }
+    :is(green) { background-color: color(green); }
 
-  :is(purple) { background-color: color(purple); }
+    :is(blue) { background-color: color(blue); }
 
-  :is(pink) { background-color: color(pink); }
+    :is(purple) { background-color: color(purple); }
 
-  :is(riched) { background-color: $bg-riched; }
+    :is(pink) { background-color: color(pink); }
 
-  :is(muted) { background-color: $bg-muted; }
+    :is(riched) { background-color: $bg-riched; }
 
-  :is(info) { background-color: $bg-info; }
+    :is(muted) { background-color: $bg-muted; }
 
-  :is(warning) { background-color: $bg-warning; }
+    :is(info) { background-color: $bg-info; }
 
-  :is(success) { background-color: $bg-success; }
+    :is(warning) { background-color: $bg-warning; }
 
-  :is(error) { background-color: $bg-error; }
+    :is(success) { background-color: $bg-success; }
 
-  :is(Wide) {
-    display: inline-block;
-    width: 100%;
-  }
+    :is(error) { background-color: $bg-error; }
 
-  :is(Overflow) {
-    height: size(7);
-    max-height: size(80);
-    min-height: size(3); //TODO https://code.google.com/p/chromium/issues/detail?id=94583
-    overflow: hidden;
-    resize: vertical;
+    :is(Wide) {
+      display: inline-block;
+      width: 100%;
+    }
 
-    &:hover:focus {
-      overflow-y: auto;
+    :is(Overflow) {
+      height: size(7);
+      max-height: size(80);
+      min-height: size(3); //TODO https://code.google.com/p/chromium/issues/detail?id=94583
+      overflow: hidden;
+      resize: vertical;
+
+      &:hover:focus {
+        overflow-y: auto;
+      }
+    }
+
+    :is(Header) {
+      @include radius(bottom, 0);
+      @include radius(top);
+      position: relative;
+      z-index: $z-local;
+    }
+
+    :is(Footer) {
+      @include radius(bottom);
+      @include radius(top, 0);
+      position: relative;
+      top: -$thin;
+
+      &:hover {
+        z-index: $z-local + 1;
+      }
+    }
+
+    :is(Indented) {
+      margin-top: size();
+    }
+
+    :is(Indented-x) {
+      margin-top: size(2);
+    }
+
+    :has(Indent) {
+      display: block;
+      height: size();
+    }
+
+    :has(Indent-x) {
+      display: block;
+      height: size(2);
     }
   }
 
-  :is(Header) {
-    @include radius(bottom, 0);
-    @include radius(top);
-    position: relative;
-    z-index: $z-local;
+  [class] {
+    box-sizing: border-box;
   }
 
-  :is(Footer) {
-    @include radius(bottom);
-    @include radius(top, 0);
-    position: relative;
-    top: -$thin;
-
-    &:hover {
-      z-index: $z-local + 1;
-    }
+  [tabindex] {
+    outline: initial;
   }
 
-  :is(Indented) {
-    margin-top: size();
+  a {
+    color: inherit;
   }
 
-  :is(Indented-x) {
-    margin-top: size(2);
-  }
-
-  :has(Indent) {
-    display: block;
-    height: size();
-  }
-
-  :has(Indent-x) {
-    display: block;
-    height: size(2);
+  button:-moz-focusring,
+  input:-moz-focusring {
+    outline: none;
   }
 }
 
-[class] {
-  box-sizing: border-box;
-}
-
-[tabindex] {
-  outline: initial;
-}
-
-a {
-  color: inherit;
-}
-
-button:-moz-focusring,
-input:-moz-focusring {
-  outline: none;
-}
-
-@if (map-get($models, debug)) { @import "debug"; }
+@import "debug";

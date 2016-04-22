@@ -1,42 +1,45 @@
-:model(Block) {
+@if (map-get($models, debug)) {
 
-  :has(Rhythm):before {
-    $shadow: ();
-    @for $i from 0 to 200 {
-      $shadow: append($shadow, "0 #{$line-step * 2 * $i - 10} 0 0 rgba(122, 93, 197, 0.2)", comma);
-      $shadow: append($shadow, "0 #{$line-step * 2 * $i} 0 0 rgba(197, 93, 122, 0.2)", comma);
+  :model(Block) {
+
+    :has(Rhythm):before {
+      $shadow: ();
+      @for $i from 0 to 200 {
+        $shadow: append($shadow, "0 #{$line-step * 2 * $i - 10} 0 0 rgba(122, 93, 197, 0.2)", comma);
+        $shadow: append($shadow, "0 #{$line-step * 2 * $i} 0 0 rgba(197, 93, 122, 0.2)", comma);
+      }
+      box-shadow: #{$shadow};
+      content: "Rhythm grid:";
+      height: $thin;
+      left: 0;
+      position: absolute;
+      top: -$thin;
+      width: 100%;
+      z-index: $z-alerts;
     }
-    box-shadow: #{$shadow};
-    content: "Rhythm grid:";
-    height: $thin;
-    left: 0;
-    position: absolute;
-    top: -$thin;
-    width: 100%;
-    z-index: $z-alerts;
-  }
 
-  :has(Indent):not(:empty) {
-    @include bug;
-    content: "Block-indent should be empty";
-  }
+    :has(Indent):not(:empty) {
+      @include bug;
+      content: "Block-indent should be empty";
+    }
 
-  :has(Indent) + :has(Indent),
-  :has(Indent) + :has(Indent-x),
-  :has(Indent-x) + :has(Indent),
-  :has(Indent-x) + :has(Indent-x) {
-    @include bug;
-    content: "Block-indent does not stack";
-  }
+    :has(Indent) + :has(Indent),
+    :has(Indent) + :has(Indent-x),
+    :has(Indent-x) + :has(Indent),
+    :has(Indent-x) + :has(Indent-x) {
+      @include bug;
+      content: "Block-indent does not stack";
+    }
 
-  :has(Footer):is(Indented),
-  :has(Footer):is(Indented-x) {
-    @include bug;
-    content: "Footer should be pressed to the previous block";
-  }
+    :has(Footer):is(Indented),
+    :has(Footer):is(Indented-x) {
+      @include bug;
+      content: "Footer should be pressed to the previous block";
+    }
 
-  :model(Card) :model(gRouP):is(header) {
-    @include bug;
-    content: "Card model needs no modifier such as header and footer";
+    :model(Card) :model(gRouP):is(header) {
+      @include bug;
+      content: "Card model needs no modifier such as header and footer";
+    }
   }
 }

@@ -1,51 +1,54 @@
-:model(InLine) {
+@if map-has-key($models, all) or map-has-key($models, core) or map-has-key($models, inline) {
 
-  :has(LtR) {
-    display: flex;
-    flex-wrap: wrap;
+  :model(InLine) {
 
-    //TODO Check "Negative margins" solution (1)
-    margin-left: size(-1);
-  }
+    :has(LtR) {
+      display: flex;
+      flex-wrap: wrap;
 
-  :is(Indented) {
-    margin-left: size();
-  }
-
-  :is(Indented-x) {
-    margin-left: size(2);
-  }
-
-  :has(RtL) {
-    display: flex;
-    flex-flow: wrap row-reverse;
-    justify-content: flex-end;
-
-    //TODO Check "Negative margins" solution (2)
-    margin-right: size(-1);
+      //TODO Check "Negative margins" solution (1)
+      margin-left: size(-1);
+    }
 
     :is(Indented) {
-      margin-right: size();
+      margin-left: size();
     }
 
     :is(Indented-x) {
-      margin-right: size(2);
+      margin-left: size(2);
     }
-  }
 
-  :is(Indented),
-  :is(Indented-x) {
-    display: inline-block;
-    //vertical-align: top; //only top or bottom aligment appropriate for rhythm
-    vertical-align: bottom; //aligment top is failed with selector: E(some icons) + E(text)
+    :has(RtL) {
+      display: flex;
+      flex-flow: wrap row-reverse;
+      justify-content: flex-end;
 
-    //TODO Check "Negative margins" solution (3)
-    //&:first-child {
-    //  margin-left: 0;
-    //}
-    //
-    //&:last-child {
-    //  margin-right: 0;
-    //}
+      //TODO Check "Negative margins" solution (2)
+      margin-right: size(-1);
+
+      :is(Indented) {
+        margin-right: size();
+      }
+
+      :is(Indented-x) {
+        margin-right: size(2);
+      }
+    }
+
+    :is(Indented),
+    :is(Indented-x) {
+      display: inline-block;
+      //vertical-align: top; //only top or bottom aligment appropriate for rhythm
+      vertical-align: bottom; //aligment top is failed with selector: E(some icons) + E(text)
+
+      //TODO Check "Negative margins" solution (3)
+      //&:first-child {
+      //  margin-left: 0;
+      //}
+      //
+      //&:last-child {
+      //  margin-right: 0;
+      //}
+    }
   }
 }

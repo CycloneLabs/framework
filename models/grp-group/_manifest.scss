@@ -1,34 +1,37 @@
-:model(gRouP) {
-  border-color: inherit;
-  display: flex;
-  overflow: hidden;
+@if map-has-key($models, all) or map-has-key($models, custom) or map-has-key($models, group) {
 
-  &:is(Collapse) :has(Chunk) + :has(Chunk) {
-    border-left: none;
-  }
+  :model(gRouP) {
+    border-color: inherit;
+    display: flex;
+    overflow: hidden;
 
-  &:not(:is(Collapse)) :has(Chunk) + :has(Chunk) {
-    border-left: thin solid;
-    border-left-color: inherit;
-  }
-
-  :has(Chunk) {
-    height: size(3);
-    line-height: size(3);
-    text-decoration: initial;
-
-    &:not(:last-child) > [class] {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
+    &:is(Collapse) :has(Chunk) + :has(Chunk) {
+      border-left: none;
     }
 
-    &:not(:first-child) > [class] {
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
+    &:not(:is(Collapse)) :has(Chunk) + :has(Chunk) {
+      border-left: thin solid;
+      border-left-color: inherit;
     }
 
-    &:is(Spacer) {
-      flex-grow: 1;
+    :has(Chunk) {
+      height: size(3);
+      line-height: size(3);
+      text-decoration: initial;
+
+      &:not(:last-child) > [class] {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &:not(:first-child) > [class] {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+
+      &:is(Spacer) {
+        flex-grow: 1;
+      }
     }
   }
 }

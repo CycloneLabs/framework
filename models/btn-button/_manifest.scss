@@ -1,60 +1,63 @@
-$button-focus-color: text-color($text-focused) !default;
-$button-hover-color: text-color($text-hovered) !default;
-$button-active-color: text-color($text-activated) !default;
-$button-disabled-color: text-color($text-disabled) !default;
+@if map-has-key($models, all) or map-has-key($models, form) or map-has-key($models, button) {
 
-:model(ButToN) {
-  appearance: initial;
-  background-color: initial;
-  border: initial;
-  box-shadow: initial;
-  color: inherit;
-  cursor: pointer;
-  display: inline-block;
-  font-family: inherit;
-  font-size: $font-size-small;
-  height: size(3);
-  line-height: size(3);
-  margin: initial;
-  outline: initial;
-  padding: initial;
-  pointer-events: auto;
-  text-decoration: initial;
-  transition: color $animated;
-  vertical-align: middle;
+  $button-focus-color: text-color($text-focused) !default;
+  $button-hover-color: text-color($text-hovered) !default;
+  $button-active-color: text-color($text-activated) !default;
+  $button-disabled-color: text-color($text-disabled) !default;
 
-  @include state(Active) {
-    padding-top: $thin;
-  }
+  :model(ButToN) {
+    appearance: initial;
+    background-color: initial;
+    border: initial;
+    box-shadow: initial;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: $font-size-small;
+    height: size(3);
+    line-height: size(3);
+    margin: initial;
+    outline: initial;
+    padding: initial;
+    pointer-events: auto;
+    text-decoration: initial;
+    transition: color $animated;
+    vertical-align: middle;
 
-  @include state(Disabled) {
-    pointer-events: none;
-  }
+    @include state(Active) {
+      padding-top: $thin;
+    }
 
-  &:not([class*="btn_theme-"]) {
-    @each $state in $states-order {
-      @if $state == Focus {
-        @include state($state) {
-          color: $button-focus-color;
+    @include state(Disabled) {
+      pointer-events: none;
+    }
+
+    &:not([class*="btn_theme-"]) {
+      @each $state in $states-order {
+        @if $state == Focus {
+          @include state($state) {
+            color: $button-focus-color;
+          }
         }
-      }
-      @else if $state == Hover {
-        @include state($state) {
-          color: $button-hover-color;
+        @else if $state == Hover {
+          @include state($state) {
+            color: $button-hover-color;
+          }
         }
-      }
-      @else if $state == Active {
-        @include state($state) {
-          color: $button-active-color;
+        @else if $state == Active {
+          @include state($state) {
+            color: $button-active-color;
+          }
         }
-      }
-      @else if $state == Disabled {
-        @include state($state) {
-          color: $button-disabled-color;
+        @else if $state == Disabled {
+          @include state($state) {
+            color: $button-disabled-color;
+          }
         }
       }
     }
   }
 }
 
-@if (map-get($models, debug)) { @import "debug"; }
+@import "debug";

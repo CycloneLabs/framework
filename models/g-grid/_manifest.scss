@@ -1,88 +1,91 @@
-$grid-cells                : 16 !default;
-$grid-cell                 : 100% / $grid-cells !default;
-$gutter-flexible           : $grid-cell / 2.8 !default;
-$gutter-width              : $line-step !default;
-$gutter-compensation       : -$gutter-width / 2 !default;
-$half-gutter-width         : $gutter-width / 2 !default;
+@if map-has-key($models, all) or map-has-key($models, grid) {
 
-:model(Grid) {
-  display: flex;
-  flex: initial;
-  flex-flow: row wrap;
-  margin-left: $gutter-compensation;
-  margin-right: $gutter-compensation;
+  $grid-cells                : 16 !default;
+  $grid-cell                 : 100% / $grid-cells !default;
+  $gutter-flexible           : $grid-cell / 2.8 !default;
+  $gutter-width              : $line-step !default;
+  $gutter-compensation       : -$gutter-width / 2 !default;
+  $half-gutter-width         : $gutter-width / 2 !default;
 
-  &:is(reverse) {
-    flex-direction: row-reverse;
-  }
+  :model(Grid) {
+    display: flex;
+    flex: initial;
+    flex-flow: row wrap;
+    margin-left: $gutter-compensation;
+    margin-right: $gutter-compensation;
 
-  &:is(top) {
-    align-items: flex-start;
-  }
+    &:is(reverse) {
+      flex-direction: row-reverse;
+    }
 
-  &:is(middle) {
-    align-items: center;
-  }
+    &:is(top) {
+      align-items: flex-start;
+    }
 
-  &:is(bottom) {
-    align-items: flex-end;
-  }
+    &:is(middle) {
+      align-items: center;
+    }
 
-  &:is(around) {
-    justify-content: space-around;
-  }
+    &:is(bottom) {
+      align-items: flex-end;
+    }
 
-  &:is(between) {
-    justify-content: space-between;
-  }
+    &:is(around) {
+      justify-content: space-around;
+    }
 
-  &:is(start) {
-    justify-content: flex-start;
-    text-align: start;
-  }
+    &:is(between) {
+      justify-content: space-between;
+    }
 
-  &:is(center) {
-    justify-content: center;
-    text-align: center;
-  }
+    &:is(start) {
+      justify-content: flex-start;
+      text-align: start;
+    }
 
-  &:is(end) {
-    justify-content: flex-end;
-    text-align: end;
-  }
+    &:is(center) {
+      justify-content: center;
+      text-align: center;
+    }
 
-  > :has(col) {
-    flex: none;
-    max-width: 100%;
-    padding-left: $half-gutter-width;
-    padding-right: $half-gutter-width;
-  }
+    &:is(end) {
+      justify-content: flex-end;
+      text-align: end;
+    }
 
-  > :has(col-x) {
-    flex: 1 0 auto;
-    max-width: 100%;
-    padding-left: $half-gutter-width;
-    padding-right: $half-gutter-width;
-  }
-
-  > :is(reverse) { flex-direction: column-reverse; }
-
-  > :is(first) { order: -1; }
-
-  > :is(last) { order: 1; }
-
-  @for $i from 1 through $grid-cells {
-    > :has(col-#{$i}) {
-      flex: 0 0 $i * $grid-cell;
-      max-width: $i * $grid-cell;
+    > :has(col) {
+      flex: none;
+      max-width: 100%;
       padding-left: $half-gutter-width;
       padding-right: $half-gutter-width;
     }
 
-    > :is(offset-#{$i}) {
-      margin-left: $i * (100% / $grid-cells);
+    > :has(col-x) {
+      flex: 1 0 auto;
+      max-width: 100%;
+      padding-left: $half-gutter-width;
+      padding-right: $half-gutter-width;
+    }
+
+    > :is(reverse) { flex-direction: column-reverse; }
+
+    > :is(first) { order: -1; }
+
+    > :is(last) { order: 1; }
+
+    @for $i from 1 through $grid-cells {
+      > :has(col-#{$i}) {
+        flex: 0 0 $i * $grid-cell;
+        max-width: $i * $grid-cell;
+        padding-left: $half-gutter-width;
+        padding-right: $half-gutter-width;
+      }
+
+      > :is(offset-#{$i}) {
+        margin-left: $i * (100% / $grid-cells);
+      }
     }
   }
 }
 
-@if (map-get($models, debug)) { @import "debug"; }
+@import "debug";
