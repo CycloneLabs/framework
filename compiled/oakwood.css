@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*! Oakwood v1.0.0 | MIT license | github.com/Cyclonelabs/framework */
-/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
  * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
@@ -74,14 +74,10 @@ template,
 /* Links
    ========================================================================== */
 /**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ * Remove the gray background on active links in IE 10.
  */
 a {
-  background-color: transparent;
-  /* 1 */
-  -webkit-text-decoration-skip: objects;
-  /* 2 */ }
+  background-color: transparent; }
 
 /**
  * Remove the outline on focused links when they are also active or hovered
@@ -213,17 +209,13 @@ hr {
 /* Forms
    ========================================================================== */
 /**
- * 1. Change font properties to `inherit` in all browsers (opinionated).
- * 2. Remove the margin in Firefox and Safari.
+ * Change font properties to `inherit` in all browsers (opinionated).
  */
 button,
 input,
 select,
 textarea {
-  font: inherit;
-  /* 1 */
-  margin: 0;
-  /* 2 */ }
+  font: inherit; }
 
 /**
  * Restore the font weight unset by the previous rule.
@@ -234,15 +226,28 @@ optgroup {
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
+ * 2. Show the overflow in Edge, Firefox, and IE.
  */
 button,
-input {
-  /* 1 */
+input,
+select {
+  /* 2 */
   overflow: visible; }
 
 /**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
+ * Remove the margin in Safari.
+ * 1. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+select,
+textarea {
+  /* 1 */
+  margin: 0; }
+
+/**
+ * Remove the inheritence of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritence of text transform in Firefox.
  */
 button,
 select {
@@ -250,9 +255,24 @@ select {
   text-transform: none; }
 
 /**
+ * Change the cursor in all browsers (opinionated).
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer; }
+
+/**
+ * Restore the default cursor to disabled elements unset by the previous rule.
+ */
+[disabled] {
+  cursor: default; }
+
+/**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Correct the inability to style clickable types in iOS.
  */
 button,
 html [type="button"],
@@ -265,19 +285,15 @@ html [type="button"],
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
+input::-moz-focus-inner {
+  border: 0;
   padding: 0; }
 
 /**
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+input:-moz-focusring {
   outline: 1px dotted ButtonText; }
 
 /**
@@ -333,38 +349,18 @@ textarea {
   height: auto; }
 
 /**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
+ * Correct the odd appearance of search inputs in Chrome and Safari.
  */
 [type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */ }
+  -webkit-appearance: textfield; }
 
 /**
- * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ * Remove the inner padding and cancel buttons in Chrome on OS X and
+ * Safari on OS X.
  */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
-
-/**
- * Correct the text style of placeholders in Chrome, Edge, and Safari.
- */
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 0.54; }
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */ }
 
 .text {
   color: #556980;
@@ -2378,79 +2374,6 @@ textarea {
 .i-percent:before {
   content: "\F295"; }
 
-.i-gitlab:before {
-  content: "\F296"; }
-
-.i-wpbeginner:before {
-  content: "\F297"; }
-
-.i-wpforms:before {
-  content: "\F298"; }
-
-.i-envira:before {
-  content: "\F299"; }
-
-.i-universal-access:before {
-  content: "\F29A"; }
-
-.i-wheelchair-alt:before {
-  content: "\F29B"; }
-
-.i-question-circle-o:before {
-  content: "\F29C"; }
-
-.i-blind:before {
-  content: "\F29D"; }
-
-.i-audio-description:before {
-  content: "\F29E"; }
-
-.i-volume-control-phone:before {
-  content: "\F2A0"; }
-
-.i-braille:before {
-  content: "\F2A1"; }
-
-.i-assistive-listening-systems:before {
-  content: "\F2A2"; }
-
-.i-asl-interpreting:before,
-.i-american-sign-language-interpreting:before {
-  content: "\F2A3"; }
-
-.i-deafness:before,
-.i-hard-of-hearing:before,
-.i-deaf:before {
-  content: "\F2A4"; }
-
-.i-glide:before {
-  content: "\F2A5"; }
-
-.i-glide-g:before {
-  content: "\F2A6"; }
-
-.i-signing:before,
-.i-sign-language:before {
-  content: "\F2A7"; }
-
-.i-low-vision:before {
-  content: "\F2A8"; }
-
-.i-viadeo:before {
-  content: "\F2A9"; }
-
-.i-viadeo-square:before {
-  content: "\F2AA"; }
-
-.i-snapchat:before {
-  content: "\F2AB"; }
-
-.i-snapchat-ghost:before {
-  content: "\F2AC"; }
-
-.i-snapchat-square:before {
-  content: "\F2AD"; }
-
 .card {
   border-radius: 3px;
   background-color: #FFFFFF;
@@ -3615,8 +3538,6 @@ input:-moz-focusring {
 @font-face {
   font-family: 'FontAwesome';
   src: url(fonts/fontawesome-webfont.eot);
-  src: url(fonts/fontawesome-webfont.eot?#iefix&v=4.6.1) format("embedded-opentype"), url(fonts/fontawesome-webfont.woff2) format("woff2"), url(fonts/fontawesome-webfont.woff) format("woff"), url(fonts/fontawesome-webfont.ttf) format("truetype"), url(fonts/fontawesome-webfont.svg#fontawesomeregular) format("svg");
+  src: url(fonts/fontawesome-webfont.eot?#iefix&v=4.5.0) format("embedded-opentype"), url(fonts/fontawesome-webfont.woff2) format("woff2"), url(fonts/fontawesome-webfont.woff) format("woff"), url(fonts/fontawesome-webfont.ttf) format("truetype"), url(fonts/fontawesome-webfont.svg#fontawesomeregular) format("svg");
   font-weight: normal;
   font-style: normal; }
-
-/*# sourceMappingURL=oakwood.css.map*/

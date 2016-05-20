@@ -2,11 +2,14 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var nsbuilder = require('./bundler/postcss_nsbuilder');
+var oakwood = require('./index.js');
+
+var nsbuilder = oakwood.nsbuilder;
 
 var IS_PRODUCTION = ~process.argv.indexOf('-p'); // production mode started with -p argument
 var assetName = IS_PRODUCTION ? 'oakwood.min.css' : 'oakwood.css';
 var oakwoodModulesConfig = IS_PRODUCTION ? '' : '$models: (all: true, debug: true);';
+
 
 module.exports = {
   entry: './oakwood.scss',
@@ -17,7 +20,7 @@ module.exports = {
   },
 
   resolve: {
-    modulesDirectories: ['node_modules', 'core'],
+    modulesDirectories: ['node_modules'],
   },
 
   plugins: [
@@ -28,11 +31,7 @@ module.exports = {
     preLoaders: [],
     loaders: [
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(['css?sourceMap!postcss!sass?sourceMap']),
-      },
-      {
-        test: /\.sass$/,
+        test: /\.scss|sass$/,
         loader: ExtractTextPlugin.extract(['css?sourceMap!postcss!sass?sourceMap']),
       },
       {
@@ -54,7 +53,7 @@ module.exports = {
 
   postcss:  [ autoprefixer, nsbuilder ],
   sassLoader: {
-    includePaths: [__dirname + '/core', __dirname + '/models', __dirname + '/node_modules'],
+    includePaths: [__dirname + '/node_modules'],
     data: oakwoodModulesConfig,
   },
 };
