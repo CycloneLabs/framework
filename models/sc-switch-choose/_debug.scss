@@ -1,4 +1,7 @@
-:model(Switch-Choose) :has(Control):is(Disabled) {
-  @include bug;
-  content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+@if (map-get($models, debug) and (map-has-key($models, all) or map-has-key($models, form) or map-has-key($models, switch-choose))) {
+
+  :model(Switch-Choose) :has(Control):is(Disabled) {
+    @include bug;
+    content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+  }
 }

@@ -1,84 +1,87 @@
-:model(Padding) {
+@if map-has-key($models, all) or map-has-key($models, core) or map-has-key($models, padding) {
 
-  :is(On),
-  :is(Vertical),
-  :is(Twelve),
-  :is(One),
-  :is(Two),
-  :is(Ten),
-  :is(Eleven) {
-    padding-top: size();
-  }
+  :model(Padding) {
 
-  :is(On-x),
-  :is(Vertical-x),
-  :is(Twelve-x),
-  :is(One-x),
-  :is(Two-x),
-  :is(Ten-x),
-  :is(Eleven-x) {
-    padding-top: size(2);
-  }
+    :is(On),
+    :is(Vertical),
+    :is(Twelve),
+    :is(One),
+    :is(Two),
+    :is(Ten),
+    :is(Eleven) {
+      padding-top: size();
+    }
 
-  :is(On),
-  :is(Horizontal),
-  :is(Three),
-  :is(One),
-  :is(Two),
-  :is(Four),
-  :is(Five) {
-    padding-right: size();
-  }
+    :is(On-x),
+    :is(Vertical-x),
+    :is(Twelve-x),
+    :is(One-x),
+    :is(Two-x),
+    :is(Ten-x),
+    :is(Eleven-x) {
+      padding-top: size(2);
+    }
 
-  :is(On-x),
-  :is(Horizontal-x),
-  :is(Three-x),
-  :is(One-x),
-  :is(Two-x),
-  :is(Four-x),
-  :is(Five-x) {
-    padding-right: size(2);
-  }
+    :is(On),
+    :is(Horizontal),
+    :is(Three),
+    :is(One),
+    :is(Two),
+    :is(Four),
+    :is(Five) {
+      padding-right: size();
+    }
 
-  :is(On),
-  :is(Vertical),
-  :is(Six),
-  :is(Four),
-  :is(Five),
-  :is(Seven),
-  :is(Eight) {
-    padding-bottom: size();
-  }
+    :is(On-x),
+    :is(Horizontal-x),
+    :is(Three-x),
+    :is(One-x),
+    :is(Two-x),
+    :is(Four-x),
+    :is(Five-x) {
+      padding-right: size(2);
+    }
 
-  :is(On-x),
-  :is(Vertical-x),
-  :is(Six-x),
-  :is(Four-x),
-  :is(Five-x),
-  :is(Seven-x),
-  :is(Eight-x) {
-    padding-bottom: size(2);
-  }
+    :is(On),
+    :is(Vertical),
+    :is(Six),
+    :is(Four),
+    :is(Five),
+    :is(Seven),
+    :is(Eight) {
+      padding-bottom: size();
+    }
 
-  :is(On),
-  :is(Horizontal),
-  :is(Nine),
-  :is(Seven),
-  :is(Eight),
-  :is(Ten),
-  :is(Eleven) {
-    padding-left: size();
-  }
+    :is(On-x),
+    :is(Vertical-x),
+    :is(Six-x),
+    :is(Four-x),
+    :is(Five-x),
+    :is(Seven-x),
+    :is(Eight-x) {
+      padding-bottom: size(2);
+    }
 
-  :is(On-x),
-  :is(Horizontal-x),
-  :is(Nine-x),
-  :is(Seven-x),
-  :is(Eight-x),
-  :is(Ten-x),
-  :is(Eleven-x) {
-    padding-left: size(2);
+    :is(On),
+    :is(Horizontal),
+    :is(Nine),
+    :is(Seven),
+    :is(Eight),
+    :is(Ten),
+    :is(Eleven) {
+      padding-left: size();
+    }
+
+    :is(On-x),
+    :is(Horizontal-x),
+    :is(Nine-x),
+    :is(Seven-x),
+    :is(Eight-x),
+    :is(Ten-x),
+    :is(Eleven-x) {
+      padding-left: size(2);
+    }
   }
 }
 
-@if (map-get($models, debug)) { @import "debug"; }
+@import "debug";

@@ -1,15 +1,18 @@
-input:model(Input) {
+@if (map-get($models, debug) and (map-has-key($models, all) or map-has-key($models, form) or map-has-key($models, input))) {
 
-  &:is(Disabled):not([disabled]):not([tabindex]) {
-    @include bug;
-    content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+  input:model(Input) {
+
+    &:is(Disabled):not([disabled]):not([tabindex]) {
+      @include bug;
+      content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+    }
   }
-}
 
-:not(input):not(textarea):model(Input) {
+  :not(input):not(textarea):model(Input) {
 
-  &:not(:is(Disabled)):not([disabled]):not([tabindex]) {
-    @include bug;
-    content: "model should have attribute `tabindex` like `0` to receive focus";
+    &:not(:is(Disabled)):not([disabled]):not([tabindex]) {
+      @include bug;
+      content: "model should have attribute `tabindex` like `0` to receive focus";
+    }
   }
 }

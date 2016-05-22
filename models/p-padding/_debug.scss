@@ -1,61 +1,64 @@
-:model(Padding) {
-  :is(One-x):is(Two-x),
-  :is(Four-x):is(Five-x),
-  :is(Seven-x):is(Eight-x),
-  :is(Ten-x):is(Eleven-x),
-  :is(One):is(Two),
-  :is(Four):is(Five),
-  :is(Seven):is(Eight),
-  :is(Ten):is(Eleven) {
-    @include bug;
-    content: "Modifiers do the same thing";
-  }
+@if (map-get($models, debug) and (map-has-key($models, all) or map-has-key($models, core) or map-has-key($models, padding))) {
 
-  :is(Twelve-x):is(Three-x),
-  :is(Three-x):is(Six-x),
-  :is(Six-x):is(Nine-x),
-  :is(Nine-x):is(Twelve-x),
-  :is(Twelve):is(Three),
-  :is(Three):is(Six),
-  :is(Six):is(Nine),
-  :is(Nine):is(Twelve) {
-    @include bug;
-    content: "Please use the intermediate values";
-  }
+  :model(Padding) {
+    :is(One-x):is(Two-x),
+    :is(Four-x):is(Five-x),
+    :is(Seven-x):is(Eight-x),
+    :is(Ten-x):is(Eleven-x),
+    :is(One):is(Two),
+    :is(Four):is(Five),
+    :is(Seven):is(Eight),
+    :is(Ten):is(Eleven) {
+      @include bug;
+      content: "Modifiers do the same thing";
+    }
 
-  :is(Twelve-x):is(Six-x),
-  :is(Twelve):is(Six) {
-    @include bug;
-    content: "Please use the `vertical` modifier";
-  }
+    :is(Twelve-x):is(Three-x),
+    :is(Three-x):is(Six-x),
+    :is(Six-x):is(Nine-x),
+    :is(Nine-x):is(Twelve-x),
+    :is(Twelve):is(Three),
+    :is(Three):is(Six),
+    :is(Six):is(Nine),
+    :is(Nine):is(Twelve) {
+      @include bug;
+      content: "Please use the intermediate values";
+    }
 
-  :is(Three-x):is(Nine-x),
-  :is(Three):is(Nine) {
-    @include bug;
-    content: "Please use the `horizontal` modifier";
-  }
+    :is(Twelve-x):is(Six-x),
+    :is(Twelve):is(Six) {
+      @include bug;
+      content: "Please use the `vertical` modifier";
+    }
 
-  :is(Twelve-x):is(Three-x):is(Six-x):is(Nine-x),
-  :is(Twelve):is(Three):is(Six):is(Nine),
-  :is(Vertical-x):is(Horizontal-x),
-  :is(Vertical):is(Horizontal),
-  :is(One-x):is(Seven-x),
-  :is(One):is(Seven),
-  :is(One-x):is(Eight-x),
-  :is(One):is(Eight),
-  :is(Two-x):is(Seven-x),
-  :is(Two):is(Seven),
-  :is(Two-x):is(Eight-x),
-  :is(Two):is(Eight),
-  :is(Three-x):is(Ten-x),
-  :is(Three):is(Ten),
-  :is(Three-x):is(Eleven-x),
-  :is(Three):is(Eleven),
-  :is(Four-x):is(Ten-x),
-  :is(Four):is(Ten),
-  :is(Four-x):is(Eleven-x),
-  :is(Four):is(Eleven) {
-    @include bug;
-    content: "Please use the `on` modifier";
+    :is(Three-x):is(Nine-x),
+    :is(Three):is(Nine) {
+      @include bug;
+      content: "Please use the `horizontal` modifier";
+    }
+
+    :is(Twelve-x):is(Three-x):is(Six-x):is(Nine-x),
+    :is(Twelve):is(Three):is(Six):is(Nine),
+    :is(Vertical-x):is(Horizontal-x),
+    :is(Vertical):is(Horizontal),
+    :is(One-x):is(Seven-x),
+    :is(One):is(Seven),
+    :is(One-x):is(Eight-x),
+    :is(One):is(Eight),
+    :is(Two-x):is(Seven-x),
+    :is(Two):is(Seven),
+    :is(Two-x):is(Eight-x),
+    :is(Two):is(Eight),
+    :is(Three-x):is(Ten-x),
+    :is(Three):is(Ten),
+    :is(Three-x):is(Eleven-x),
+    :is(Three):is(Eleven),
+    :is(Four-x):is(Ten-x),
+    :is(Four):is(Ten),
+    :is(Four-x):is(Eleven-x),
+    :is(Four):is(Eleven) {
+      @include bug;
+      content: "Please use the `on` modifier";
+    }
   }
 }

@@ -1,15 +1,18 @@
-select:model(Select) {
+@if (map-get($models, debug) and (map-has-key($models, all) or map-has-key($models, form) or map-has-key($models, select))) {
 
-  &:is(Disabled):not([disabled]):not([tabindex]) {
-    @include bug;
-    content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+  select:model(Select) {
+
+    &:is(Disabled):not([disabled]):not([tabindex]) {
+      @include bug;
+      content: "modifier Disabled should be used with attribute `tabindex` with value `-1`";
+    }
   }
-}
 
-:not(select):model(Select) {
+  :not(select):model(Select) {
 
-  &:not(:is(Disabled)):not([disabled]):not([tabindex]) {
-    @include bug;
-    content: "model should have attribute `tabindex` like `0` to receive focus";
+    &:not(:is(Disabled)):not([disabled]):not([tabindex]) {
+      @include bug;
+      content: "model should have attribute `tabindex` like `0` to receive focus";
+    }
   }
 }

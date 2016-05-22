@@ -1,4 +1,13 @@
-_:-moz-tree-row(hover), :model(Select) { //Fix Firefox bug
-  color: transparent;
-  text-shadow: 0 0 0 $select-text-default;
+@if map-has-key($models, all) or map-has-key($models, form) or map-has-key($models, select) {
+
+  @if(not variable-exists(select-text-default)) {
+    $select-text-default: text-color($text-riched) !default;
+  }
+
+  @if(variable-exists(select-text-default)) {
+    _:-moz-tree-row(hover), :model(Select) { //Fix Firefox bug
+      color: transparent;
+      text-shadow: 0 0 0 $select-text-default;
+    }
+  }
 }

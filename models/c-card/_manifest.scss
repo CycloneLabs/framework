@@ -1,48 +1,51 @@
-$card-background: $bg-default !default;
-$card-border-default: $border-muted !default;
-$card-border-active: $border-default !default;
-$card-shadow: $shadow-default !default;
+@if map-has-key($models, all) or map-has-key($models, basic) or map-has-key($models, card) {
 
-:model(Card) {
-  @include radius;
-  background-color: $card-background;
-  border: $thin solid $card-border-default;
-  display: block;
-  margin-bottom: -2 * $thin;
-  overflow: hidden;
-  position: relative;
-  top: -$thin;
+  $card-background: $bg-default !default;
+  $card-border-default: $border-muted !default;
+  $card-border-active: $border-default !default;
+  $card-shadow: $shadow-default !default;
 
-  :has(Body) {
-    border-bottom-style: solid;
-    border-color: inherit;
-    border-top-style: solid;
-    border-width: $thin;
-    margin: -$thin 0;
-    transition: box-shadow $animated, border-color $animated; //TODO https://bugs.webkit.org/show_bug.cgi?id=46041
+  :model(Card) {
+    @include radius;
+    background-color: $card-background;
+    border: $thin solid $card-border-default;
+    display: block;
+    margin-bottom: -2 * $thin;
+    overflow: hidden;
+    position: relative;
+    top: -$thin;
 
-    + :has(Body),
-    &:first-child {
-      border-top: initial;
-      margin-top: initial;
+    :has(Body) {
+      border-bottom-style: solid;
+      border-color: inherit;
+      border-top-style: solid;
+      border-width: $thin;
+      margin: -$thin 0;
+      transition: box-shadow $animated, border-color $animated; //TODO https://bugs.webkit.org/show_bug.cgi?id=46041
+
+      + :has(Body),
+      &:first-child {
+        border-top: initial;
+        margin-top: initial;
+      }
+
+      &:last-child {
+        border-bottom: initial;
+        margin-bottom: initial;
+      }
     }
 
-    &:last-child {
-      border-bottom: initial;
-      margin-bottom: initial;
+    &:is(Shadow) {
+      @include stroke($shadow: $card-shadow);
+      border: $thin solid $card-border-active;
     }
-  }
 
-  &:is(Shadow) {
-    @include stroke($shadow: $card-shadow);
-    border: $thin solid $card-border-active;
-  }
+    &:is(Hover):not(:is(Shadow)) {
+      transition: border-color $animated;
 
-  &:is(Hover):not(:is(Shadow)) {
-    transition: border-color $animated;
-
-    &:hover {
-      border-color: $card-border-active;
+      &:hover {
+        border-color: $card-border-active;
+      }
     }
   }
 }

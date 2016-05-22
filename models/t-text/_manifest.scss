@@ -1,87 +1,90 @@
-$text-header-color: text-color($text-riched) !default;
-$text-text-color: text-color($text-article) !default;
+@if map-has-key($models, all) or map-has-key($models, core) or map-has-key($models, text) {
 
-:model(Text) {
-  color: $text-text-color;
-  font-family: $font-family;
-  font-size: $font-size-normal;
-  line-height: size(2);
+  $text-header-color: text-color($text-riched) !default;
+  $text-text-color: text-color($text-article) !default;
 
-  :is(slate) { color: color(slate); }
-
-  :is(red) { color: color(red); }
-
-  :is(orange) { color: color(orange); }
-
-  :is(yellow) { color: color(yellow); }
-
-  :is(green) { color: color(green); }
-
-  :is(blue) { color: color(blue); }
-
-  :is(purple) { color: color(purple); }
-
-  :is(pink) { color: color(pink); }
-
-  :is(riched) { color: text-color($text-riched); }
-
-  :is(muted) { color: text-color($text-muted); }
-
-  :is(info) { color: text-color($text-info); }
-
-  :is(warning) { color: text-color($text-warning); }
-
-  :is(success) { color: text-color($text-success); }
-
-  :is(error) { color: text-color($text-error); }
-
-  :has(Header) {
-    color: $text-header-color;
-    font-size: 2 * $font-size-tiny;
-    line-height: size(3);
-  }
-
-  :is(Small) {
-    font-size: $font-size-tiny;
-  }
-
-  :is(Medium) {
-    font-size: $font-size-small;
-  }
-
-  :is(Large) {
+  :model(Text) {
+    color: $text-text-color;
+    font-family: $font-family;
     font-size: $font-size-normal;
-  }
+    line-height: size(2);
 
-  :is(Plain) {
-    font-family: $font-family-mono;
-    overflow: auto;
-    white-space: pre;
-  }
+    :is(slate) { color: color(slate); }
 
-  :is(Crop) {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+    :is(red) { color: color(red); }
 
-  :is(Right) {
-    text-align: right;
-  }
+    :is(orange) { color: color(orange); }
 
-  :is(Left) {
-    text-align: left;
-  }
+    :is(yellow) { color: color(yellow); }
 
-  :is(Center) {
-    text-align: center;
-  }
+    :is(green) { color: color(green); }
 
-  :is(Bold) {
-    font-weight: bold;
-  }
+    :is(blue) { color: color(blue); }
 
-  :is(Italic) {
-    font-style: italic;
+    :is(purple) { color: color(purple); }
+
+    :is(pink) { color: color(pink); }
+
+    :is(riched) { color: text-color($text-riched); }
+
+    :is(muted) { color: text-color($text-muted); }
+
+    :is(info) { color: text-color($text-info); }
+
+    :is(warning) { color: text-color($text-warning); }
+
+    :is(success) { color: text-color($text-success); }
+
+    :is(error) { color: text-color($text-error); }
+
+    :has(Header) {
+      color: $text-header-color;
+      font-size: 2 * $font-size-tiny;
+      line-height: size(3);
+    }
+
+    :is(Small) {
+      font-size: $font-size-tiny;
+    }
+
+    :is(Medium) {
+      font-size: $font-size-small;
+    }
+
+    :is(Large) {
+      font-size: $font-size-normal;
+    }
+
+    :is(Plain) {
+      font-family: $font-family-mono;
+      overflow: auto;
+      white-space: pre;
+    }
+
+    :is(Crop) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    :is(Right) {
+      text-align: right;
+    }
+
+    :is(Left) {
+      text-align: left;
+    }
+
+    :is(Center) {
+      text-align: center;
+    }
+
+    :is(Bold) {
+      font-weight: bold;
+    }
+
+    :is(Italic) {
+      font-style: italic;
+    }
   }
 }
