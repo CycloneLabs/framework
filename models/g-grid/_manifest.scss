@@ -1,4 +1,4 @@
-@if map-has-key($models, all) or map-has-key($models, grid) {
+@if map-has-key($models, all) or map-has-key($models, basic) or map-has-key($models, grid) {
 
   $grid-cells                : 16 !default;
   $grid-cell                 : 100% / $grid-cells !default;

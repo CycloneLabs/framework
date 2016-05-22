@@ -1,4 +1,4 @@
-@if (map-get($models, debug)) {
+@if (map-get($models, debug) and (map-has-key($models, all) or map-has-key($models, core) or map-has-key($models, padding))) {
 
   :model(Padding) {
     :is(One-x):is(Two-x),

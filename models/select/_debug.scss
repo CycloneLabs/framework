@@ -1,4 +1,4 @@
-@if (map-get($models, debug)) {
+@if (map-get($models, debug) and (map-has-key($models, all) or map-has-key($models, form) or map-has-key($models, select))) {
 
   select:model(Select) {
 

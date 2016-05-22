@@ -1,4 +1,4 @@
-@if (map-get($models, debug)) {
+@if (map-get($models, debug) and (map-has-key($models, all) or map-has-key($models, basic) or map-has-key($models, grid))) {
 
   :model(Grid) > :is(First):first-child + :is(Last):last-child {
     @include bug;
