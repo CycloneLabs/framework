@@ -1,5 +1,4 @@
 @if map-has-key($models, all) or map-has-key($models, basic) or map-has-key($models, icon) {
-  $fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/FortAwesome/Font-Awesome/pull/6020/files
 
   :model(Icon) {
     //Reason: including vendor prefixes
@@ -41,7 +40,4 @@
   }
 }
 
-//TODO Delete this dependencies
-@import "~font-awesome/scss/variables";
-@import "~font-awesome/scss/icons";
-@import "~font-awesome/scss/path";
+$fa-css-prefix: "i"; //TODO Refactor NSBuild-relation after https://github.com/FortAwesome/Font-Awesome/pull/6020/files

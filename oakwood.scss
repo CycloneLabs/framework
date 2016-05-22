@@ -21,5 +21,10 @@ $models: (all: true, debug: false) !default;
 "models/p-padding/manifest", "models/il-inline/manifest",
 "models/b-block/manifest", "models/g-grid/manifest";
 
+// Font Awesome Include
+@import "~font-awesome/scss/variables";
+@import "~font-awesome/scss/icons";
+@import "~font-awesome/scss/path";
+
 // TODO Add wrapper to normalize for disabling
 //@if map-has-key($models, normalize) { @import "~normalize.css/normalize"; }

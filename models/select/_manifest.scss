@@ -1,9 +1,9 @@
-$select-arrow-default: $border-default !default;
-$select-arrow-hover: $border-hovered !default;
-$select-text-default: text-color($text-riched) !default;
-$select-text-disabled: text-color($text-disabled) !default;
-
 @if map-has-key($models, all) or map-has-key($models, form) or map-has-key($models, select) {
+
+  $select-arrow-default: $border-default !default;
+  $select-arrow-hover: $border-hovered !default;
+  $select-text-default: text-color($text-riched) !default;
+  $select-text-disabled: text-color($text-disabled) !default;
 
   :model(Select) {
     appearance: initial;
@@ -57,6 +57,5 @@ $select-text-disabled: text-color($text-disabled) !default;
   }
 }
 
-//TODO Delete this dependencies
 @import "hack";
 @import "debug";

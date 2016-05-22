@@ -38,7 +38,7 @@
     :is(Overflow) {
       height: size(7);
       max-height: size(80);
-      min-height: size(3); //TODO https://code.google.com/p/chromium/issues/detail?id=94583
+      min-height: size(4); //TODO https://code.google.com/p/chromium/issues/detail?id=94583
       overflow: hidden;
       resize: vertical;
 
